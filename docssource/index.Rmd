@@ -14,7 +14,7 @@ source("../R/functions.R")
 ```
   
 
-# PPDA for Jamovi
+# Psychometric Post-Data Analysis for Jamovi
 
 <img src="docs/i1.png" class="img-responsive" alt="">
 
@@ -31,10 +31,8 @@ Available models are:
 
 Some worked out examples of the analyses carried out with jamovi GAMLj are posted here (more to come)
 
-<div class="littletitle">PsychoPDA</div>
-`r list_pages(topic="",category = "example")`
 <div class="littletitle">Binary Differential Item Functioning</div>
-`r include_examples("DIF")`
+`r list_pages(topic="",category = "example")`
 <div class="littletitle">Mean Differences Design Analysis</div>
 `r include_examples("meanDifDA")`
 <div class="littletitle">Correlations Design Analysis</div>
