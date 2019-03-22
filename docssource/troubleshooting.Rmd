@@ -1,0 +1,38 @@
+---
+title: "Troubleshooting PsychoPDA"
+output: 
+  html_document:
+     toc: true
+     toc_float:
+        collapsed: false
+
+---
+  
+
+
+# Common 
+
+### Variable names:
+`r #version("0.1.0")`
+
+If variables have names not following R standard, some problem may still appear.
+
+### Solution:
+Use variable names without space, parentheses or brackets, etc. 
+
+`r #version(">0.1.0")`
+
+Solved
+
+# Binary DIF
+
+nothing yet
+
+# Mean Differences Design Analysis
+
+nothing yet
+
+# Correlation Design Analysis
+
+nothing yet
+

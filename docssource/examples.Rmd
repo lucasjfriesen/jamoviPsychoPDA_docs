@@ -1,6 +1,6 @@
 ---
 title: "Examples"
-author: (Marcello Gallucci)
+author: (Lucas Friesen)
 output: 
   html_document:
     includes:
@@ -17,9 +17,9 @@ source("../R/functions.R")
 ```
 
 
-Here you can find some application of GLMj module.
+Here you can find some application of PsychoPDA module.
 
-# GLM
+# Binary Differential Item Functioning
 
 `r include_examples("binaryDIF")`
 

@@ -1,0 +1,28 @@
+---
+title: "Releases Notes"
+output: 
+  html_document:
+    includes:
+         in_header: ganalytics.txt
+    toc: true
+    toc_float:
+         collapsed: false
+
+---
+
+Releases and changes
+
+```{r, echo=FALSE,results='asis'}
+
+source("../R/functions.R")
+cw<-write_commits()
+
+```
+
+
+# version 0.1.0
+
+* First release to go public
+
+
+`r issues()`
