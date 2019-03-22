@@ -1,5 +1,5 @@
 ---
-title: "PsychoPDA: Psychometric Post-Data Analysis in Jamovi"
+title: "Psychometric Post-Data Analysis in Jamovi"
 output: 
   html_document:
     includes:
@@ -29,7 +29,7 @@ Available models are:
 
 # Examples
 
-Some worked out examples of the analyses carried out with jamovi GAMLj are posted here (more to come)
+Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here (more to come)
 
 <div class="littletitle">Binary Differential Item Functioning</div>
 `r list_pages(topic="",category = "example")`

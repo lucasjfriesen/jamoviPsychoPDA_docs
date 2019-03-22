@@ -1,7 +1,7 @@
 name: "psychoPDA-website"
 output_dir: "../docs"
 navbar:
-  title: "Psychometric Post-Data Analaysis"
+  title: "PsychoPDA"
   left:
   - text: "Binary DIF"
     href:  DIF.html

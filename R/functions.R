@@ -80,7 +80,7 @@ issues<-function() {
   a<-'<h1>Comments?</h1>\n'
   a<-paste(a,'<p>Got comments, issues or spotted a bug? Please open an issue on
       <a href=" https://github.com/lucasjfriesen/psychoPDA/issues ">
-      GAMLj at github“</a> or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a></p>
+      PsychoPDA at github </a> or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a></p>
   ')
   return(a)
   
