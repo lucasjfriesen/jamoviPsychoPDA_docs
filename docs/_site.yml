@@ -3,11 +3,11 @@ output_dir: "../docs"
 navbar:
   title: "Psychometric Post-Data Analaysis"
   left:
-  - text: "DIF"
+  - text: "Binary DIF"
     href:  DIF.html
-  - text: "Mean Differences Design Analysis"
+  - text: "Mean Differences D.A."
     href: meanDifDA.html
-  - text: "Correlations Design Analysis"
+  - text: "Correlations D.A."
     href: corrDA.html
   - text: "Examples"
     href:  examples.html
