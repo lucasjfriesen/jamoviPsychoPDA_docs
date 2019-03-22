@@ -1,0 +1,34 @@
+---
+title: "Examples"
+author: (Marcello Gallucci)
+output: 
+  html_document:
+    includes:
+      in_header: ganalytics.txt
+    toc: true
+    toc_float:
+      collapsed: false
+
+---
+
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+
+Here you can find some application of GLMj module.
+
+# GLM
+
+`r include_examples("binaryDIF")`
+
+# Mean Differences Design Analysis
+
+`r include_examples("meansDA")`
+
+# Correlations Design Analysis
+
+`r include_examples("corrDA")`
+
+`r issues()`

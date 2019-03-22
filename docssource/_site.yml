@@ -1,0 +1,25 @@
+name: "psychoPDA-website"
+output_dir: "../docs"
+navbar:
+  title: "Psychometric Post-Data Analaysis"
+  left:
+  - text: "DIF"
+    href:  DIF.html
+  - text: "Mean Differences Design Analysis"
+    href: designAnalysis.html
+  - text: "Correlations Design Analysis"
+    href: designAnalysis.html
+  - text: "Examples"
+    href:  examples.html
+  - text: "Release notes"
+    href:  release_notes.html
+
+  right: 
+  - text: "View on Github"
+    href: https://github.com/lucasjfriesen/psychoPDA
+output:
+  html_document:
+    css: style.css
+    theme: flatly
+
+    
