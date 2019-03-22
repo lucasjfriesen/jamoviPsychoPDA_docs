@@ -1,0 +1,82 @@
+---
+title: "PsychoPDA: Psychometric Post-Data Analysis in Jamovi"
+output: 
+  html_document:
+    includes:
+         in_header: ganalytics.txt
+
+---
+  
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+
+```
+  
+
+PPDA for Jamovi
+
+<img src="docs/i1.png" class="img-responsive" alt="">
+
+
+About the module.
+
+* List of functions
+
+Available models are:
+
+* Nuanced list
+
+# Examples
+
+Some worked out examples of the analyses carried out with jamovi GAMLj are posted here (more to come)
+
+<div class="littletitle">DIF</div>
+`r list_pages(topic="glm",category = "example")`
+<div class="littletitle">Mean Differences</div>
+`r include_examples("mixed")`
+<div class="littletitle">Correlations</div>
+`r include_examples("gzlm")`
+
+
+
+
+# Installation
+
+If you didn't already, install [Jamovi](https://www.jamovi.org/download.html) and run it. Select the jamovi modules library and install GAMLj from there
+
+<img src="glm/install.png" class="img-responsive" alt="">
+
+## Linux
+
+If you are working in linux you can download [Jamovi](https://www.jamovi.org/download.html), then download the .jmo from this link [gamlj binaries](https://github.com/mcfanda/binaries/blob/master/gamlj_linux.jmo).
+
+
+## Others
+
+You will first need to download [Jamovi](https://www.jamovi.org/download.html). 
+
+
+You can clone this repository and compile the module within R with 
+
+```
+library(jmvtools)
+
+jmvtools::install()
+
+```
+
+# Troubleshooting
+
+Please check out the  [troubleshooting page](https://mcfanda.github.io/gamlj_docs/troubles.html). 
+
+# Release notes
+
+Please check out the  [Release notes](release_notes.html). 
+
+# Quality control
+
+Please check the [rosetta store](rosetta.html) for alignment with other software results and possible discrepancies.
+
+  
+`r issues()`
