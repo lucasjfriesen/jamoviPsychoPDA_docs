@@ -12,7 +12,7 @@ navbar:
   - text: "Examples"
     href:  examples.html
   - text: "Release notes"
-    href:  release_notes.html
+    href:  releaseNotes.html
 
   right: 
   - text: "View on Github"
