@@ -10,7 +10,7 @@ output:
   
 
 
-# Common 
+# Common Issues
 
 ### Variable names:
 `r #version("0.1.0")`
@@ -21,8 +21,6 @@ If variables have names not following R standard, some problem may still appear.
 Use variable names without space, parentheses or brackets, etc. 
 
 `r #version(">0.1.0")`
-
-Solved
 
 # Binary DIF
 

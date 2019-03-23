@@ -6,7 +6,7 @@ navbar:
   - text: "Binary DIF"
     href:  binaryDIF.html
   - text: "Mean Differences D.A."
-    href: meanDifDA.html
+    href: meanDiffDA.html
   - text: "Correlations D.A."
     href: corrDA.html
   - text: "Examples"

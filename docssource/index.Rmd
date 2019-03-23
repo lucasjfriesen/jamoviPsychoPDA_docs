@@ -34,7 +34,7 @@ Some worked out examples of the analyses carried out with jamovi PsychoPDA are p
 <div class="littletitle">Binary Differential Item Functioning</div>
 `r list_pages(topic="",category = "example")`
 <div class="littletitle">Mean Differences Design Analysis</div>
-`r include_examples("meanDifDA")`
+`r include_examples("meanDiffDA")`
 <div class="littletitle">Correlations Design Analysis</div>
 `r include_examples("corrDA")`
 

@@ -1,12 +1,12 @@
 name: "psychoPDA-website"
 output_dir: "../docs"
 navbar:
-  title: "Psychometric Post-Data Analaysis"
+  title: "PsychoPDA"
   left:
   - text: "Binary DIF"
-    href:  DIF.html
+    href:  binaryDIF.html
   - text: "Mean Differences D.A."
-    href: meanDifDA.html
+    href: meanDiffDA.html
   - text: "Correlations D.A."
     href: corrDA.html
   - text: "Examples"
