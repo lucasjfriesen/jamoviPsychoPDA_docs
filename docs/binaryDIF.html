@@ -11,7 +11,7 @@
 
 
 
-<title>PsychoPDA</title>
+<title>Binary Differential Item Functioning</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -173,6 +176,107 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -216,81 +320,49 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">PsychoPDA</h1>
+<h1 class="title toc-ignore">Binary Differential Item Functioning</h1>
 
 </div>
 
 
-<div id="psychometric-post-data-analysis-for-jamovi" class="section level1">
-<h1>Psychometric Post-Data Analysis for Jamovi</h1>
-<p><img src="docs/i1.png" class="img-responsive" alt=""></p>
-<p>About the module.</p>
-<ul>
-<li>List of functions</li>
-</ul>
-<p>Available models are:</p>
-<ul>
-<li>Nuanced list</li>
-</ul>
+<p><strong>Binary Differential Item Functioning</strong> module of the PsychoPDA suite for jamovi</p>
+<p><img src="DIF/main.png  " class="img-responsive" alt=""></p>
+<p>The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.</p>
+<div id="module" class="section level1">
+<h1>Module</h1>
+<p>The DIF module performs DIF analysis on dichotomously scored items using binary grouping variables(fn) and either total-score matching or matching based on a supplied variable. The following explanation of the analysis will use an example where the grouping variable β₁ is a binary classification (0, 1) and the matching variable is a latent construct-level variable θ. This example is the case where we are simultaneously assessing for both uniform or non-uniform DIF.</p>
+<p>Using a GLIM model, items are fit first with a baseline model containing both the main effects and interaction effect:</p>
+<p>Logit of endorsement = β₀ + β₁ + θ + (β₁ * θ)</p>
+<p>A second model containing only the main effect of the matching variable is then fit:</p>
+<p>Logit of endorsement = β₀ + θ</p>
+<p>The reduction in model deviance is then calculated between the baseline and secondary models (ΔD). If ΔD is not statistically significant (at a level specifiable by the user and using either the Wald test of joint significance or a likelihood ratio test), then the item is not exhibiting DIF. If ΔD is significant, the item is flagged as exhibiting DIF.</p>
+</div>
+<div id="dif-analysis" class="section level1">
+<h1>DIF Analysis</h1>
+</div>
+<div id="design-analysis" class="section level1">
+<h1>Design Analysis</h1>
+</div>
+<div id="item-characteristic-curves" class="section level1">
+<h1>Item Characteristic Curves</h1>
 </div>
 <div id="examples" class="section level1">
 <h1>Examples</h1>
 <p>Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here (more to come)</p>
-<div class="littletitle">
-Binary Differential Item Functioning
-</div>
 <ul>
 </ul>
-<div class="littletitle">
-Mean Differences Design Analysis
-</div>
-<ul>
-</ul>
-<div class="littletitle">
-Correlations Design Analysis
-</div>
-<ul>
-</ul>
-</div>
-<div id="installation" class="section level1">
-<h1>Installation</h1>
-<p>If you didn’t already, install <a href="https://www.jamovi.org/download.html">Jamovi</a> and run it. Select the jamovi modules library and install GAMLj from there</p>
-<p><img src="glm/install.png" class="img-responsive" alt=""></p>
-<div id="linux" class="section level2">
-<h2>Linux</h2>
-<p>If you are working in linux you can download <a href="https://www.jamovi.org/download.html">Jamovi</a>, then download the .jmo from this link <a href="">to be added</a>.</p>
-</div>
-<div id="others" class="section level2">
-<h2>Others</h2>
-<p>You will first need to download <a href="https://www.jamovi.org/download.html">Jamovi</a>.</p>
-<p>You can clone this repository and compile the module within R with</p>
-<pre><code>library(jmvtools)
-
-jmvtools::install()
-</code></pre>
-</div>
-</div>
-<div id="troubleshooting" class="section level1">
-<h1>Troubleshooting</h1>
-<p>Please check out the <a href="https://lucasjfriesen.github.io/jamoviPsychoPDA_docs/troubleshooting.html">troubleshooting page</a>.</p>
-</div>
-<div id="release-notes" class="section level1">
-<h1>Release notes</h1>
-<p>Please check out the <a href="release_notes.html">Release notes</a>.</p>
-</div>
-<div id="quality-control" class="section level1">
-<h1>Quality control</h1>
-<p>To be added</p>
 <h1>
 Comments?
 </h1>
 <p>
-Got comments, issues or spotted a bug? Please open an issue on <a href=" https://github.com/lucasjfriesen/psychoPDA/issues "> PsychoPDA at github </a> or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
+Got comments, issues or spotted a bug? Please open an issue on <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA at github </a> or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
 </p>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

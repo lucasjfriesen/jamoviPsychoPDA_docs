@@ -1,5 +1,5 @@
 ---
-title: "Psychometric Post-Data Analysis in Jamovi"
+title: "PsychoPDA"
 output: 
   html_document:
     includes:

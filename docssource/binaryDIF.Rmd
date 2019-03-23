@@ -1,0 +1,52 @@
+---
+title: "Binary Differential Item Functioning"
+topic: DIF
+category: help
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**Binary Differential Item Functioning** module of the PsychoPDA suite for jamovi
+
+<img src="DIF/main.png  " class="img-responsive" alt="">
+
+The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.
+
+# Module
+
+The DIF module performs DIF analysis on dichotomously scored items using binary grouping variables(fn) and either total-score matching or matching based on a supplied variable. The following explanation of the analysis will use an example where the grouping variable β₁ is a binary classification (0, 1) and the matching variable is a latent construct-level variable θ. This example is the case where we are simultaneously assessing for both uniform or non-uniform DIF.
+
+Using a GLIM model, items are fit first with a baseline model containing both the main effects and interaction effect:
+
+Logit of endorsement = β₀ + β₁ + θ + (β₁ * θ)
+
+A second model containing  only the main effect of the matching variable is then fit:
+
+Logit of endorsement = β₀ + θ 
+
+The reduction in model deviance is then calculated between the baseline and secondary models (ΔD). If ΔD is not statistically significant (at a level specifiable by the user and using either the Wald test of joint significance or a likelihood ratio test), then the item is not exhibiting DIF. If ΔD is significant, the item is flagged as exhibiting DIF. 
+
+# Descriptive Overview
+
+# DIF Analysis
+
+# Design Analysis
+
+# Item Characteristic Curves
+
+# Examples
+
+Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here (more to come)
+
+`r include_examples("DIF")`
+
+`r issues()`
