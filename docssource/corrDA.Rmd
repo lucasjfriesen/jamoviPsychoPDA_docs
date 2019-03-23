@@ -1,0 +1,18 @@
+---
+title: "Correlations Design Analysis"
+topic: DIF
+category: help
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**In Development**
