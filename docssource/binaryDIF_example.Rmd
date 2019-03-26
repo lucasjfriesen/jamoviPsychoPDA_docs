@@ -18,6 +18,25 @@ source("../R/functions.R")
 
 **Binary Differential Item Functioning Example Analysis**
 
+Using the supplied data set, follow the instructions provided upon opening the "Binary DIF" module in the PPDA tab of Jamovi.
+
+<img src="examples/DIF_1/DIF_data.png  " class="img-responsive" alt="">
+
+Select as many items as you like for analysis
+
+<img src="examples/DIF_1/items.png  " class="img-responsive" alt="">
+
+Select the external matching variable anger" (If choose not to, the measure observed total score will be comupted and used for matching)
+
+<img src="examples/DIF_1/match.png  " class="img-responsive" alt="">
+
+Select the grouping variable "gender"
+
+<img src="examples/DIF_1/group.png  " class="img-responsive" alt="">
+
+Play around, enjoy
+
+
 Working on it.
 
 `r issues()`

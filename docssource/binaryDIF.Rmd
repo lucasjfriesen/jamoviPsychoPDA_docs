@@ -118,8 +118,8 @@ Once the variables have been set, the instructions are replaced with a descripti
 
 # Examples
 
-Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here (more to come)
+Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come)
 
-`r include_examples("DIF")`
+`r include_examples("binaryDIF")`
 
 `r issues()`
