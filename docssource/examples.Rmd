@@ -1,6 +1,5 @@
 ---
 title: "Examples"
-author: (Lucas Friesen)
 output: 
   html_document:
     includes:
@@ -19,15 +18,17 @@ source("../R/functions.R")
 
 Here you can find some application of PsychoPDA module.
 
-# Binary Differential Item Functioning
+# Differential Item Functioning
 
+## Binary DIF
 `r include_examples("binaryDIF")`
 
-# Mean Differences Design Analysis
+# Design Analysis 
+## Mean Differences Design Analysis
 
-`r include_examples("meansDA")`
+`r include_examples("meanDiffDA")`
 
-# Correlations Design Analysis
+## Correlations Design Analysis
 
 `r include_examples("corrDA")`
 

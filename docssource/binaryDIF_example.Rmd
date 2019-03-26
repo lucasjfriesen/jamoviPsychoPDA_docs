@@ -1,0 +1,23 @@
+---
+title: "Binary Differential Item Functioning"
+nickname: binaryDIF
+topic: binaryDIF
+category: example
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**Binary Differential Item Functioning Example Analysis**
+
+Working on it.
+
+`r issues()`
