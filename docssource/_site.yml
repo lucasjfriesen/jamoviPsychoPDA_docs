@@ -3,12 +3,10 @@ output_dir: "../docs"
 navbar:
   title: "PsychoPDA"
   left:
-  - text: "Binary DIF"
+  - text: "Differential Item Functioning"
     href:  binaryDIF.html
-  - text: "Mean Differences D.A."
-    href: meanDiffDA.html
-  - text: "Correlations D.A."
-    href: corrDA.html
+  - text: "Design Analysis"
+    href: designAnalysis.html
   - text: "Examples"
     href:  examples.html
   - text: "Release notes"

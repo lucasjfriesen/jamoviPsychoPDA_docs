@@ -1,7 +1,8 @@
 ---
-title: "Correlations Design Analysis"
-topic: DIF
-category: help
+title: "Correlations"
+nickname: corrDA
+topic: designAnalysis
+category: subTopic
 output: 
   html_document:
      includes:

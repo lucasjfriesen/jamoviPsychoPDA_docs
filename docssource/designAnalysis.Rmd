@@ -1,0 +1,25 @@
+---
+title: "Design Analysis"
+output: 
+  html_document:
+    includes:
+      in_header: ganalytics.txt
+    toc: true
+    toc_float:
+      collapsed: false
+
+---
+
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+
+Design Analysis modules of the PsychoPDA suite
+
+`r list_pages(nickname = "meanDiffDA")`
+
+`r list_pages(nickname = "corrDA")`
+
+`r issues()`

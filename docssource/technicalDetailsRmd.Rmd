@@ -14,4 +14,3 @@ output:
 
 
 # Technical Notes
-
