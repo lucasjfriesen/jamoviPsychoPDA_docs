@@ -1,5 +1,9 @@
 ---
 title: "About"
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
 ---
   
 PsychoPDA is ballin'.

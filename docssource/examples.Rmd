@@ -16,7 +16,7 @@ source("../R/functions.R")
 ```
 
 
-Here you can find some application of PsychoPDA module.
+Here you can find some example analyses run using PsychoPDA modules.
 
 # Differential Item Functioning
 
