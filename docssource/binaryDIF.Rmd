@@ -1,5 +1,6 @@
 ---
 title: "Binary Differential Item Functioning"
+nickname: binaryDIF
 topic: DIF
 category: help
 output: 

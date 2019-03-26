@@ -322,89 +322,11 @@ div.tocify {
 </div>
 
 
-<p><strong>Binary Differential Item Functioning</strong> module of the PsychoPDA suite for jamovi</p>
-<p><img src="DIF/main.png  " class="img-responsive" alt=""></p>
-<p>The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.</p>
-<div id="module" class="section level1">
-<h1>Module</h1>
-<p>The DIF module performs DIF analysis on dichotomously scored items using binary grouping variables(fn) and either total-score matching or matching based on a supplied variable. The following explanation of the analysis will use an example where the grouping variable β₁ is a binary classification (0, 1) and the matching variable is a latent construct-level variable θ. This example is the case where we are simultaneously assessing for both uniform or non-uniform DIF.</p>
-<p>Using a GLIM model, items are fit first with a baseline model containing both the main effects and interaction effect:</p>
-<p>Logit of endorsement = β₀ + β₁ + θ + (β₁ * θ)</p>
-<p>A second model containing only the main effect of the matching variable is then fit:</p>
-<p>Logit of endorsement = β₀ + θ</p>
-<p>The reduction in model deviance is then calculated between the baseline and secondary models (ΔD). If ΔD is not statistically significant (at a level specifiable by the user and using either the Wald test of joint significance or a likelihood ratio test), then the item is not exhibiting DIF. If ΔD is significant, the item is flagged as exhibiting DIF and the effect size for ΔD may be assessed.</p>
-</div>
-<div id="descriptive-overview" class="section level1">
-<h1>Descriptive Overview</h1>
-<p>Upon loading the module, the instsructions below will be displayed, indicating the minimum requirements for beginning an analysis.</p>
-<p><img src="DIF/instructions.png  " class="img-responsive" alt=""></p>
-<p>Once the variables have been set, the instructions are replaced with a descriptive overview of the analysis.</p>
-<p><img src="DIF/procedureNotes.png  " class="img-responsive" alt=""></p>
-</div>
-<div id="dif-analysis" class="section level1">
-<h1>DIF Analysis</h1>
-<p><img src="DIF/analysisVariables.png  " class="img-responsive" alt=""></p>
-<ol style="list-style-type: decimal">
-<li><pre><code> title: Items                   type: Variables</code></pre></li>
-<li><pre><code> title: Grouping Variable       type: Variable</code></pre></li>
-<li><pre><code> title: Matching Variable       type: Variable</code></pre></li>
-<li><pre><code> title: Anchor Items            type: Variables</code></pre></li>
-</ol>
-<p><img src="DIF/analysis.png  " class="img-responsive" alt=""></p>
-<ol start="5" style="list-style-type: decimal">
-<li><pre><code> title: Group Type
-   options:
-     title: Discrete Groups
-     title: Continuous Groups</code></pre></li>
-<li><pre><code> title: Evaluation Scale
-   options:
-       title: Zumbo-Thomas
-       title: Jodoin-Gierl</code></pre></li>
-<li><pre><code> title: Type
-  options:
-- title: Uniform DIF
-- title: Non-Uniform DIF
-- title: Uniform and Non-Uniform DIF</code></pre></li>
-<li><pre><code>title: Flagging Criterion
-  options:
-  - name: &quot;Wald&quot;
-  - name: &quot;LRT&quot;</code></pre></li>
-<li><pre><code>title: Alpha      type: Number</code></pre></li>
-<li><pre><code>title: Item Purification</code></pre></li>
-<li><pre><code>title: Number of Iterations      type: Number</code></pre></li>
-<li><pre><code>title: P-value Adjustment method
-  options: 
-    - name: bonferroni
-    - name: holm
-    - name: hochberg
-    - name: hommel
-    - name: BH
-    - name: BY
-    - name: none</code></pre></li>
-</ol>
-</div>
-<div id="design-analysis" class="section level1">
-<h1>Design Analysis</h1>
-<p><img src="DIF/designAnalysis.png  " class="img-responsive" alt=""></p>
-<ol start="7" style="list-style-type: decimal">
-<li><pre><code> title: Design Analysis</code></pre></li>
-<li><pre><code> title: Flagged items only</code></pre></li>
-<li><pre><code> title: Bootstrap N      type: Number</code></pre></li>
-<li><pre><code>title: Observed Power</code></pre></li>
-<li><pre><code>title: Hypothesized True Effect Size      type: String</code></pre></li>
-</ol>
-</div>
-<div id="item-characteristic-curves" class="section level1">
-<h1>Item Characteristic Curves</h1>
-<p><img src="DIF/ICC.png  " class="img-responsive" alt=""></p>
-<ol start="18" style="list-style-type: decimal">
-<li><pre><code>title: Item Characteristic Curves      type: Variables</code></pre></li>
-</ol>
-</div>
-<div id="examples" class="section level1">
-<h1>Examples</h1>
-<p>Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here (more to come)</p>
+<p>Design Analysis modules of the PsychoPDA suite</p>
 <ul>
+<li>
+<a href="binaryDIF.html">Binary Differential Item Functioning</a>
+</li>
 </ul>
 <h1>
 Comments?
@@ -412,7 +334,6 @@ Comments?
 <p>
 Got comments, issues or spotted a bug? Please open an issue on <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA at github </a> or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
 </p>
-</div>
 
 
 
