@@ -19,20 +19,23 @@ source("../R/functions.R")
 <img src="docs/i1.png" class="img-responsive" alt="">
 
 
-About the module.
+PsychoPDA provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric validation research. Currently, these modules include:   
 
-* List of functions
+* Differential Item functioning
+* Retroactive Design Analysis
 
 Available models are:
 
-* Nuanced list
+* Binary DIF
+* Mean Differences DA
+* Correlations DA
 
 # Examples
 
 Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here (more to come)
 
-<div class="littletitle">Binary Differential Item Functioning</div>
-`r list_pages(topic="",category = "example")`
+<div class="littletitle">Differential Item Functioning</div>
+`r include_examples("binaryDIF")`
 <div class="littletitle">Mean Differences Design Analysis</div>
 `r include_examples("meanDiffDA")`
 <div class="littletitle">Correlations Design Analysis</div>
