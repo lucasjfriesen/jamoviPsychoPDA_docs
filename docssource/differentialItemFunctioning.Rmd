@@ -1,5 +1,5 @@
 ---
-title: "Binary Differential Item Functioning"
+title: "Differential Item Functioning"
 category: help
 output: 
   html_document:
@@ -17,8 +17,8 @@ source("../R/functions.R")
 ```
 
 
-Design Analysis modules of the PsychoPDA suite
+DIF modules of the PsychoPDA suite
 
-`r list_pages(nickname = "binaryDIF")`
+`r list_pages(category = "DIF")`
 
 `r issues()`

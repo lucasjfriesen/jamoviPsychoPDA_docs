@@ -1,8 +1,8 @@
 ---
 title: "Binary Differential Item Functioning"
 nickname: binaryDIF
-topic: DIF
-category: help
+topic: binaryDIF
+category: DIF
 output: 
   html_document:
      includes:
