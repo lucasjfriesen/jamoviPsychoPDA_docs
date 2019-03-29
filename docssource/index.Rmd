@@ -1,5 +1,4 @@
 ---
-title: "PsychoPDA"
 output: 
   html_document:
     includes:
