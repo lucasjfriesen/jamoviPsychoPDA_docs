@@ -1,0 +1,67 @@
+---
+title: "Binary Differential Item Functioning - Getting Started"
+nickname: binaryDIFintroduction
+topic: binaryDIF
+category: DIF
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**Binary Differential Item Functioning** module of the PsychoPDA suite for jamovi
+
+<img src="DIF/main.png  " class="img-responsive" alt="">
+
+The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.
+
+# Descriptive Overview
+
+Upon loading the module, the instsructions below will be displayed, indicating the minimum requirements for beginning an analysis.
+
+<img src="DIF/instructions.png  " class="img-responsive" alt="">
+
+Once the variables have been set, the instructions are replaced with a descriptive overview of the analysis.
+
+<img src="DIF/procedureNotes.png  " class="img-responsive" alt="">
+
+
+# DIF Analysis
+
+Set the variables from your data according to the instructions provided on the right-hand side of the screen (noted above). Minimally, one item must be provided and one grouping variable with at least two categories. See the comprehensive overview section for more details and options.
+
+<img src="DIF/analysisVariables.png  " class="img-responsive" alt="">
+
+# Design Analysis
+
+In order to aid in the interpretation of the DIF-level classification, Gelman & Carlin’s Type-M error is calculated on the thresholds for A-, B-level, and C-level DIF. These errors are post-data statistics which enable the researcher to assess the degree to which their results may reflect the nature of the True effect. See the comprehensive overview section for more details.
+
+<img src="DIF/designAnalysis.png  " class="img-responsive" alt="">
+
+# Item Response Curves
+
+All items selected for DIF analysis will be made available in the left hand window in the 'Item Response Curves Based on Logistic Regression' tab. Items are plotted against an x-axis that uses the matching variable, and a y-axis for the predicted probability of a correct response (or endorsement). NB: This is similar, but not the same, as an Item Characteristic curve in Item Response Theory. See the comprehensive overview section for more details.
+
+<img src="DIF/ICC.png  " class="img-responsive" alt="">
+
+
+# More Information
+
+A comprehensive overview of the module, including details on the many available options
+
+`r list_pages(nickname = "binaryDIFcomprehensive")`
+
+# Examples
+
+Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come)
+
+`r include_examples("binaryDIF")`
+
+`r issues()`

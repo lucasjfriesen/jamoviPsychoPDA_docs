@@ -11,7 +11,7 @@
 
 
 
-<title>Binary Differential Item Functioning - Getting Started</title>
+<title>Binary Differential Item Functioning - Comprehensive</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -317,16 +317,27 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Binary Differential Item Functioning - Getting Started</h1>
+<h1 class="title toc-ignore">Binary Differential Item Functioning - Comprehensive</h1>
 
 </div>
 
 
-<p><strong>Binary Differential Item Functioning</strong> module of the PsychoPDA suite for jamovi</p>
 <p><img src="DIF/main.png  " class="img-responsive" alt=""></p>
-<p>The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.</p>
-<div id="module" class="section level1">
-<h1>Module</h1>
+<p>The following is a comprehensive overview of the available options in the BinaryDIF module. For information on getting started, see here:</p>
+<ul>
+<li>
+<a href="binaryDIF_gettingStarted.html">Binary Differential Item Functioning - Getting Started</a>
+</li>
+</ul>
+<div id="dif-analysis" class="section level1">
+<h1>DIF Analysis</h1>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<p>In any discussion of differential item functioning, it is important to note that DIF is not synonymous with bias or fairness. Questions of fairness in tests and measures are directly related to the use of an individual’s score on that test or measure. For example, if men and women from a given nation receive different levels of training in speaking English, whether and how scores on a speaking proficiency test should be used in making immigration decisions is a question of fairness. On the other hand, DIF analysis seeks to find out if men and women from that nation <em>who are equally proficient in spite of unfair circumstances</em> have an equal probability of answering a given test item correctly. Thus, DIF analysis is a step removed from external questions of bias and fairness in test decisions, but is instead concerned with the internal functioning of the test and test items. However, should a test or test item be found to exhibit DIF in favour of one group over another, this result may be relevant to any decision making process based on test scores, as well as a discussion of fairness regarding the use of that test.</p>
+<p>Logistic regression, the method used in this module, is among the most popular methods for detecting DIF for several reasons (see <span class="citation">@mosesComparisonStrategiesEstimating2010</span> and <span class="citation">@magisGeneralFrameworkPackage2010</span> for additional discussion). Logistic regression can be used to detect both uniform and non-uniform DIF with two or more groups, and can be used in either an IRT or non-IRT context. To date, however, no software has been developed which facilitates DIF analysis in a way which is widely accessible(fn).</p>
+</div>
+<div id="calculations" class="section level2">
+<h2>Calculations</h2>
 <p>The DIF module performs DIF analysis on dichotomously scored items using binary grouping variables(fn) and either total-score matching or matching based on a supplied variable. The following explanation of the analysis will use an example where the grouping variable β₁ is a binary classification (0, 1) and the matching variable is a latent construct-level variable θ. This example is the case where we are simultaneously assessing for both uniform or non-uniform DIF.</p>
 <p>Using a GLIM model, items are fit first with a baseline model containing both the main effects and interaction effect:</p>
 <p>Logit of endorsement = β₀ + β₁ + θ + (β₁ * θ)</p>
@@ -334,15 +345,8 @@ div.tocify {
 <p>Logit of endorsement = β₀ + θ</p>
 <p>The reduction in model deviance is then calculated between the baseline and secondary models (ΔD). If ΔD is not statistically significant (at a level specifiable by the user and using either the Wald test of joint significance or a likelihood ratio test), then the item is not exhibiting DIF. If ΔD is significant, the item is flagged as exhibiting DIF and the effect size for ΔD may be assessed.</p>
 </div>
-<div id="descriptive-overview" class="section level1">
-<h1>Descriptive Overview</h1>
-<p>Upon loading the module, the instsructions below will be displayed, indicating the minimum requirements for beginning an analysis.</p>
-<p><img src="DIF/instructions.png  " class="img-responsive" alt=""></p>
-<p>Once the variables have been set, the instructions are replaced with a descriptive overview of the analysis.</p>
-<p><img src="DIF/procedureNotes.png  " class="img-responsive" alt=""></p>
-</div>
-<div id="dif-analysis" class="section level1">
-<h1>DIF Analysis</h1>
+<div id="options" class="section level2">
+<h2>Options</h2>
 <p><img src="DIF/analysisVariables.png  " class="img-responsive" alt=""></p>
 <ol style="list-style-type: decimal">
 <li><pre><code> title: Items                   type: Variables</code></pre></li>
@@ -383,9 +387,22 @@ div.tocify {
     - name: none</code></pre></li>
 </ol>
 </div>
+</div>
 <div id="design-analysis" class="section level1">
 <h1>Design Analysis</h1>
+<div id="background-1" class="section level2">
+<h2>Background</h2>
+<p>Type-S and Type-M errors are post-data calculations that rely on the observed data and an estimated “true” effect size which is determined via information external to the study at hand, such as literature review and subject-matter expertise (<span class="citation">@gelman2014</span>, p. 643). The Type-S error rate is the probability that the observed estimate of the effect size will have the wrong sign (I.e. - vs. +), if statistically significantly different from zero (<span class="citation">@gelman2014</span>, p. 643). Type-M error, or the exaggeration ratio, is the expectation of the absolute value of the effect size divided by the hypothesized true effect size, if statistically significantly different from zero (<span class="citation">@gelman2014</span>, p. 643). In other words, it is the factor by which the observed effect size might be expected to be exaggerated given the assumption of the provided true effect size.</p>
+<p>To give the reader an sense for assessing Type-S and Type-M errors, understanding their intimate relationship between power is helpful. In the cases where True Power is 0 and 1, Type-S error will be 0.5 and 0, and Type-M error will be infinite and 1, respectively. A Type-S error of 0.5 means that their is a 50% probability that the observed effect size is in the opposite direction of the True effect size, and a Type-M error of 1 means that the observed effect size is precisely what is expected (under replication) of a statistically significant result.</p>
+<p>In the context of DIF analysis, the effect size most commonly encountered (and that referenced by the Zumbo-Thomas scale) is a derived statistic - The change in Naeglekirke’s R^2 (Δ R^2) between the baseline and full models. Because this number will always be positive, it is not possible to compute a Type-S error rate for this statistic. However, in most contexts, the precise magnitude of the true DIF effect is of great interest, and it is here that the Type-M error rate is of great interest. This is because decisions made regarding the fate of an item, such as whether or not it is to be used in a test, or whether a test as a whole is admissible for certain uses, depends almost entirely on the criteria used to decide whether an item is exhibiting “too much DIF”.</p>
+</div>
+<div id="calculation" class="section level2">
+<h2>Calculation</h2>
+<p>Calculating the Type-M error rate for a derived statistic is done via a bootstrapping process which generates an empirical distribution for the Δ R^2 for each item. The design analysis is then carried out according to the same principles as those laid out in Gelman &amp; Carlin (2014) using three hypothesized true correlations. The hypothesized true correlations correspond to the level thresholds of the zumbo-Thomas DIF evaluation scale(fn): 0 (Null/Negligble DIF), 0.13 (Moderate DIF), 0.26 (Large DIF).</p>
 <p><img src="DIF/designAnalysis.png  " class="img-responsive" alt=""></p>
+</div>
+<div id="options-1" class="section level2">
+<h2>Options</h2>
 <ol start="7" style="list-style-type: decimal">
 <li><pre><code> title: Design Analysis</code></pre></li>
 <li><pre><code> title: Flagged items only</code></pre></li>
@@ -394,12 +411,16 @@ div.tocify {
 <li><pre><code>title: Hypothesized True Effect Size      type: String</code></pre></li>
 </ol>
 </div>
+</div>
 <div id="item-characteristic-curves" class="section level1">
 <h1>Item Characteristic Curves</h1>
+<div id="background-2" class="section level2">
+<h2>Background</h2>
 <p><img src="DIF/ICC.png  " class="img-responsive" alt=""></p>
 <ol start="18" style="list-style-type: decimal">
 <li><pre><code>title: Item Characteristic Curves      type: Variables</code></pre></li>
 </ol>
+</div>
 </div>
 <div id="examples" class="section level1">
 <h1>Examples</h1>
