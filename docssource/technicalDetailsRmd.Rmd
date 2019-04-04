@@ -13,4 +13,8 @@ output:
 ---
 
 
-# Technical Notes
+# Differential Item Functioning
+
+# Design Analysis
+
+

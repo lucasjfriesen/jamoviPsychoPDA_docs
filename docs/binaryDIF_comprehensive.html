@@ -349,32 +349,61 @@ div.tocify {
 <p><img src="DIF/analysisVariables.png  " class="img-responsive" alt=""></p>
 <ol style="list-style-type: decimal">
 <li><pre><code> title: Items                   type: Variables</code></pre></li>
+</ol>
+<p><code>Items</code> must be a series (vector) of names referencing columns in the data containing exactly two unique values, such as [0, 1]. The data will be converted to integer type prior to analysis using <code>jmvcore::toNumeric()</code>.</p>
+<ol start="2" style="list-style-type: decimal">
 <li><pre><code> title: Grouping Variable       type: Variable</code></pre></li>
+</ol>
+<p><code>Grouping Variable</code> must be a single name referencing a column in the data containing at least two unique values, such as [0, 1]. The data will be converted to factor type prior to analysis using <code>base:as.factor()</code>.</p>
+<p>The value of the first row in the column will be coded as <code>Group A</code>, and all rows containing non-<code>Group A</code> values will be coded as <code>Group B</code>. If more than two unique values are present in the column, all values different from the value of the first row will be collapsed into the same <code>Group B</code>. This restriction will be removed in a future version of the module, but is necessary for several aspects of the current version to perform.</p>
+<ol start="3" style="list-style-type: decimal">
 <li><pre><code> title: Matching Variable       type: Variable</code></pre></li>
+</ol>
+<p><code>Matching Variable</code> is an optional argument. This is the value which is used in the regression equations to account for differences in, for example, proficiency, levels of a latent contstruct, or some other psychosocial factor. If it is left empty, subjects will be matched on the Total Score, calculated internally by the module. This variable must be <code>numeric</code>.</p>
+<ol start="4" style="list-style-type: decimal">
 <li><pre><code> title: Anchor Items            type: Variables</code></pre></li>
 </ol>
+<p><code>Anchor Items</code> is an optional argument. If provided, <code>Matching Variable</code> must be left empty. <code>Anchor Items</code> must be a series (vector) of names referencing columns in the data which are considered to be ‘gold standard’. That is, containing no DIF. These items will be used in calculating the subject Total Score, but are not assessed for DIF. See <code>Purification</code> below for more details.</p>
 <p><img src="DIF/analysis.png  " class="img-responsive" alt=""></p>
 <ol start="5" style="list-style-type: decimal">
 <li><pre><code> title: Group Type
    options:
      title: Discrete Groups
      title: Continuous Groups</code></pre></li>
+</ol>
+<p><code>Group Type</code> must take either “Discrete Groups” or “Continuous Groups” as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.</p>
+<ol start="6" style="list-style-type: decimal">
 <li><pre><code> title: Evaluation Scale
    options:
        title: Zumbo-Thomas
        title: Jodoin-Gierl</code></pre></li>
+</ol>
+<p><code>Evaluation Scale</code> refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale.</p>
+<ol start="12" style="list-style-type: decimal">
 <li><pre><code> title: Type
   options:
 - title: Uniform DIF
 - title: Non-Uniform DIF
 - title: Uniform and Non-Uniform DIF</code></pre></li>
+</ol>
+<p><code>Type</code> refers to the type of DIF to be assessed for. The default, <code>Uniform and Non-Uniform DIF</code> will check simultaneously for significant main and interaction effects.</p>
+<ol start="13" style="list-style-type: decimal">
 <li><pre><code>title: Flagging Criterion
   options:
   - name: &quot;Wald&quot;
   - name: &quot;LRT&quot;</code></pre></li>
+</ol>
+<p><code>Flagging Criterion</code> refers to what test should be used in testing for statistical significance of regression coefficients.</p>
+<ol start="14" style="list-style-type: decimal">
 <li><pre><code>title: Alpha      type: Number</code></pre></li>
+</ol>
+<p><code>Alpha</code> is the desired Type-I error rate for statistical significance tests.r</p>
+<ol start="15" style="list-style-type: decimal">
 <li><pre><code>title: Item Purification</code></pre></li>
 <li><pre><code>title: Number of Iterations      type: Number</code></pre></li>
+</ol>
+<p><code>Number of Iterations</code> is the maximum number of purification iterations to be used if <code>Item Purification</code> is selected.</p>
+<ol start="17" style="list-style-type: decimal">
 <li><pre><code>title: P-value Adjustment method
   options: 
     - name: bonferroni
@@ -385,6 +414,12 @@ div.tocify {
     - name: BY
     - name: none</code></pre></li>
 </ol>
+<p><code>P-value Adjustment method</code> is the method of correction for multiple comparisons desired:</p>
+<p>The adjustment methods include the Bonferroni correction (“bonferroni”) in which the p-values are multiplied by the number of comparisons. Less conservative corrections are also included by Holm (1979) (“holm”), Hochberg (1988) (“hochberg”), Hommel (1988) (“hommel”), Benjamini &amp; Hochberg (1995) (“BH” or its alias “fdr”), and Benjamini &amp; Yekutieli (2001) (“BY”), respectively. A pass-through option (“none”) is also included. The set of methods are contained in the p.adjust.methods vector for the benefit of methods that need to have the method as an option and pass it on to p.adjust.</p>
+<p>The first four methods are designed to give strong control of the family-wise error rate. There seems no reason to use the unmodified Bonferroni correction because it is dominated by Holm’s method, which is also valid under arbitrary assumptions.</p>
+<p>Hochberg’s and Hommel’s methods are valid when the hypothesis tests are independent or when they are non-negatively associated (Sarkar, 1998; Sarkar and Chang, 1997). Hommel’s method is more powerful than Hochberg’s, but the difference is usually small and the Hochberg p-values are faster to compute.</p>
+<p>The “BH” (aka “fdr”) and “BY” method of Benjamini, Hochberg, and Yekutieli control the false discovery rate, the expected proportion of false discoveries amongst the rejected hypotheses. The false discovery rate is a less stringent condition than the family-wise error rate, so these methods are more powerful than the others.</p>
+<p>Note that you can set n larger than length(p) which means the unobserved p-values are assumed to be greater than all the observed p for “bonferroni” and “holm” methods and equal to 1 for the other methods.</p>
 </div>
 </div>
 <div id="design-analysis" class="section level1">
@@ -404,11 +439,24 @@ div.tocify {
 <h2>Options</h2>
 <ol start="7" style="list-style-type: decimal">
 <li><pre><code> title: Design Analysis</code></pre></li>
-<li><pre><code> title: Flagged items only</code></pre></li>
+</ol>
+<p><code>Design Analysis</code> is a <code>True</code>/<code>False</code> option, defaulted to <code>False</code>. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.</p>
+<ol start="8" style="list-style-type: decimal">
+<li><pre><code> title: Constant Alpha</code></pre></li>
+</ol>
+<p><code>Constant Alpha</code> is a <code>True</code>/<code>False</code> option, defaulted to <code>True</code>. This option refers to whether or not you want to perform a post-data design analysis using the same alpha as in the DIF analysis, or using the minimum alpha required for significance for <em>all</em> items.</p>
+<ol start="9" style="list-style-type: decimal">
 <li><pre><code> title: Bootstrap N      type: Number</code></pre></li>
+</ol>
+<p><code>Bootstrap N</code> refers to the number of bootstrap replications to be used in creating the empirical distribution for Δ R^2. This is defaulted to <code>1000</code> as a balance between computation time and precision. Lower numbers will allow faster exploration, but will provide less stable estimates.</p>
+<ol start="10" style="list-style-type: decimal">
 <li><pre><code>title: Observed Power</code></pre></li>
+</ol>
+<p><code>Observed Power</code> is a <code>True</code>/<code>False</code> option, defaulted to <code>False</code>. Toggling this option reveals the column showing the Empirical Observed Power. This is defaulted to <code>False</code> because its interpretation can be confusing, and will not always provide useful information. N.B. The Empirical Observed Power <em>can</em> equal 1 or 0.</p>
+<ol start="11" style="list-style-type: decimal">
 <li><pre><code>title: Hypothesized True Effect Size      type: String</code></pre></li>
 </ol>
+<p><code>Hypothesized True Effect Size</code> is used to perform design analysis using a non-default hypothesized true effect. If left blank, the analysis will be performed at each of the thresholds of the <code>DIF Flag Scale</code> selected above.</p>
 </div>
 </div>
 <div id="item-response-curves" class="section level1">
@@ -417,8 +465,9 @@ div.tocify {
 <h2>Details</h2>
 <p><img src="DIF/ICC.png  " class="img-responsive" alt=""></p>
 <ol start="18" style="list-style-type: decimal">
-<li><pre><code>title: Item Characteristic Curves      type: Variables</code></pre></li>
+<li><pre><code>title: Item Response Curves based on Logistic Regression    type: Variables</code></pre></li>
 </ol>
+<p><code>Item Respnse Curves</code> is a list (vector) of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.</p>
 </div>
 </div>
 <div id="examples" class="section level1">

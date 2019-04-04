@@ -47,9 +47,22 @@ The reduction in model deviance is then calculated between the baseline and seco
 <img src="DIF/analysisVariables.png  " class="img-responsive" alt="">
 
 1.      title: Items                   type: Variables
+
+`Items` must be a series (vector) of names referencing columns in the data containing exactly two unique values, such as [0, 1]. The data will be converted to integer type prior to analysis using `jmvcore::toNumeric()`.
+
 2.      title: Grouping Variable       type: Variable
+
+`Grouping Variable` must be a single name referencing a column in the data containing at least two unique values, such as [0, 1].  The data will be converted to factor type prior to analysis using `base:as.factor()`.
+
+The value of the first row in the column will be coded as `Group A`, and all rows containing non-`Group A` values will be coded as `Group B`. If more than two unique values are present in the column, all values different from the value of the first row will be collapsed into the same `Group B`. This restriction will be removed in a future version of the module, but is necessary for several aspects of the current version to perform.
+
 3.      title: Matching Variable       type: Variable
+
+`Matching Variable` is an optional argument. This is the value which is used in the regression equations to account for differences in, for example, proficiency, levels of a latent contstruct, or some other psychosocial factor. If it is left empty, subjects will be matched on the Total Score, calculated internally by the module. This variable must be `numeric`.
+
 4.      title: Anchor Items            type: Variables
+
+`Anchor Items` is an optional argument. If provided, `Matching Variable` must be left empty. `Anchor Items` must be a series (vector) of names referencing columns in the data which are considered to be 'gold standard'. That is, containing no DIF. These items will be used in calculating the subject Total Score, but are not assessed for DIF. See `Purification` below for more details.
 
 <img src="DIF/analysis.png  " class="img-responsive" alt="">
 
@@ -58,10 +71,15 @@ The reduction in model deviance is then calculated between the baseline and seco
     	  options:
         	title: Discrete Groups
         	title: Continuous Groups
+        	
+`Group Type` must take either "Discrete Groups" or "Continuous Groups" as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.
+
 6.      title: Evaluation Scale
     	  options:
         	  title: Zumbo-Thomas
         	  title: Jodoin-Gierl
+
+`Evaluation Scale` refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale. 
 
 12.      title: Type
     	  options:
@@ -69,16 +87,24 @@ The reduction in model deviance is then calculated between the baseline and seco
         - title: Non-Uniform DIF
         - title: Uniform and Non-Uniform DIF
         
+`Type` refers to the type of DIF to be assessed for. The default, `Uniform and Non-Uniform DIF` will check simultaneously for significant main and interaction effects.
+        
 13.     title: Flagging Criterion
     	  options:
     	  - name: "Wald"
     	  - name: "LRT"
     	  
+`Flagging Criterion` refers to what test should be used in testing for statistical significance of regression coefficients.
+    	  
 14.     title: Alpha      type: Number
+
+`Alpha` is the desired Type-I error rate for statistical significance tests.r
 
 15.     title: Item Purification
 
 16.     title: Number of Iterations      type: Number
+
+`Number of Iterations` is the maximum number of purification iterations to be used if `Item Purification` is selected.
 
 17.     title: P-value Adjustment method
     	  options: 
@@ -89,7 +115,18 @@ The reduction in model deviance is then calculated between the baseline and seco
         	- name: BH
         	- name: BY
         	- name: none
+        	
+`P-value Adjustment method` is the method of correction for multiple comparisons desired:
 
+The adjustment methods include the Bonferroni correction ("bonferroni") in which the p-values are multiplied by the number of comparisons. Less conservative corrections are also included by Holm (1979) ("holm"), Hochberg (1988) ("hochberg"), Hommel (1988) ("hommel"), Benjamini & Hochberg (1995) ("BH" or its alias "fdr"), and Benjamini & Yekutieli (2001) ("BY"), respectively. A pass-through option ("none") is also included. The set of methods are contained in the p.adjust.methods vector for the benefit of methods that need to have the method as an option and pass it on to p.adjust.
+
+The first four methods are designed to give strong control of the family-wise error rate. There seems no reason to use the unmodified Bonferroni correction because it is dominated by Holm's method, which is also valid under arbitrary assumptions.
+
+Hochberg's and Hommel's methods are valid when the hypothesis tests are independent or when they are non-negatively associated (Sarkar, 1998; Sarkar and Chang, 1997). Hommel's method is more powerful than Hochberg's, but the difference is usually small and the Hochberg p-values are faster to compute.
+
+The "BH" (aka "fdr") and "BY" method of Benjamini, Hochberg, and Yekutieli control the false discovery rate, the expected proportion of false discoveries amongst the rejected hypotheses. The false discovery rate is a less stringent condition than the family-wise error rate, so these methods are more powerful than the others.
+
+Note that you can set n larger than length(p) which means the unobserved p-values are assumed to be greater than all the observed p for "bonferroni" and "holm" methods and equal to 1 for the other methods.
 
 # Design Analysis
 
@@ -111,13 +148,23 @@ Calculating the Type-M error rate for a derived statistic is done via a bootstra
 
 7.      title: Design Analysis
 
-8.      title: Flagged items only
+`Design Analysis` is a `True`/`False` option, defaulted to `False`. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.
+
+8.      title: Constant Alpha
+
+`Constant Alpha` is a `True`/`False` option, defaulted to `True`. This option refers to whether or not you want to perform a post-data design analysis using the same alpha as in the DIF analysis, or using the minimum alpha required for significance for _all_ items.
 
 9.      title: Bootstrap N      type: Number
 
+`Bootstrap N` refers to the number of bootstrap replications to be used in creating the empirical distribution for Δ R^2. This is defaulted to `1000` as a balance between computation time and precision. Lower numbers will allow faster exploration, but will provide less stable estimates.
+
 10.     title: Observed Power
 
+`Observed Power` is a `True`/`False` option, defaulted to `False`. Toggling this option reveals the column showing the Empirical Observed Power. This is defaulted to `False` because its interpretation can be confusing, and will not always provide useful information. N.B. The Empirical Observed Power _can_ equal 1 or 0.
+
 11.     title: Hypothesized True Effect Size      type: String
+
+`Hypothesized True Effect Size` is used to perform design analysis using a non-default hypothesized true effect. If left blank, the analysis will be performed at each of the thresholds of the `DIF Flag Scale` selected above.
 
 # Item Response Curves
 
@@ -125,7 +172,9 @@ Calculating the Type-M error rate for a derived statistic is done via a bootstra
 
 <img src="DIF/ICC.png  " class="img-responsive" alt="">
 
-18.     title: Item Characteristic Curves      type: Variables
+18.     title: Item Response Curves based on Logistic Regression    type: Variables
+
+`Item Respnse Curves` is a list (vector) of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.
 
 # Examples
 

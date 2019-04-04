@@ -326,7 +326,10 @@ div.tocify {
 </div>
 <div id="binary-dif" class="section level1">
 <h1>Binary DIF</h1>
-<p>nothing yet</p>
+<p><strong>Error: Can only apply contrasts to data with 2 or more levels</strong></p>
+<p>This is an error that comes from attempting to fit a logistic model in R to data which does not have at least two different responses for each grouping variable.</p>
+<p>For example, in data coded [0, 1] for incorrect and correct responses and two groups [m, f], it might be the case that no <code>f</code> in your data set responded inorrectly, meaning there are no <code>f</code> in the data with response <code>0</code>. This will break the <code>glm()</code> function.</p>
+<p>Ensure that there are no rows/columns in your data with no responses, and that there are no groups who only respond in a single way.</p>
 </div>
 <div id="mean-differences-design-analysis" class="section level1">
 <h1>Mean Differences Design Analysis</h1>

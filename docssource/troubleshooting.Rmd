@@ -24,7 +24,15 @@ Use variable names without space, parentheses or brackets, etc.
 
 # Binary DIF
 
-nothing yet
+**Error: Can only apply contrasts to data with 2 or more levels**
+
+This is an error that _usually_ comes from attempting to fit a logistic model in R to data which does not have at least two different responses for each grouping variable.
+
+For example, in data coded [0, 1] for incorrect and correct responses and two groups [m, f], it might be the case that no `f` in your data set responded inorrectly, meaning there are no `f` in the data with response `0`. This will break the `glm()` function.
+
+Ensure that there are no rows/columns in your data with no responses, and that there are no groups who only respond in a single way.
+
+If this doesn't seem to be the case for you, you may have encountered a bug: please feel free to contact me using a method at the bottom of this page.
 
 # Mean Differences Design Analysis
 
@@ -34,3 +42,4 @@ nothing yet
 
 nothing yet
 
+`r issues()`
