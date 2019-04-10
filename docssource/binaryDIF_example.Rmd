@@ -1,5 +1,5 @@
 ---
-title: "Binary Differential Item Functioning"
+title: "Binary Differential Item Functioning - Toy Example"
 nickname: binaryDIF
 topic: binaryDIF
 category: example
@@ -16,7 +16,7 @@ output:
 source("../R/functions.R")
 ```
 
-**Binary Differential Item Functioning Example Analysis**
+**Binary Differential Item Functioning - Toy Example**
 
 Using the supplied data set, follow the instructions provided upon opening the "Binary DIF" module in the PPDA tab of Jamovi.
 
