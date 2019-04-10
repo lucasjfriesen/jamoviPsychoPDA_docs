@@ -8,7 +8,9 @@ output:
 
 ---
   
-
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
 
 # Common Issues
 

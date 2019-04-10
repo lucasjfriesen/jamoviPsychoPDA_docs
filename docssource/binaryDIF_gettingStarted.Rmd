@@ -51,6 +51,15 @@ All items selected for DIF analysis will be made available in the left hand wind
 
 <img src="DIF/ICC.png  " class="img-responsive" alt="">
 
+# Results
+
+## Procedure Notes
+
+## DIF Ananlysis
+
+## Design Analysis
+
+## Item Response Curves
 
 # More Information
 

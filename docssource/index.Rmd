@@ -1,4 +1,5 @@
 ---
+pagetitle: "PsychoPDA"
 output: 
   html_document:
     includes:
@@ -21,13 +22,10 @@ source("../R/functions.R")
 PsychoPDA provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric validation research. Currently, these modules include:   
 
 * Differential Item functioning
-* Retroactive Design Analysis
 
 Available models are:
 
 * Binary DIF
-* Mean Differences DA
-* Correlations DA
 
 # Examples
 

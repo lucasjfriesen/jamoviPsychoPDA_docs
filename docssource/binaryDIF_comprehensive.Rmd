@@ -134,13 +134,60 @@ Note that you can set n larger than length(p) which means the unobserved p-value
 
 Type-S and Type-M errors are post-data calculations that rely on the observed data and an estimated “true” effect size which is determined via information external to the study at hand, such as literature review and subject-matter expertise (@gelman2014, p. 643). The Type-S error rate is the probability that the observed estimate of the effect size will have the wrong sign (I.e. - vs. +), if statistically significantly different from zero (@gelman2014, p. 643). Type-M error, or the exaggeration ratio, is the expectation of the absolute value of the effect size divided by the hypothesized true effect size, if statistically significantly different from zero (@gelman2014, p. 643). In other words, it is the factor by which the observed effect size might be expected to be exaggerated given the assumption of the provided true effect size. 
 
-To give the reader an sense for assessing Type-S and Type-M errors, understanding their intimate relationship between power is helpful. In the cases where True Power is 0 and 1, Type-S error will be 0.5 and 0, and Type-M error will be infinite and 1, respectively. A Type-S error of 0.5 means that their is a 50% probability that the observed effect size is in the opposite direction of the True effect size, and a Type-M error of 1 means that the observed effect size is precisely what is expected (under replication) of a statistically significant result.
+To give the reader a sense for assessing Type-S and Type-M errors, understanding their intimate relationship between power is helpful. In the cases where True Power is 0 and 1, Type-S error will be 0.5 and 0, and Type-M error will be infinite and 1, respectively. A Type-S error of 0.5 means that their is a 50% probability that the observed effect size is in the opposite direction of the True effect size, and a Type-M error of 1 means that the observed effect size is precisely what is expected (under replication) of a statistically significant result.
 
 In the context of DIF analysis, the effect size most commonly encountered (and that referenced by the Zumbo-Thomas scale) is a derived statistic - The change in Naeglekirke’s R^2 (Δ R^2) between the baseline and full models. Because this number will always be positive, it is not possible to compute a Type-S error rate for this statistic. However, in most contexts, the precise magnitude of the true DIF effect is of great interest, and it is here that the Type-M error rate is of great interest. This is because decisions made regarding the fate of an item, such as whether or not it is to be used in a test, or whether a test as a whole is admissible for certain uses, depends almost entirely on the criteria used to decide whether an item is exhibiting “too much DIF”.
 
+The design analysis is  carried out according to the same principles as those laid out in Gelman & Carlin (2014) using three hypothesized true correlations. The hypothesized true correlations correspond to the level thresholds of the zumbo-Thomas DIF evaluation scale: 0 (Null/Negligble DIF), 0.13 (Moderate DIF), 0.26 (Large DIF).
+
 ## Calculation
 
-Calculating the Type-M error rate for a derived statistic is done via a bootstrapping process which generates an empirical distribution for the Δ R^2 for each item. The design analysis is then carried out according to the same principles as those laid out in Gelman & Carlin (2014) using three hypothesized true correlations. The hypothesized true correlations correspond to the level thresholds of the zumbo-Thomas DIF evaluation scale(fn): 0 (Null/Negligble DIF), 0.13 (Moderate DIF), 0.26 (Large DIF).
+### Type-M Error
+
+Calculating the Type-M error rate for a derived statistic is done via a bootstrapping process which generates an empirical distribution for the Δ R^2 for each item. Once the empirical distribution has been derived, the following function is used to compute the Type-M error:
+
+```
+        retroDesign.nagR2 <- function(hypTrueEff, myBoot, alpha, sigOnly) {
+          # A matrix for results
+          rdRes <- matrix(0, nrow = 1, ncol = 4)
+          # The observed Δ R^2
+          rdRes[1, 1] <- myBoot$t0
+          # se of empirical distribution
+          rdRes[1, 4] <- observedSE <- boot.printSE(myBoot)[[3]]
+          
+          # Observed R^2 is the observed effect
+          D <- myBoot$t0
+          
+          # Empirical cumulative density function on the bootstrapped data
+          qUpper <- ecdf(myBoot$t)
+          # Either compute Type-M at the provided alpha or for the minimum alpha required for significance
+          if (sigOnly) {
+            # Quantile matching the upper 1 - alpha in the emp. dist.
+            qUpper <- quantile(qUpper,  1 - (alpha))
+          } else {
+            # Quantile matching the observed value
+            qUpper <- boot.qEmp(qUpper, boot.pEmp(qUpper, D))
+          }
+          
+          # shifts the empirical distribution by the difference between the observed effect size and the hypothesized true effect size
+          myBoot.Shifted <- ecdf(myBoot$t + hypTrueEff)
+          # Empirical observed power
+          rdRes[1, 3] <- power <- 1 - myBoot.Shifted(qUpper)
+          # typeM error rate via Estimation
+          estimate <-
+            D + sample(myBoot$t, replace = T, size = 10000)
+          significant <- estimate > qUpper
+          rdRes[1, 2] <-
+            typeMError <- mean(estimate[significant]) / D
+          return(rdRes)
+        }
+```
+
+The above function is derived from that provided by Gelman & Carlin (2014) in their appendix. The changes are made in order to accomodate the reality that we cannot assume a normal distribution in this case.
+
+### Type-S Error
+
+Type-S error is not calculated because it does not align conceptually with the tests being performed in this type of DIF analysis. The Δ R^2 effect size is a meta-statistic, as opposed to a normal measure of effect size like Cohen's d, and one of the results of this is that Δ R^2 will only be negative in anomalous situations, meaning that there is no meaningful probability of achieving a statistically significant effect in the 'wrong' direction.
 
 <img src="DIF/designAnalysis.png  " class="img-responsive" alt="">
 
@@ -176,9 +223,21 @@ Calculating the Type-M error rate for a derived statistic is done via a bootstra
 
 `Item Respnse Curves` is a list (vector) of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.
 
+# Results
+
+## Procedure Notes
+
+The 
+
+## DIF Ananlysis
+
+## Design Analysis
+
+## Item Response Curves
+
 # Examples
 
-Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come)
+Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come):
 
 `r include_examples("binaryDIF")`
 
