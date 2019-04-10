@@ -41,16 +41,15 @@ Some worked out examples of the analyses carried out with jamovi PsychoPDA are p
 
 
 
-# Installation
+# Jamovi Library Installation (Not yet in the library - Use the next option)
 
-If you didn't already, install [Jamovi](https://www.jamovi.org/download.html) and run it. Select the jamovi modules library and install GAMLj from there
+If you didn't already, install [Jamovi](https://www.jamovi.org/download.html) and run it. Select the jamovi modules library and install PsychoPDA from there
 
 <img src="glm/install.png" class="img-responsive" alt="">
 
-## Linux
+# Jamovi Sideload Installation
 
-If you are working in linux you can download [Jamovi](https://www.jamovi.org/download.html), then download the .jmo from this link [to be added]().
-
+For the most up to date version, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/Development/psychoPDA.jmo) file from GitHub and uses jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window).
 
 ## Others
 
