@@ -24,7 +24,7 @@ The following is a comprehensive overview of the available options in the Binary
 
 ## Background
 
-In any discussion of differential item functioning, it is important to note that DIF is not synonymous with bias or fairness. Questions of fairness in tests and measures are directly related to the use of an individual’s score on that test or measure. For example, if men and women from a given nation receive different levels of training in speaking English, whether and how scores on a speaking proficiency test should be used in making immigration decisions is a question of fairness. On the other hand, DIF analysis seeks to find out if men and women from that nation _who are equally proficient in spite of unfair circumstances_ have an equal probability of answering a given test item correctly. Thus, DIF analysis is a step removed from external questions of bias and fairness in test decisions, but is instead concerned with the internal functioning of the test and test items. However, should a test or test item be found to exhibit DIF in favour of one group over another, this result may be relevant to any decision making process based on test scores, as well as a discussion of fairness regarding the use of that test.
+In any discussion of differential item functioning, it is important to note that DIF is not synonymous with bias or fairness. Questions of fairness in tests and measures are directly related to the use of an individual’s score on that test or measure. For example, if men and women from a given nation receive different levels of training in speaking English, whether and how scores on a speaking proficiency test should be used in making immigration decisions is a question of fairness. On the other hand, DIF analysis seeks to find out if men and women from that nation _who are equally proficient in spite of differing circumstances_ have an equal probability of answering a given test item correctly. Thus, DIF analysis is a step removed from external questions of bias and fairness in test decisions, but is instead concerned with the internal functioning of the test and test items. However, should a test or test item be found to exhibit DIF in favour of one group over another, this result may be relevant to any decision making process based on test scores, as well as a discussion of fairness regarding the use of that test.
 
 Logistic regression, the method used in this module, is among the most popular methods for detecting DIF for several reasons (see @mosesComparisonStrategiesEstimating2010 and @magisGeneralFrameworkPackage2010 for additional discussion). Logistic regression can be used to detect both uniform and non-uniform DIF with two or more groups, and can be used in either an IRT or non-IRT context. To date, however, no software has been developed which facilitates DIF analysis in a way which is widely accessible(fn). 
 
@@ -67,46 +67,65 @@ The value of the first row in the column will be coded as `Group A`, and all row
 <img src="DIF/analysis.png  " class="img-responsive" alt="">
 
 
-5.      title: Group Type
-    	  options:
-        	title: Discrete Groups
-        	title: Continuous Groups
-        	
-`Group Type` must take either "Discrete Groups" or "Continuous Groups" as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.
-
-6.      title: Evaluation Scale
-    	  options:
-        	  title: Zumbo-Thomas
-        	  title: Jodoin-Gierl
-
-`Evaluation Scale` refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale. 
-
-12.      title: Type
+5.      title: Type
     	  options:
         - title: Uniform DIF
         - title: Non-Uniform DIF
         - title: Uniform and Non-Uniform DIF
         
 `Type` refers to the type of DIF to be assessed for. The default, `Uniform and Non-Uniform DIF` will check simultaneously for significant main and interaction effects.
-        
-13.     title: Flagging Criterion
+
+6.     title: Flagging Criterion
     	  options:
     	  - name: "Wald"
     	  - name: "LRT"
     	  
-`Flagging Criterion` refers to what test should be used in testing for statistical significance of regression coefficients.
     	  
-14.     title: Alpha      type: Number
+`Flagging Criterion` refers to what test should be used in testing for statistical significance of regression coefficients.
+
+7.      title: Group type
+    	  options:
+        	title: Discrete Groups (n = 2)
+        	title: Discrete Groups (n > 2)
+        	title: Continuous Groups
+        	
+`Group type` specifies how the software should treat the data in the grouping variable. "Discrete Groups (n = 2)"" is the default and will consider the  first value in the `Grouping Variable` column to be the reference group in the logistic regression model. "Discrete Groups (n > 2)"" is to be used when contrasts are to be made between more than two discrete levels. The contrasts must be specified using the `Contrast groups` argument (see below). "Continuous Groups" is for use when the `Grouping Variable" has not been descritized.
+
+8.      title: Contrast groups      type: Character
+
+`Contrast groups` is somewhat awkward, but necessary for specifying which groups are to be used for levels in the logistic regression modeling process in the case of more than two groups, or if you wish to specify which group is to be the reference group. This string must be entered with each group that is to be used as a contrast seperated by one comma. Any groups not specified will be considered the reference group.
+
+For example, if the `Grouping Variable` column of the data contains two groups {0, 1}, and you want to specify that '1' be the reference group, enter `0` in the text box. 
+
+If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that '1' be the reference group, enter `0,2,3` in the text box. This tells the software that groups {0,2,3} are each to be treated as seperate contrasts. 
+
+If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that groups {0, 1} should be collapsed into a single reference group contrasted with {2, 3}, enter `2,3` in the text box. This tells the software that groups {2,3} are to be treated as seperate contrasts and that {0,1} comprise the reference group.
+        	
+`Group Type` must take either "Discrete Groups" or "Continuous Groups" as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.
+
+
+9.     title: Evaluation Scale
+    	  options:
+        	  title: Zumbo-Thomas
+        	  title: Jodoin-Gierl
+
+`Evaluation Scale` refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale. 
+    	  
+10.     title: Alpha      type: Number
 
 `Alpha` is the desired Type-I error rate for statistical significance tests.r
 
-15.     title: Item Purification
+11.     title: Item Purification
 
-16.     title: Number of Iterations      type: Number
+`Item purification` can be performed by selecting this option. Note that purification is possible only if the test score is considered as the matching criterion. 
+
+Purification works as follows: if at least one item is detected as functioning differently at the first step of the process, then the data set of the next step consists in all items that are currently anchor (DIF free) items, plus the tested item (if necessary). The process stops when either two successive applications of the method yield the same classifications of the items (Clauser and Mazor, 1998), or when nrIter iterations are run without obtaining two successive identical classifications. In the latter case a warning message is printed. 
+
+12.     title: Number of Iterations      type: Number
 
 `Number of Iterations` is the maximum number of purification iterations to be used if `Item Purification` is selected.
 
-17.     title: P-value Adjustment method
+13.     title: P-value Adjustment method
     	  options: 
         	- name: bonferroni
         	- name: holm
@@ -193,23 +212,23 @@ Type-S error is not calculated because it does not align conceptually with the t
 
 ## Options
 
-7.      title: Design Analysis
+1.      title: Design Analysis
 
 `Design Analysis` is a `True`/`False` option, defaulted to `False`. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.
 
-8.      title: Constant Alpha
+2.      title: Constant Alpha
 
 `Constant Alpha` is a `True`/`False` option, defaulted to `True`. This option refers to whether or not you want to perform a post-data design analysis using the same alpha as in the DIF analysis, or using the minimum alpha required for significance for _all_ items.
 
-9.      title: Bootstrap N      type: Number
+3.      title: Bootstrap N      type: Number
 
 `Bootstrap N` refers to the number of bootstrap replications to be used in creating the empirical distribution for Δ R^2. This is defaulted to `1000` as a balance between computation time and precision. Lower numbers will allow faster exploration, but will provide less stable estimates.
 
-10.     title: Observed Power
+4.     title: Observed Power
 
 `Observed Power` is a `True`/`False` option, defaulted to `False`. Toggling this option reveals the column showing the Empirical Observed Power. This is defaulted to `False` because its interpretation can be confusing, and will not always provide useful information. N.B. The Empirical Observed Power _can_ equal 1 or 0.
 
-11.     title: Hypothesized True Effect Size      type: String
+5.     title: Hypothesized True Effect Size      type: String
 
 `Hypothesized True Effect Size` is used to perform design analysis using a non-default hypothesized true effect. If left blank, the analysis will be performed at each of the thresholds of the `DIF Flag Scale` selected above.
 
@@ -219,7 +238,7 @@ Type-S error is not calculated because it does not align conceptually with the t
 
 <img src="DIF/ICC.png  " class="img-responsive" alt="">
 
-18.     title: Item Response Curves based on Logistic Regression    type: Variables
+1.     title: Item Response Curves based on Logistic Regression    type: Variables
 
 `Item Respnse Curves` is a list (vector) of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.
 
@@ -227,13 +246,19 @@ Type-S error is not calculated because it does not align conceptually with the t
 
 ## Procedure Notes
 
-The 
+The descriptive overview provides a textual summary of the whole analysis, including what options were chosen, and documenting any warnings or errors that were encountered during the model fitting process.
 
-## DIF Ananlysis
+## DIF Ananlysis Table
 
-## Design Analysis
+The DIF analysis table provides an overview of the analysis results. For each item the following information is displayed: DIF classification, P-value, Chi^2 statistic, delta R^2. The purpose of this table is to provide an easily viewed and shared summary of results.
+
+## Design Analysis Table
+
+The Design Analysis Table displays a list of all the items analyzed, their Type-M errors, and more.
 
 ## Item Response Curves
+
+The Item Response Curve can be plotted for any item being assessed for DIF. It provides a visual representation of the full model used in the DIF analysis. The different groups are colour coded, with 95% confidence intervals represented by gray shading overlaying each line. In these images the Y-axis is the probability of endorsement (0 to 1), and the X-axis is the range of the matching variable used in the logistic models. 
 
 # Examples
 
