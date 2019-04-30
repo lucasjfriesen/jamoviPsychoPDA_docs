@@ -332,7 +332,7 @@ div.tocify {
 <h1>DIF Analysis</h1>
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p>In any discussion of differential item functioning, it is important to note that DIF is not synonymous with bias or fairness. Questions of fairness in tests and measures are directly related to the use of an individual’s score on that test or measure. For example, if men and women from a given nation receive different levels of training in speaking English, whether and how scores on a speaking proficiency test should be used in making immigration decisions is a question of fairness. On the other hand, DIF analysis seeks to find out if men and women from that nation <em>who are equally proficient in spite of unfair circumstances</em> have an equal probability of answering a given test item correctly. Thus, DIF analysis is a step removed from external questions of bias and fairness in test decisions, but is instead concerned with the internal functioning of the test and test items. However, should a test or test item be found to exhibit DIF in favour of one group over another, this result may be relevant to any decision making process based on test scores, as well as a discussion of fairness regarding the use of that test.</p>
+<p>In any discussion of differential item functioning, it is important to note that DIF is not synonymous with bias or fairness. Questions of fairness in tests and measures are directly related to the use of an individual’s score on that test or measure. For example, if men and women from a given nation receive different levels of training in speaking English, whether and how scores on a speaking proficiency test should be used in making immigration decisions is a question of fairness. On the other hand, DIF analysis seeks to find out if men and women from that nation <em>who are equally proficient in spite of differing circumstances</em> have an equal probability of answering a given test item correctly. Thus, DIF analysis is a step removed from external questions of bias and fairness in test decisions, but is instead concerned with the internal functioning of the test and test items. However, should a test or test item be found to exhibit DIF in favour of one group over another, this result may be relevant to any decision making process based on test scores, as well as a discussion of fairness regarding the use of that test.</p>
 <p>Logistic regression, the method used in this module, is among the most popular methods for detecting DIF for several reasons (see <span class="citation">@mosesComparisonStrategiesEstimating2010</span> and <span class="citation">@magisGeneralFrameworkPackage2010</span> for additional discussion). Logistic regression can be used to detect both uniform and non-uniform DIF with two or more groups, and can be used in either an IRT or non-IRT context. To date, however, no software has been developed which facilitates DIF analysis in a way which is widely accessible(fn).</p>
 </div>
 <div id="calculations" class="section level2">
@@ -366,44 +366,57 @@ div.tocify {
 <p><code>Anchor Items</code> is an optional argument. If provided, <code>Matching Variable</code> must be left empty. <code>Anchor Items</code> must be a series (vector) of names referencing columns in the data which are considered to be ‘gold standard’. That is, containing no DIF. These items will be used in calculating the subject Total Score, but are not assessed for DIF. See <code>Purification</code> below for more details.</p>
 <p><img src="DIF/analysis.png  " class="img-responsive" alt=""></p>
 <ol start="5" style="list-style-type: decimal">
-<li><pre><code> title: Group Type
+<li><pre><code> title: Type
    options:
-     title: Discrete Groups
+ - title: Uniform DIF
+ - title: Non-Uniform DIF
+ - title: Uniform and Non-Uniform DIF</code></pre></li>
+</ol>
+<p><code>Type</code> refers to the type of DIF to be assessed for. The default, <code>Uniform and Non-Uniform DIF</code> will check simultaneously for significant main and interaction effects.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><pre><code>title: Flagging Criterion
+   options:
+   - name: &quot;Wald&quot;
+   - name: &quot;LRT&quot;</code></pre></li>
+</ol>
+<p><code>Flagging Criterion</code> refers to what test should be used in testing for statistical significance of regression coefficients.</p>
+<ol start="7" style="list-style-type: decimal">
+<li><pre><code> title: Group type
+   options:
+     title: Discrete Groups (n = 2)
+     title: Discrete Groups (n &gt; 2)
      title: Continuous Groups</code></pre></li>
 </ol>
+<p><code>Group type</code> specifies how the software should treat the data in the grouping variable. “Discrete Groups (n = 2)”&quot; is the default and will consider the first value in the <code>Grouping Variable</code> column to be the reference group in the logistic regression model. “Discrete Groups (n &gt; 2)”&quot; is to be used when contrasts are to be made between more than two discrete levels. The contrasts must be specified using the <code>Contrast groups</code> argument (see below). “Continuous Groups” is for use when the `Grouping Variable&quot; has not been descritized.</p>
+<ol start="8" style="list-style-type: decimal">
+<li><pre><code> title: Contrast groups      type: Character</code></pre></li>
+</ol>
+<p><code>Contrast groups</code> is somewhat awkward, but necessary for specifying which groups are to be used for levels in the logistic regression modeling process in the case of more than two groups, or if you wish to specify which group is to be the reference group. This string must be entered with each group that is to be used as a contrast seperated by one comma. Any groups not specified will be considered the reference group.</p>
+<p>For example, if the <code>Grouping Variable</code> column of the data contains two groups {0, 1}, and you want to specify that ‘1’ be the reference group, enter <code>0</code> in the text box.</p>
+<p>If the <code>Grouping Variable</code> column of the data contains four groups {0, 1, 2, 3}, and you want to specify that ‘1’ be the reference group, enter <code>0,2,3</code> in the text box. This tells the software that groups {0,2,3} are each to be treated as seperate contrasts.</p>
+<p>If the <code>Grouping Variable</code> column of the data contains four groups {0, 1, 2, 3}, and you want to specify that groups {0, 1} should be collapsed into a single reference group contrasted with {2, 3}, enter <code>2,3</code> in the text box. This tells the software that groups {2,3} are to be treated as seperate contrasts and that {0,1} comprise the reference group.</p>
 <p><code>Group Type</code> must take either “Discrete Groups” or “Continuous Groups” as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><pre><code> title: Evaluation Scale
+<ol start="9" style="list-style-type: decimal">
+<li><pre><code>title: Evaluation Scale
    options:
        title: Zumbo-Thomas
        title: Jodoin-Gierl</code></pre></li>
 </ol>
 <p><code>Evaluation Scale</code> refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale.</p>
-<ol start="12" style="list-style-type: decimal">
-<li><pre><code> title: Type
-  options:
-- title: Uniform DIF
-- title: Non-Uniform DIF
-- title: Uniform and Non-Uniform DIF</code></pre></li>
-</ol>
-<p><code>Type</code> refers to the type of DIF to be assessed for. The default, <code>Uniform and Non-Uniform DIF</code> will check simultaneously for significant main and interaction effects.</p>
-<ol start="13" style="list-style-type: decimal">
-<li><pre><code>title: Flagging Criterion
-  options:
-  - name: &quot;Wald&quot;
-  - name: &quot;LRT&quot;</code></pre></li>
-</ol>
-<p><code>Flagging Criterion</code> refers to what test should be used in testing for statistical significance of regression coefficients.</p>
-<ol start="14" style="list-style-type: decimal">
+<ol start="10" style="list-style-type: decimal">
 <li><pre><code>title: Alpha      type: Number</code></pre></li>
 </ol>
 <p><code>Alpha</code> is the desired Type-I error rate for statistical significance tests.r</p>
-<ol start="15" style="list-style-type: decimal">
+<ol start="11" style="list-style-type: decimal">
 <li><pre><code>title: Item Purification</code></pre></li>
+</ol>
+<p><code>Item purification</code> can be performed by selecting this option. Note that purification is possible only if the test score is considered as the matching criterion.</p>
+<p>Purification works as follows: if at least one item is detected as functioning differently at the first step of the process, then the data set of the next step consists in all items that are currently anchor (DIF free) items, plus the tested item (if necessary). The process stops when either two successive applications of the method yield the same classifications of the items (Clauser and Mazor, 1998), or when nrIter iterations are run without obtaining two successive identical classifications. In the latter case a warning message is printed.</p>
+<ol start="12" style="list-style-type: decimal">
 <li><pre><code>title: Number of Iterations      type: Number</code></pre></li>
 </ol>
 <p><code>Number of Iterations</code> is the maximum number of purification iterations to be used if <code>Item Purification</code> is selected.</p>
-<ol start="17" style="list-style-type: decimal">
+<ol start="13" style="list-style-type: decimal">
 <li><pre><code>title: P-value Adjustment method
   options: 
     - name: bonferroni
@@ -480,23 +493,23 @@ div.tocify {
 </div>
 <div id="options-1" class="section level2">
 <h2>Options</h2>
-<ol start="7" style="list-style-type: decimal">
+<ol style="list-style-type: decimal">
 <li><pre><code> title: Design Analysis</code></pre></li>
 </ol>
 <p><code>Design Analysis</code> is a <code>True</code>/<code>False</code> option, defaulted to <code>False</code>. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.</p>
-<ol start="8" style="list-style-type: decimal">
+<ol start="2" style="list-style-type: decimal">
 <li><pre><code> title: Constant Alpha</code></pre></li>
 </ol>
 <p><code>Constant Alpha</code> is a <code>True</code>/<code>False</code> option, defaulted to <code>True</code>. This option refers to whether or not you want to perform a post-data design analysis using the same alpha as in the DIF analysis, or using the minimum alpha required for significance for <em>all</em> items.</p>
-<ol start="9" style="list-style-type: decimal">
+<ol start="3" style="list-style-type: decimal">
 <li><pre><code> title: Bootstrap N      type: Number</code></pre></li>
 </ol>
 <p><code>Bootstrap N</code> refers to the number of bootstrap replications to be used in creating the empirical distribution for Δ R^2. This is defaulted to <code>1000</code> as a balance between computation time and precision. Lower numbers will allow faster exploration, but will provide less stable estimates.</p>
-<ol start="10" style="list-style-type: decimal">
+<ol start="4" style="list-style-type: decimal">
 <li><pre><code>title: Observed Power</code></pre></li>
 </ol>
 <p><code>Observed Power</code> is a <code>True</code>/<code>False</code> option, defaulted to <code>False</code>. Toggling this option reveals the column showing the Empirical Observed Power. This is defaulted to <code>False</code> because its interpretation can be confusing, and will not always provide useful information. N.B. The Empirical Observed Power <em>can</em> equal 1 or 0.</p>
-<ol start="11" style="list-style-type: decimal">
+<ol start="5" style="list-style-type: decimal">
 <li><pre><code>title: Hypothesized True Effect Size      type: String</code></pre></li>
 </ol>
 <p><code>Hypothesized True Effect Size</code> is used to perform design analysis using a non-default hypothesized true effect. If left blank, the analysis will be performed at each of the thresholds of the <code>DIF Flag Scale</code> selected above.</p>
@@ -507,7 +520,7 @@ div.tocify {
 <div id="details" class="section level2">
 <h2>Details</h2>
 <p><img src="DIF/ICC.png  " class="img-responsive" alt=""></p>
-<ol start="18" style="list-style-type: decimal">
+<ol style="list-style-type: decimal">
 <li><pre><code>title: Item Response Curves based on Logistic Regression    type: Variables</code></pre></li>
 </ol>
 <p><code>Item Respnse Curves</code> is a list (vector) of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.</p>
@@ -517,16 +530,19 @@ div.tocify {
 <h1>Results</h1>
 <div id="procedure-notes" class="section level2">
 <h2>Procedure Notes</h2>
-<p>The</p>
+<p>The descriptive overview provides a textual summary of the whole analysis, including what options were chosen, and documenting any warnings or errors that were encountered during the model fitting process.</p>
 </div>
-<div id="dif-ananlysis" class="section level2">
-<h2>DIF Ananlysis</h2>
+<div id="dif-ananlysis-table" class="section level2">
+<h2>DIF Ananlysis Table</h2>
+<p>The DIF analysis table provides an overview of the analysis results. For each item the following information is displayed: DIF classification, P-value, Chi^2 statistic, delta R^2. The purpose of this table is to provide an easily viewed and shared summary of results.</p>
 </div>
-<div id="design-analysis-1" class="section level2">
-<h2>Design Analysis</h2>
+<div id="design-analysis-table" class="section level2">
+<h2>Design Analysis Table</h2>
+<p>The Design Analysis Table displays a list of all the items analyzed, their Type-M errors, and more.</p>
 </div>
 <div id="item-response-curves-1" class="section level2">
 <h2>Item Response Curves</h2>
+<p>The Item Response Curve can be plotted for any item being assessed for DIF. It provides a visual representation of the full model used in the DIF analysis. The different groups are colour coded, with 95% confidence intervals represented by gray shading overlaying each line. In these images the Y-axis is the probability of endorsement (0 to 1), and the X-axis is the range of the matching variable used in the logistic models.</p>
 </div>
 </div>
 <div id="examples" class="section level1">
@@ -534,14 +550,14 @@ div.tocify {
 <p>Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come):</p>
 <ul>
 <li>
-<a href="binaryDIF_example.html">Binary Differential Item Functioning</a>
+<a href="binaryDIF_example.html">Binary Differential Item Functioning - Toy Example</a>
 </li>
 </ul>
 <h1>
 Comments?
 </h1>
 <p>
-Got comments, issues or spotted a bug? Please open an issue on <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA at github </a> or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
+Got comments, issues or spotted a bug? Please open an issue at <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA</a> on github or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
 </p>
 </div>
 
