@@ -1,6 +1,6 @@
 ---
 title: "Binary Differential Item Functioning - Toy Example"
-nickname: binaryDIF
+nickname: binaryDifToy
 topic: binaryDIF
 category: example
 output: 
