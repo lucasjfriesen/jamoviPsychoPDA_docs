@@ -12,6 +12,10 @@ output:
         collapsed: false
 ---
 
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
 **1.1	Demonstration: DIF**
        
 The following is a demonstration of a basic DIF analysis conducted using the PsychoPDA Binary LogR module. The data used is that provided by [The IRT textbook]. This data consists of [N responses] to [N items] dichotomously scored items, where rows are test takers and columns are items. The data also contains a column for a binary gender classification and a column containing an external matching variable consisting of scores on a measure of anger ranging continuously from 0 - 40.
@@ -48,3 +52,5 @@ Finally, in order to communicate the results of the DIF analysis more effectivel
 <img src="examples/DIF_2/irc3.png  " class="img-responsive" alt=""> 
  
 These show [lots of great things]. 
+
+`r issues()`

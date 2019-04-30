@@ -21,4 +21,8 @@ DIF modules of the PsychoPDA suite
 
 `r list_pages(category = "DIF")`
 
+Binary DIF examples
+
+`r include_examples("binaryDIF")`
+
 `r issues()`
