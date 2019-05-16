@@ -49,7 +49,7 @@ If you didn't already, install [Jamovi](https://www.jamovi.org/download.html) an
 
 # Jamovi Sideload Installation
 
-For the most up to date version, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/Development/psychoPDA.jmo) file from GitHub and uses jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window).
+For the most up to date version, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/master/psychoPDA.jmo) file from GitHub and uses jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window).
 
 ## Others
 
