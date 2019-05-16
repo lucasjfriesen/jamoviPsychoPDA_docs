@@ -17,10 +17,13 @@ source("../R/functions.R")
 ```
 
 
+## Documentation
+
 DIF modules of the PsychoPDA suite
 
 `r list_pages(category = "DIF")`
 
+## Examples
 Binary DIF examples
 
 `r include_examples("binaryDIF")`

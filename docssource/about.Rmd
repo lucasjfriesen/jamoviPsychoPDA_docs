@@ -1,9 +1,25 @@
 ---
-title: "About"
+title: "About Psychometrics & Post-Data Analysis"
 output: 
   html_document:
      includes:
          in_header: ganalytics.txt
 ---
   
-PsychoPDA is ballin'.
+# Motivations  
+
+Differential item functioning was chosen as the first module to be developed and presented in the Psychometrics & Post-Data Analysis suite because its heart lies directly in line with the essence of the explanatory pragmatic view of validity. DIF analysis asks the question (What is the source of variation in test taker responses?) by positing competing theories (Test takers responses are explained by their gender, not/in addition to the theorized construct.) and evaluating those theories. If no explanation apart from that theorized at the outset can be found, the weight of evidence in favour of intended interpretations based on test scores (validity) is increased.
+
+By providing a user-friendly interface to performing DIF analysis, the technical barrier to this important analysis has been greatly reduced. The goal of this barrier reduction is to encourage researchers to incorporate DIF analysis in all stages of the development and use of psychosocial measures. The reason for this goal is that DIF analysis is fundamentally an explanation-oriented analysis which seeks to answer the question of why test takers respond on measures the way that they do. If there exists no explanation for test taker responses other than random measurement error and variation in the measured trait or construct, then the best possible explanation for variation in test taker responses is that the measure is operating as intended (@zumbo2007; @zumboValidityContextualizedPragmatic2009).
+
+ The addition of Design Analysis provides the researcher with an improved ability to practically assess the degree of DIF. Because statistically significant effects are necessarily exaggerated from the true effect size (CITE G&C), it is important to incorporate information on the degree of this inflation in a response to items flagged as exhibiting DIF. In a practical sense, consider the development of a measure, or the field testing of items for an item bank on an established measure; measures and items are resources which are not to be thrown away lightly, and the Type-M error rate helps the researcher to find the appropriate balance between psychometric integrity and economic responsibility.
+
+# Future directions
+
+There are several areas for expansion on this work. First, despite the change in Naegelkirke’s R^2 being a standard effect size measure in DIF analyses, its interpretability leaves much to be desired. By focusing instead on the logistic regression coefficients estimated for the model comparison stage of the analysis, the Type-S error could be calculated in addition to the Type-M error. The logistic regression coefficients, combined with Type-S and Type-M error rates would provide a more intuitive picture of the DIF effect direction and size. 
+
+Related to this, the capacity for assumption and model fit checks in DIF analyses like the one demonstrated above is lacking. In the above example with 28 items, there were a total of 56 models fit, and it is not common practice in DIF analyses to report assumption checks or model fit indices. The jamovi software could be expanded to fill this void, increasing the robustness and interpretability of findings beyond the current professional standard.
+
+Finally, after incorporating both the use of logistic regression coefficients and improving model diagnostics, improving the model specification capacity of the jamovi software would enable researchers to pursue the ideal of 3rd generation DIF analysis (Zumbo, 2009) wherein the social and environmental context is given greater prominence.
+
+In addition to the possibility of improved interpretability of DIF analyses in the context of measure validation, the post-data analysis of Gelman & Carlin’s Type-S and Type-M errors can be applied to other tools commonly used in validation work, such as correlation coefficients between measures measures (convergent/discriminant validity) or between test sessions (test-retest reliability). A more complete understanding of the effect sizes in these correlation measures would improve the interpretability and utility of correlational validity evidence.

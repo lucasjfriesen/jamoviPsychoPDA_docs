@@ -16,7 +16,7 @@ output:
 source("../R/functions.R")
 ```
 
-**Binary Differential Item Functioning** module of the PsychoPDA suite for jamovi
+**Binary Differential Item Functioning** module of the Psychometrics & Post-Data Analysis suite for jamovi
 
 <img src="DIF/main.png  " class="img-responsive" alt="">
 

@@ -16,7 +16,7 @@ source("../R/functions.R")
 ```
 
 
-Here you can find some example analyses run using PsychoPDA modules.
+Here you can find some example analyses run using Psychometrics & Post-Data Analysis modules.
 
 # Differential Item Functioning
 

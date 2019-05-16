@@ -16,7 +16,7 @@ source("../R/functions.R")
 ```
 
 
-Design Analysis modules of the PsychoPDA suite
+Design Analysis modules of the Psychometrics & Post Data Analysis suite
 
 `r list_pages(nickname = "meanDiffDA")`
 

@@ -16,8 +16,6 @@ output:
 source("../R/functions.R")
 ```
 
-**Binary Differential Item Functioning - Toy Example**
-
 Using the supplied data set, follow the instructions provided upon opening the "Binary DIF" module in the PPDA tab of Jamovi.
 
 <img src="examples/DIF_1/DIF_data.png  " class="img-responsive" alt="">

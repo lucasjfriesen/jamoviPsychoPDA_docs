@@ -11,7 +11,7 @@
 
 
 
-<title>Releases Notes</title>
+<title>Binary Differential Item Functioning - Detailed Example</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -317,23 +317,64 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Releases Notes</h1>
+<h1 class="title toc-ignore">Binary Differential Item Functioning - Detailed Example</h1>
 
 </div>
 
 
-<p>Releases and changes</p>
-<div id="version-1.0.1" class="section level1">
-<h1>version 1.0.1</h1>
-<ul>
-<li>Beta version</li>
-</ul>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The following is a demonstration of a basic DIF analysis conducted using the PsychoPDA Binary LogR module. The data used is that supplied by Boeck and Wilson in their textbook titled ‘Explanatory Item Response Models’(fn)<span class="citation">[@boeckExplanatoryItemResponse2004]</span>. This data consists of responses from 316 test takers to 24 questions about verbal aggression. The measure is designed to have four factors, focusing on different situations where aggressive verbal behaviour might arise. Each factor is addressed by 6 questions. The data also a binary gender classification. In the participant pool, 243 were females (coded as 1), and 73 were males (coded as 0) In addition, scores on an external measure of anger as a personality trait. The Trait Anger measure (STAXI; Spielberger, 1988; Spielberger &amp; Sydeman, 1994 ADD TO REFS) provides scores ranging continuously from 0 - 40. The responses recorded in the original data have been modified to magnify the gender DIF for illustrative purposes. The modified item is ‘S2DoScold’ and responses from Males were systematically changed to ‘0’ in order to achieve the desired effect.</p>
+<div id="setting-the-stage" class="section level2">
+<h2>Setting the Stage</h2>
+<p>Consider a scenario where a governing body wishes to employ this measure of aggressive tendencies in a scenario for which is was designed, but has concerns regarding the possibility of the test favouring females over males. This body could request that a gender DIF analysis be conducted by administering this new measure to some of the target population, in addition to the more costly measure that is currently in use. The more costly measure is used as a baseline because it has been subjected to rigorous scrutiny in the past. Scores on this measure provide the external matching variable.</p>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<p>After administering both of the measure to the pilot test group and collecting the needed demographic information, the research loads the data into jamovi and selects “Binary LogR” from the dropdown menu of the PsychoPDA module. This is handled via a drag-and-drop process in the window shown below.</p>
+<p>Image 1: No data loaded</p>
+<p><img src="examples/DIF_2/image2.jpg  " class="img-responsive" alt=""></p>
+<p>Image 2: Data loaded and variables selected</p>
+<p><img src="examples/DIF_2/image1.jpg  " class="img-responsive" alt=""></p>
+</div>
+<div id="procedure-notes" class="section level2">
+<h2>Procedure Notes</h2>
+<p>Once the necessary variables are selected, the analysis will automatically run, and interpretation must now begin. The first step in interpretation is to review the Procedure Notes section of the results window. This allows the researcher to confirm that all of the correct analysis options were selected and to evaluate any warnings which were surfaced during the model fitting process. An important step at this point is to confirm the coding of the grouping variable in order to evaluate the results of the logistic regression.</p>
+<p><img src="examples/DIF_2/procedureNotes.png  " class="img-responsive" alt=""></p>
+</div>
+<div id="interpretation" class="section level2">
+<h2>Interpretation</h2>
+<div id="dif-analysis-table" class="section level3">
+<h3>DIF Analysis Table</h3>
+<p>After confirming that the analysis was conducted appropriately, the DIF Analysis Table may be assessed. Below we see that 5 of the 38 items have been flagged as exhibiting gender DIF. These 5 items all have p-values associated with the 2-degrees of freedom likelihood ratio test below the chosen threshold of 0.05. Of these 5 items, only one item (S2DoScold) has an effect size (delta Nagelkirke r^2) passing the upper bound of A-level DIF. The other four items have extremely small effect size estimates, a fact which must be evaluated alongside their statistical significance.</p>
+<p><img src="examples/DIF_2/difTable.png  " class="img-responsive" alt=""></p>
+</div>
+<div id="design-analysis-table" class="section level3">
+<h3>Design Analysis Table</h3>
+<p>The Design Analysis Table will be consulted next, in order to aid the interpretation of the effect size estimates. Here we see that in all cases there is a very small Type-M error associated with the observed effect. This is expected given the relatively high empirical observed power(fn) for detecting the three hypothesized effects(fn). This means that</p>
+<p><img src="examples/DIF_2/designAnalysis.png  " class="img-responsive" alt=""></p>
+</div>
+</div>
+<div id="item-response-curves" class="section level2">
+<h2>Item Response Curves</h2>
+<p>Finally, in order to communicate the results of the DIF analysis more effectively, the Item Response Curves for three items have been produced: S2WantCurse, S2DoCurse, and S2DoScold. These show a visual representation of the probability of endorsement for the items (y-axis) chosen for both groups across the range of the matching variable (x-axis). The gray shading represents the standard error of the logistic regression model coefficients, which is largely a function of the sample size of the group at each point along the scale represented by the x-axis. Each item is discussed below in turn.</p>
+<p>These plots are extremely useful when trying to understand what it means when an item is flagged as exhibiting DIF. The first item, S2WantCurse, was not flagged, and both groups are nearly matched all the way along the scale. This is an example of what one expects to see when there is no DIF effect present.</p>
+<p><img src="examples/DIF_2/irc1.png  " class="img-responsive" alt=""></p>
+<p>The second item, S2DoCurse, was flagged as exhibiting B-level gender DIF. The items two notable characteristics: (1) the standard error on the lower range of the reference group (Females with Trait Anger scores below 40), is much wider than that of the contrast group. This reflects the fact that only [N] respondents in the reference group did not endorse this item. Thus, the next step in evaluating this item might be to gain a larger sample of responses to this item in order to see if the DIF effect is an artifact of the potentially biased sample.</p>
+<p><img src="examples/DIF_2/irc2.png  " class="img-responsive" alt=""></p>
+<p>The third item, S2DoScold, is the item which was manipulated to magnify the DIF effect. Responses from the contrast group (Males) are clearly following a different pattern than that of the contrast group.</p>
+<p><img src="examples/DIF_2/irc3.png  " class="img-responsive" alt=""></p>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<p>The results of this analysis show that …</p>
 <h1>
 Comments?
 </h1>
 <p>
 Got comments, issues or spotted a bug? Please open an issue at <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA</a> on github or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
 </p>
+</div>
+</div>
 </div>
 
 

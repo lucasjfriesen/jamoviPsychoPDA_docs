@@ -46,52 +46,52 @@ The reduction in model deviance is then calculated between the baseline and seco
 
 <img src="DIF/analysisVariables.png  " class="img-responsive" alt="">
 
-1.      title: Items                   type: Variables
+### 1.      Items                   type: Variables
 
 `Items` must be a series (vector) of names referencing columns in the data containing exactly two unique values, such as [0, 1]. The data will be converted to integer type prior to analysis using `jmvcore::toNumeric()`.
 
-2.      title: Grouping Variable       type: Variable
+### 2.      Grouping Variable       type: Variable
 
 `Grouping Variable` must be a single name referencing a column in the data containing at least two unique values, such as [0, 1].  The data will be converted to factor type prior to analysis using `base:as.factor()`.
 
 The value of the first row in the column will be coded as `Group A`, and all rows containing non-`Group A` values will be coded as `Group B`. If more than two unique values are present in the column, all values different from the value of the first row will be collapsed into the same `Group B`. This restriction will be removed in a future version of the module, but is necessary for several aspects of the current version to perform.
 
-3.      title: Matching Variable       type: Variable
+### 3.      Matching Variable       type: Variable
 
 `Matching Variable` is an optional argument. This is the value which is used in the regression equations to account for differences in, for example, proficiency, levels of a latent contstruct, or some other psychosocial factor. If it is left empty, subjects will be matched on the Total Score, calculated internally by the module. This variable must be `numeric`.
 
-4.      title: Anchor Items            type: Variables
+### 4.      Anchor Items            type: Variables
 
 `Anchor Items` is an optional argument. If provided, `Matching Variable` must be left empty. `Anchor Items` must be a series (vector) of names referencing columns in the data which are considered to be 'gold standard'. That is, containing no DIF. These items will be used in calculating the subject Total Score, but are not assessed for DIF. See `Purification` below for more details.
 
 <img src="DIF/analysis.png  " class="img-responsive" alt="">
 
 
-5.      title: Type
+### 5.      Type
     	  options:
-        - title: Uniform DIF
-        - title: Non-Uniform DIF
-        - title: Uniform and Non-Uniform DIF
+        - Uniform DIF
+        - Non-Uniform DIF
+        - Uniform and Non-Uniform DIF
         
 `Type` refers to the type of DIF to be assessed for. The default, `Uniform and Non-Uniform DIF` will check simultaneously for significant main and interaction effects.
 
-6.     title: Flagging Criterion
+### 6.     Flagging Criterion
     	  options:
-    	  - name: "Wald"
-    	  - name: "LRT"
+    	  - "Wald"
+    	  - "LRT"
     	  
     	  
 `Flagging Criterion` refers to what test should be used in testing for statistical significance of regression coefficients.
 
-7.      title: Group type
+### 7.      Group type
     	  options:
-        	title: Discrete Groups (n = 2)
-        	title: Discrete Groups (n > 2)
-        	title: Continuous Groups
+        	Discrete Groups (n = 2)
+        	Discrete Groups (n > 2)
+        	Continuous Groups
         	
 `Group type` specifies how the software should treat the data in the grouping variable. "Discrete Groups (n = 2)"" is the default and will consider the  first value in the `Grouping Variable` column to be the reference group in the logistic regression model. "Discrete Groups (n > 2)"" is to be used when contrasts are to be made between more than two discrete levels. The contrasts must be specified using the `Contrast groups` argument (see below). "Continuous Groups" is for use when the `Grouping Variable" has not been descritized.
 
-8.      title: Contrast groups      type: Character
+### 8.      Contrast groups      type: Character
 
 `Contrast groups` is somewhat awkward, but necessary for specifying which groups are to be used for levels in the logistic regression modeling process in the case of more than two groups, or if you wish to specify which group is to be the reference group. This string must be entered with each group that is to be used as a contrast seperated by one comma. Any groups not specified will be considered the reference group.
 
@@ -104,36 +104,36 @@ If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3},
 `Group Type` must take either "Discrete Groups" or "Continuous Groups" as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.
 
 
-9.     title: Evaluation Scale
+### 9.     Evaluation Scale
     	  options:
-        	  title: Zumbo-Thomas
-        	  title: Jodoin-Gierl
+        	  Zumbo-Thomas
+        	  Jodoin-Gierl
 
 `Evaluation Scale` refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale. 
     	  
-10.     title: Alpha      type: Number
+### 10.     Alpha      type: Number
 
 `Alpha` is the desired Type-I error rate for statistical significance tests.r
 
-11.     title: Item Purification
+### 11.     Item Purification
 
 `Item purification` can be performed by selecting this option. Note that purification is possible only if the test score is considered as the matching criterion. 
 
 Purification works as follows: if at least one item is detected as functioning differently at the first step of the process, then the data set of the next step consists in all items that are currently anchor (DIF free) items, plus the tested item (if necessary). The process stops when either two successive applications of the method yield the same classifications of the items (Clauser and Mazor, 1998), or when nrIter iterations are run without obtaining two successive identical classifications. In the latter case a warning message is printed. 
 
-12.     title: Number of Iterations      type: Number
+### 12.     Number of Iterations      type: Number
 
 `Number of Iterations` is the maximum number of purification iterations to be used if `Item Purification` is selected.
 
-13.     title: P-value Adjustment method
+### 13.     P-value Adjustment method
     	  options: 
-        	- name: bonferroni
-        	- name: holm
-        	- name: hochberg
-        	- name: hommel
-        	- name: BH
-        	- name: BY
-        	- name: none
+        	- bonferroni
+        	- holm
+        	- hochberg
+        	- hommel
+        	- BH
+        	- BY
+        	- none
         	
 `P-value Adjustment method` is the method of correction for multiple comparisons desired:
 
@@ -212,23 +212,23 @@ Type-S error is not calculated because it does not align conceptually with the t
 
 ## Options
 
-1.      title: Design Analysis
+### 1.      Design Analysis
 
 `Design Analysis` is a `True`/`False` option, defaulted to `False`. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.
 
-2.      title: Constant Alpha
+### 2.      Constant Alpha
 
 `Constant Alpha` is a `True`/`False` option, defaulted to `True`. This option refers to whether or not you want to perform a post-data design analysis using the same alpha as in the DIF analysis, or using the minimum alpha required for significance for _all_ items.
 
-3.      title: Bootstrap N      type: Number
+### 3.      Bootstrap N      type: Number
 
 `Bootstrap N` refers to the number of bootstrap replications to be used in creating the empirical distribution for Δ R^2. This is defaulted to `1000` as a balance between computation time and precision. Lower numbers will allow faster exploration, but will provide less stable estimates.
 
-4.     title: Observed Power
+### 4.     Observed Power
 
 `Observed Power` is a `True`/`False` option, defaulted to `False`. Toggling this option reveals the column showing the Empirical Observed Power. This is defaulted to `False` because its interpretation can be confusing, and will not always provide useful information. N.B. The Empirical Observed Power _can_ equal 1 or 0.
 
-5.     title: Hypothesized True Effect Size      type: String
+### 5.     Hypothesized True Effect Size      type: String
 
 `Hypothesized True Effect Size` is used to perform design analysis using a non-default hypothesized true effect. If left blank, the analysis will be performed at each of the thresholds of the `DIF Flag Scale` selected above.
 
@@ -238,7 +238,7 @@ Type-S error is not calculated because it does not align conceptually with the t
 
 <img src="DIF/ICC.png  " class="img-responsive" alt="">
 
-1.     title: Item Response Curves based on Logistic Regression    type: Variables
+### 1.     Item Response Curves based on Logistic Regression    type: Variables
 
 `Item Respnse Curves` is a list (vector) of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.
 

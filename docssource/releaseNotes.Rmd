@@ -15,14 +15,13 @@ Releases and changes
 ```{r, echo=FALSE,results='asis'}
 
 source("../R/functions.R")
-cw<-write_commits()
+# cw<-write_commits()
 
 ```
 
 
-# version 0.1.0
-
-* First release to go public
+#   version 1.0.1
+* Beta version
 
 
 `r issues()`

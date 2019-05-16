@@ -322,20 +322,34 @@ div.tocify {
 </div>
 
 
-<p><strong>1.1 Demonstration: DIF</strong></p>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
 <p>The following is a demonstration of a basic DIF analysis conducted using the PsychoPDA Binary LogR module. The data used is that provided by [The IRT textbook]. This data consists of [N responses] to [N items] dichotomously scored items, where rows are test takers and columns are items. The data also contains a column for a binary gender classification and a column containing an external matching variable consisting of scores on a measure of anger ranging continuously from 0 - 40.</p>
-<p>1.1.1 The Stage</p>
+</div>
+<div id="setting-the-stage" class="section level1">
+<h1>Setting the Stage</h1>
 <p>Consider a scenario where a governing body wishes to employ this measure of aggressive tendencies in a scenario for which is was designed, but has concerns regarding the possibility of the test favouring females over males. This body could request that a gender DIF analysis be conducted by administering this new measure to some of the target population, in addition to the more costly measure that is currently in use. The more costly measure is used as a baseline because it has been subjected to rigorous scrutiny in the past. Scores on this measure provide the external matching variable. After administering both of the measure to the pilot test group and collecting the needed demographic information, the research loads the data into jamovi and selects “Binary LogR” from the dropdown menu of the PsychoPDA module. This is handled via a drag-and-drop process in the window shown below.</p>
 <p>Image 1: No data loaded</p>
 <p><img src="examples/DIF_2/image2.jpg  " class="img-responsive" alt=""></p>
 <p>Image 2: Data loaded and variables selected</p>
 <p><img src="examples/DIF_2/image1.jpg  " class="img-responsive" alt=""></p>
+<div id="procedure-notes" class="section level2">
+<h2>Procedure Notes</h2>
 <p>Once the necessary variables are selected, the analysis will automatically run, and interpretation must now begin. The first step in interpretation is to review the Procedure Notes section of the results window. This allows the researcher to confirm that all of the correct analysis options were selected and to evaluate any warnings which were surfaced during the model fitting process. An important step at this point is to confirm the coding of the grouping variable in order to evaluate the results of the logistic regression.</p>
 <p><img src="examples/DIF_2/procedureNotes.png  " class="img-responsive" alt=""></p>
+</div>
+<div id="dif-analysis-table" class="section level2">
+<h2>DIF Analysis Table</h2>
 <p>After confirming that the analysis was conducted appropriately, the DIF Analysis Table may be assessed. Below we see that 5 of the 38 items have been flagged as exhibiting gender DIF. These 5 items all have p-values associated with the 2-degrees of freedom likelihood ratio test below the chosen threshold of 0.05. Of these 5 items, only one item (S2DoScold) has an effect size (delta Nagelkirke r^2) passing the upper bound of A-level DIF. The other four items have extremely small effect size estimates, a fact which must be evaluated alongside their statistical significance.</p>
 <p><img src="examples/DIF_2/difTable.png  " class="img-responsive" alt=""></p>
+</div>
+<div id="design-analysis-table" class="section level2">
+<h2>Design Analysis Table</h2>
 <p>The Design Analysis Table will be consulted next, in order to aid the interpretation of the effect size estimates. Here we see …</p>
 <p><img src="examples/DIF_2/designAnalysis.png  " class="img-responsive" alt=""></p>
+</div>
+<div id="item-response-curves" class="section level2">
+<h2>Item Response Curves</h2>
 <p>Finally, in order to communicate the results of the DIF analysis more effectively, the Item Response Curves for [items x,y,z] have been produced.</p>
 <p><img src="examples/DIF_2/irc1.png  " class="img-responsive" alt=""> <img src="examples/DIF_2/irc2.png  " class="img-responsive" alt=""> <img src="examples/DIF_2/irc3.png  " class="img-responsive" alt=""></p>
 <p>These show [lots of great things].</p>
@@ -345,6 +359,8 @@ Comments?
 <p>
 Got comments, issues or spotted a bug? Please open an issue at <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA</a> on github or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
 </p>
+</div>
+</div>
 
 
 
