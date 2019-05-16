@@ -19,17 +19,17 @@ source("../R/functions.R")
 <img src="docs/i1.png" class="img-responsive" alt="">
 
 
-PsychoPDA provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric validation research. Currently, these modules include:   
+Psychometrics & Post-Data Analysis (PsychoPDA) provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric research. Currently, these modules include:   
 
 * Differential Item functioning
 
-Available models are:
+Currently available models are:
 
 * Binary DIF
 
 # Examples
 
-Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here (more to come)
+Some worked out examples of the analyses carried out with jamovi PsychoPDA are posted here.
 
 <div class="littletitle">Differential Item Functioning</div>
 `r include_examples("binaryDIF")`
@@ -43,13 +43,13 @@ Some worked out examples of the analyses carried out with jamovi PsychoPDA are p
 
 # Jamovi Library Installation (Not yet in the library - Use the next option)
 
-If you didn't already, install [Jamovi](https://www.jamovi.org/download.html) and run it. Select the jamovi modules library and install PsychoPDA from there
-
-<img src="glm/install.png" class="img-responsive" alt="">
+If you didn't already, install [Jamovi](https://www.jamovi.org/download.html) and run it. Select the jamovi modules library and install PsychoPDA from there.
 
 # Jamovi Sideload Installation
 
-For the most up to date version, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/master/psychoPDA.jmo) file from GitHub and uses jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window).
+For manual installation, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/master/psychoPDA.jmo) file from GitHub and use jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window).
+
+<img src="pics/sideloadModule.png" class="img-responsive" alt="">
 
 ## Others
 
