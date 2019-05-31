@@ -5,6 +5,8 @@ navbar:
   left:
   - text: "Differential Item Functioning"
     href:  differentialItemFunctioning.html
+  - text: "Measure Diagnostics"
+    href: measureDiagnostics.html
   - text: "Design Analysis"
     href: designAnalysis.html
   - text: "Examples"

@@ -1,0 +1,29 @@
+---
+title: "Measure Diagnostics"
+output: 
+  html_document:
+    includes:
+      in_header: ganalytics.txt
+    toc: true
+    toc_float:
+      collapsed: false
+
+---
+
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+## Documentation
+
+Measure Diagnostics modules of the Psychometrics & Post Data Analysis suite
+
+`r list_pages(category = "measureDiagnostics")`
+
+## Examples
+Test ROC examples
+
+**In Development**
+
+`r issues()`

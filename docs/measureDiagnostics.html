@@ -11,7 +11,7 @@
 
 
 
-<title>Troubleshooting PsychoPDA</title>
+<title>Measure Diagnostics</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,6 +25,15 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136957978-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136957978-1');
+</script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -311,37 +320,24 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Troubleshooting PsychoPDA</h1>
+<h1 class="title toc-ignore">Measure Diagnostics</h1>
 
 </div>
 
 
-<div id="common-issues" class="section level1">
-<h1>Common Issues</h1>
-<div id="variable-names" class="section level3">
-<h3>Variable names:</h3>
-<p>If variables have names not following R standard, some problem may still appear.</p>
+<div id="documentation" class="section level2">
+<h2>Documentation</h2>
+<p>Measure Diagnostics modules of the Psychometrics &amp; Post Data Analysis suite</p>
+<ul>
+<li>
+<a href="testROC.html">Test ROC (Receiver Operating Characteristic)</a>
+</li>
+</ul>
 </div>
-<div id="solution" class="section level3">
-<h3>Solution:</h3>
-<p>Use variable names without space, parentheses or brackets, etc.</p>
-</div>
-</div>
-<div id="binary-dif" class="section level1">
-<h1>Binary DIF</h1>
-<p><strong>Error: Can only apply contrasts to data with 2 or more levels</strong></p>
-<p>This is an error that <em>usually</em> comes from attempting to fit a logistic model in R to data which does not have at least two different responses for each grouping variable.</p>
-<p>For example, in data coded [0, 1] for incorrect and correct responses and two groups [m, f], it might be the case that no <code>f</code> in your data set responded inorrectly, meaning there are no <code>f</code> in the data with response <code>0</code>. This will break the <code>glm()</code> function.</p>
-<p>Ensure that there are no rows/columns in your data with no responses, and that there are no groups who only respond in a single way.</p>
-<p>If this doesn’t seem to be the case for you, you may have encountered a bug: please feel free to contact me using a method at the bottom of this page.</p>
-</div>
-<div id="mean-differences-design-analysis" class="section level1">
-<h1>Mean Differences Design Analysis</h1>
-<p>nothing yet</p>
-</div>
-<div id="correlation-design-analysis" class="section level1">
-<h1>Correlation Design Analysis</h1>
-<p>nothing yet</p>
+<div id="examples" class="section level2">
+<h2>Examples</h2>
+<p>Test ROC examples</p>
+<p><strong>In Development</strong></p>
 <h1>
 Comments?
 </h1>
