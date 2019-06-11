@@ -11,7 +11,7 @@
 
 
 
-<title>Binary Differential Item Functioning - Getting Started</title>
+<title>Test ROC (Receiver Operating Characteristic)</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -320,55 +320,53 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Binary Differential Item Functioning - Getting Started</h1>
+<h1 class="title toc-ignore">Test ROC (Receiver Operating Characteristic)</h1>
 
 </div>
 
 
-<p><strong>Binary Differential Item Functioning</strong> module of the Psychometrics &amp; Post-Data Analysis suite for jamovi</p>
-<p><img src="DIF/main.png  " class="img-responsive" alt=""></p>
-<p>The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.</p>
+<p><strong>Test Response Operating Characteristic</strong> module of the Psychometrics &amp; Post-Data Analysis suite for jamovi</p>
+<p><img src="testROC/main.png  " class="img-responsive" alt=""></p>
+<p>The module provides an interface for performing test ROC/AUC analyses and comparisons. The module supports comparing multiple measures as well as multiple groupings, with the option to perform design analysis and view ROC curves. The goal of this module is to facilitate measure validation work by creating an easy-to-use interface for collecting publication-ready tables and vizualizations.</p>
 <div id="procedure-notes" class="section level1">
 <h1>Procedure Notes</h1>
 <p>Upon loading the module, the instsructions below will be displayed, indicating the minimum requirements for beginning an analysis.</p>
-<p><img src="DIF/instructions.png  " class="img-responsive" alt=""></p>
+<p><img src="testROC/instructions.png  " class="img-responsive" alt=""></p>
 <p>Once the variables have been set, the instructions are replaced with a descriptive overview of the analysis.</p>
-<p><img src="DIF/procedureNotes.png  " class="img-responsive" alt=""></p>
+<p><img src="testROC/procedureNotes.png  " class="img-responsive" alt=""></p>
 </div>
-<div id="dif-analysis" class="section level1">
-<h1>DIF Analysis</h1>
-<p>Set the variables from your data according to the instructions provided on the right-hand side of the screen (noted above). Minimally, one item must be provided and one grouping variable with at least two categories. See the comprehensive overview section for more details and options.</p>
-<p><img src="DIF/analysisVariables.png  " class="img-responsive" alt=""></p>
+<div id="cutpoint-tables" class="section level1">
+<h1>Cutpoint Tables</h1>
+<p>Set the variables from your data according to the instructions provided on the right-hand side of the screen (noted above). Minimally, at least one response variable and one outcome variable must be provided. See the comprehensive overview section for more details and options.</p>
+<p><img src="testROC/analysisVariables.png  " class="img-responsive" alt=""></p>
 </div>
-<div id="design-analysis" class="section level1">
-<h1>Design Analysis</h1>
-<p>In order to aid in the interpretation of the DIF-level classification, Gelman &amp; Carlin’s Type-M error is calculated on the thresholds for A-, B-level, and C-level DIF. These errors are post-data statistics which enable the researcher to assess the degree to which their results may reflect the nature of the True effect. See the comprehensive overview section for more details.</p>
-<p><img src="DIF/designAnalysis.png  " class="img-responsive" alt=""></p>
+<div id="sensitivity-specificity-tables" class="section level1">
+<h1>Sensitivity &amp; Specificity Tables</h1>
+<p>If desired, the values needed to calculate sensitivty and specificity at each observed score/cutpoint can be provided in a series of tables.</p>
+<p><img src="testROC/sensSpec.png" class="img-responsive" alt=""></p>
 </div>
-<div id="item-response-curves" class="section level1">
-<h1>Item Response Curves</h1>
-<p>All items selected for DIF analysis will be made available in the left hand window in the ‘Item Response Curves Based on Logistic Regression’ tab. Items are plotted against an x-axis that uses the matching variable, and a y-axis for the predicted probability of a correct response (or endorsement). NB: This is similar, but not the same, as an Item Characteristic curve in Item Response Theory. See the comprehensive overview section for more details.</p>
-<p><img src="DIF/ICC.png  " class="img-responsive" alt=""></p>
+<div id="area-under-the-curve-auc-tests-design-analysis" class="section level1">
+<h1>Area Under the Curve (AUC) Tests &amp; Design Analysis</h1>
+<p>In order to aid in the interpretation of comparisons between the ROC/AUC of two different scales or subgroups within a single scale, statistical tests of the difference between AUC’s are available.</p>
+<p><img src="testROC/testAUC.png" class="img-responsive" alt=""></p>
+<p>In addition, Gelman &amp; Carlin’s Type-S and Type-M error rates may be calculated for performing design analysis, if appropriate.</p>
+<p><img src="testROC/designAnalysis.png  " class="img-responsive" alt=""></p>
+</div>
+<div id="reciever-operating-characteristic-roc-curves" class="section level1">
+<h1>Reciever Operating Characteristic (ROC) Curves</h1>
+<p>All scales selected for analysis can have their ROC curves plotted. In these visualizations sensitivity is on the y-axis, and 1 - specificity is on the x-axis.</p>
+<p><img src="testROC/ROCcurve.png  " class="img-responsive" alt=""></p>
 </div>
 <div id="more-information" class="section level1">
 <h1>More Information</h1>
 <p>A comprehensive overview of the module, including details on the many available options</p>
 <ul>
-<li>
-<a href="binaryDIF_comprehensive.html">Binary Differential Item Functioning - Comprehensive</a>
-</li>
 </ul>
 </div>
 <div id="examples" class="section level1">
 <h1>Examples</h1>
 <p>Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come)</p>
 <ul>
-<li>
-<a href="binaryDIF_example_detailed.html">Binary Differential Item Functioning - Detailed Example</a>
-</li>
-<li>
-<a href="binaryDIF_example.html">Binary Differential Item Functioning - Toy Example</a>
-</li>
 </ul>
 <h1>
 Comments?

@@ -22,7 +22,7 @@ source("../R/functions.R")
 
 The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.
 
-# Descriptive Overview
+# Procedure Notes
 
 Upon loading the module, the instsructions below will be displayed, indicating the minimum requirements for beginning an analysis.
 
@@ -50,16 +50,6 @@ In order to aid in the interpretation of the DIF-level classification, Gelman & 
 All items selected for DIF analysis will be made available in the left hand window in the 'Item Response Curves Based on Logistic Regression' tab. Items are plotted against an x-axis that uses the matching variable, and a y-axis for the predicted probability of a correct response (or endorsement). NB: This is similar, but not the same, as an Item Characteristic curve in Item Response Theory. See the comprehensive overview section for more details.
 
 <img src="DIF/ICC.png  " class="img-responsive" alt="">
-
-# Results
-
-## Procedure Notes
-
-## DIF Ananlysis
-
-## Design Analysis
-
-## Item Response Curves
 
 # More Information
 

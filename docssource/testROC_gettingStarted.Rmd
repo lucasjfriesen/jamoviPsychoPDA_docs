@@ -1,0 +1,75 @@
+---
+title: "Test ROC (Receiver Operating Characteristic)"
+nickname: testROCintroduction
+topic: testROC
+category: measureDiagnostics
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**Test Response Operating Characteristic** module of the Psychometrics & Post-Data Analysis suite for jamovi
+
+<img src="testROC/main.png  " class="img-responsive" alt="">
+
+The module provides an interface for performing test ROC/AUC analyses and comparisons. The module supports comparing multiple measures as well as multiple groupings, with the option to perform design analysis and view ROC curves. The goal of this module is to facilitate measure validation work by creating an easy-to-use interface for collecting publication-ready tables and vizualizations.
+
+# Procedure Notes
+
+Upon loading the module, the instsructions below will be displayed, indicating the minimum requirements for beginning an analysis.
+
+<img src="testROC/instructions.png  " class="img-responsive" alt="">
+
+Once the variables have been set, the instructions are replaced with a descriptive overview of the analysis.
+
+<img src="testROC/procedureNotes.png  " class="img-responsive" alt="">
+
+# Cutpoint Tables
+
+Set the variables from your data according to the instructions provided on the right-hand side of the screen (noted above). Minimally, at least one response variable and one outcome variable must be provided. See the comprehensive overview section for more details and options.
+
+<img src="testROC/analysisVariables.png  " class="img-responsive" alt="">
+
+# Sensitivity & Specificity Tables
+
+If desired, the values needed to calculate sensitivty and specificity at each observed score/cutpoint can be provided in a series of tables.
+
+<img src="testROC/sensSpec.png" class="img-responsive" alt="">
+
+# Area Under the Curve (AUC) Tests & Design Analysis
+
+In order to aid in the interpretation of comparisons between the ROC/AUC of two different scales or subgroups within a single scale, statistical tests of the difference between AUC's are available.
+
+<img src="testROC/testAUC.png" class="img-responsive" alt="">
+
+In addition, Gelman & Carlin's Type-S and Type-M error rates may be calculated for performing design analysis, if appropriate.
+
+<img src="testROC/designAnalysis.png  " class="img-responsive" alt="">
+
+# Reciever Operating Characteristic (ROC) Curves
+
+All scales selected for analysis can have their ROC curves plotted. In these visualizations sensitivity is on the y-axis, and 1 - specificity is on the x-axis.
+
+<img src="testROC/ROCcurve.png  " class="img-responsive" alt="">
+
+# More Information
+
+A comprehensive overview of the module, including details on the many available options
+
+`r list_pages(nickname = "testROCcomprehensive")`
+
+# Examples
+
+Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come)
+
+`r include_examples("testROC")`
+
+`r issues()`
