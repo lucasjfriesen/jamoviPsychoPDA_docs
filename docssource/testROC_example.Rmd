@@ -1,0 +1,19 @@
+---
+title: "Test ROC (Receiver Operating Characteristic) - Toy Example"
+nickname: testROCtoy
+topic: measureDiagnostics
+category: example
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**Test Response Operating Characteristic** module of the Psychometrics & Post-Data Analysis suite for jamovi

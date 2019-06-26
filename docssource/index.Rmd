@@ -22,10 +22,8 @@ source("../R/functions.R")
 Psychometrics & Post-Data Analysis (PsychoPDA) provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric research. Currently, these modules include:   
 
 * Differential Item functioning
-
-Currently available models are:
-
-* Binary DIF
+* Measure Diagnostics
+<!-- * Design Analysis -->
 
 # Examples
 
@@ -33,10 +31,12 @@ Some worked out examples of the analyses carried out with jamovi PsychoPDA are p
 
 <div class="littletitle">Differential Item Functioning</div>
 `r include_examples("binaryDIF")`
-<div class="littletitle">Mean Differences Design Analysis</div>
-`r include_examples("meanDiffDA")`
-<div class="littletitle">Correlations Design Analysis</div>
-`r include_examples("corrDA")`
+<div class="littletitle">Measure Diagnostics</div>
+`r include_examples("measureDiagnostics")`
+<!-- <div class="littletitle">Mean Differences Design Analysis</div> -->
+<!-- `r include_examples("meanDiffDA")` -->
+<!-- <div class="littletitle">Correlations Design Analysis</div> -->
+<!-- `r include_examples("corrDA")` -->
 
 
 
