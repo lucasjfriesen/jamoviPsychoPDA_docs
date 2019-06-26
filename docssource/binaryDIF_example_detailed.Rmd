@@ -18,16 +18,17 @@ source("../R/functions.R")
 
 # Introduction
        
-The following is a demonstration of a basic DIF analysis conducted using the PsychoPDA Binary LogR module. The data used is that supplied by Boeck and Wilson in their textbook titled ‘Explanatory Item Response Models’(fn)[@boeckExplanatoryItemResponse2004]. This data consists of responses from 316 test takers to 24 questions about verbal aggression. The measure is designed to have four factors, focusing on different situations where aggressive verbal behaviour might arise. Each factor is addressed by 6 questions. The data also a binary gender classification. In the participant pool, 243 were females (coded as 1), and 73 were males (coded as 0) In addition, scores on an external measure of anger as a personality trait. The Trait Anger measure (STAXI; Spielberger, 1988; Spielberger & Sydeman, 1994 ADD TO REFS) provides scores ranging continuously from 0 - 40. The responses recorded in the original data have been modified to magnify the gender DIF for illustrative purposes. The modified item is ‘S2DoScold’ and responses from Males were systematically changed to ‘0’ in order to achieve the desired effect. 
+The following is a demonstration of a basic DIF analysis conducted using the PsychoPDA Binary LogR module. This example and large portions of the text are taken (with permission) from Friesen, Kroc, and Zumbo (2019).
 
+The data used is that supplied by Boeck and Wilson in their textbok (Boeck & Wilson, 2004). These data consists of responses from 316 test takers to 24 questions about verbal aggression. The measure is designed to have four factors, focusing on different situations where aggressive verbal behaviour might arise. Each factor is addressed by 6 questions. The dataset also contains a binary gender classification variable. The participant pool contained 243 females (coded as 1) and 73 males (coded as 0). In addition, scores on an external measure of anger as a personality trait are provided. The Trait Anger measure (STAXI; Spielberger, 1988,@d.spielberger1994) provides scores ranging continuously from 0 to 40. The responses recorded in the original data have been modified to magnify the gender DIF for illustrative purposes. The modified item is ‘S2DoScold’ and responses from Males were systematically changed to ‘0’ in order to achieve the desired effect for this illustration.
 
 ##	Setting the Stage
 
-Consider a scenario where a governing body wishes to employ this measure of aggressive tendencies in a scenario for which is was designed, but has concerns regarding the possibility of the test favouring females over males. This body could request that a gender DIF analysis be conducted by administering this new measure to some of the target population, in addition to the more costly measure that is currently in use. The more costly measure is used as a baseline because it has been subjected to rigorous scrutiny in the past. Scores on this measure provide the external matching variable.
+Consider a scenario where a governing body wishes to employ this measure of aggressive tendencies in a scenario for which it was designed, but has concerns regarding the possibility of the test favouring females over males. This body could request that a gender DIF analysis be conducted by administering this new measure to some of the target population, in addition to the more costly measure that is currently in use. The more costly measure is used as a baseline because it has been subjected to rigorous scrutiny in the past. Scores on this measure provide the external matching variable.
 
 ## Analysis
 
-After administering both of the measure to the pilot test group and collecting the needed demographic information, the research loads the data into jamovi and selects “Binary LogR” from the dropdown menu of the PsychoPDA module. This is handled via a drag-and-drop process in the window shown below. 
+After administering both measures to the pilot test group and collecting the needed demographic information, the researcher loads the data into jamovi and selects “Binary LogR” from the dropdown menu of the PsychoPDA module. This is handled via a drag-and-drop process in the window shown in Figure 1. 
 
 Image 1: No data loaded 
 
@@ -39,7 +40,7 @@ Image 2: Data loaded and variables selected
 
 ## Procedure Notes
 
-Once the necessary variables are selected, the analysis will automatically run, and interpretation must now begin. The first step in interpretation is to review the Procedure Notes section of the results window. This allows the researcher to confirm that all of the correct analysis options were selected and to evaluate any warnings which were surfaced during the model fitting process. An important step at this point is to confirm the coding of the grouping variable in order to evaluate the results of the logistic regression. 
+Once the necessary variables are selected, the analysis will automatically run, and interpretation must now begin. The first step in interpretation is to review the Procedure Notes section of the results window (See Figure 2). This allows the researcher to confirm that all of the correct analysis options were selected and to evaluate any warnings which might have surfaced during the model fitting process. An important step at this point is to confirm the coding of the grouping variable in order to properly evaluate the results of the logistic regression. 
 
 <img src="examples/DIF_2/procedureNotes.png  " class="img-responsive" alt="">
 
@@ -47,34 +48,60 @@ Once the necessary variables are selected, the analysis will automatically run, 
 
 ### DIF Analysis Table
 
-After confirming that the analysis was conducted appropriately, the DIF Analysis Table may be assessed. Below we see that 5 of the 38 items have been flagged as exhibiting gender DIF. These 5 items all have p-values associated with the 2-degrees of freedom likelihood ratio test below the chosen threshold of 0.05. Of these 5 items, only one item (S2DoScold) has an effect size (delta Nagelkirke r^2) passing the upper bound of A-level DIF. The other four items have extremely small effect size estimates, a fact which must be evaluated alongside their statistical significance.
+After confirming that the analysis was conducted properly, the DIF Analysis Table may be assessed. In Figure 3, we see that 5 of the 38 items have been flagged as exhibiting gender DIF. These 6 items all have p-values associated with the standard 2-degrees of freedom likelihood ratio test below the chosen threshold of 0.05. Of these 5 items, only one item (S2DoScold) has an effect size (Δ R²) passing the upper bound of A-level DIF (Δ R² = 0.29). The other five items have extremely small effect size estimates, a fact which must be evaluated alongside their statistical significance. 
 
 <img src="examples/DIF_2/difTable.png  " class="img-responsive" alt="">
 
 ### Design Analysis Table
 
-The Design Analysis Table will be consulted next, in order to aid the interpretation of the effect size estimates. Here we see that in all cases there is a very small Type-M error associated with the observed effect. This is expected given the relatively high empirical observed power(fn) for detecting the three hypothesized effects(fn). This means that 
+The Design Analysis Table will be consulted next (Figure 4), in order to aid the interpretation of the effect size estimates. Recall that the software computes the Type-M error at three proposed values for the unknown true effect: the thresholds for A-, B-, and C-level DIF respectively.
+
+Here we see that in all cases there is a pattern in the Type-M error associated with the observed effect at each hypothesized true effect. As the hypothesized true effect increases, the estimated Type-M error decreases. This pattern is expected due to the relationship between Type-M error and the power to detect an effect of a given size. In addition, in the cases where the observed effect is smaller than the hypothesized true effect the Type-M error is below 1. That is to say that the post-data analysis has shown that, on average, a statistically significant observed effect will be smaller than the hypothesized true effect, rather than magnified. The Type-M error is correspondingly above 1 for all items at the ‘Null’ level and at all three levels for the ‘S2DoScold’ item, which is the one which was manipulated to increase the DIF effect.
+
+The most interesting results of this table are found in the rows of the ‘S2DoScold’ item. Several key observations can be made here. 1. First, under the hypothesis of a null true DIF effect, the post-data Type-M error calculation shows that a statistically significant effect will be magnified by approximately 16x. Under the hypothesis that the unknown true DIF effect is equal to the B-level threshold, the average statistically significant observed effect will be multiplied two times too large, and the Type-M error corresponding to a C-level DIF hypothesis for the unknown true effect shows minimal magnification. Second, for this item, the best estimate of the unknown true effect reduced by its Type-M error at the B-level hypothesis is at the B-level threshold of 0.29 / 2.27 = 0.13 And the corresponding best estimate of the unknown true effect if the C-level hypothesis is used is at the very upper end of B-level DIF. 0.29/1.13 = 0.25.
 
 <img src="examples/DIF_2/designAnalysis.png  " class="img-responsive" alt="">
 
+Taken together, what do these Type-M errors tell us? Given that the hypothesized effects are plausible, we should have sufficient power to instill confidence in our observed effect sizes. The interpretation of these results will be expanded on in the Results section of this demonstration.
+
 ## Item Response Curves
 
-Finally, in order to communicate the results of the DIF analysis more effectively, the Item Response Curves for three items have been produced: S2WantCurse, S2DoCurse, and S2DoScold. These show a visual representation of the probability of endorsement for the items (y-axis) chosen for both groups across the range of the matching variable (x-axis). The gray shading represents the standard error of the logistic regression model coefficients, which is largely a function of the sample size of the group at each point along the scale represented by the x-axis. Each item is discussed below in turn.
+Finally, in order to communicate the results of the DIF analysis more effectively, the item response curves for three items have been produced: S2WantCurse, S2DoCurse, and S2DoScold. These show a visual representation of the probability of endorsement for the items (y-axis) chosen for both groups across the range of the matching variable (x-axis). The gray shading represents the approximate 95% confidence bands of the logistic regression model coefficients, which is largely a function of the sample size of the group at each point along the scale represented by the x-axis. Each item is discussed below in turn.
 
-These plots are extremely useful when trying to understand what it means when an item is flagged as exhibiting DIF. The first item, S2WantCurse, was not flagged, and both groups are nearly matched all the way along the scale. This is an example of what one expects to see when there is no DIF effect present.
+These plots are extremely useful when trying to understand what it means when an item is flagged as exhibiting DIF. The first item, S2WantCurse, was not flagged, and both groups are nearly matched all the way along the scale. This is an example of what one expects to see when there is no DIF effect present. 
 
 <img src="examples/DIF_2/irc1.png  " class="img-responsive" alt=""> 
 
-The second item, S2DoCurse, was flagged as exhibiting B-level gender DIF. The items two notable characteristics: (1) the standard error on the lower range of the reference group (Females with Trait Anger scores below 40), is much wider than that of the contrast group. This reflects the fact that only [N] respondents in the reference group did not endorse this item. Thus, the next step in evaluating this item might be to gain a larger sample of responses to this item in order to see if the DIF effect is an artifact of the potentially biased sample.
+The second item, S2DoCurse, was flagged as exhibiting B-level gender DIF. The second item response curve shows two notable characteristics: (1) the approximate confidence band on the lower range of the reference group (Females with Trait Anger scores below 40), is much wider than that of the contrast group (Figure 6). This reflects the fact that the large majority of respondents in the reference group did not endorse this item. Thus, the next step in evaluating this item might be to gain a larger sample of responses to this item in order to see if the DIF effect is an artifact of the potentially biased sample. 
 
 <img src="examples/DIF_2/irc2.png  " class="img-responsive" alt=""> 
 
-The third item, S2DoScold, is the item which was manipulated to magnify the DIF effect. Responses from the contrast group (Males) are clearly following a different pattern than that of the contrast group.
+The third item, S2DoScold, is the item which was manipulated to magnify the DIF effect. Responses from the contrast group (Males) are clearly following a different pattern than that of the contrast group in Figure 7.
 
 <img src="examples/DIF_2/irc3.png  " class="img-responsive" alt=""> 
+
+The Item response curve for this item quite clearly illustrate the effect of DIF on this item; Females are substantially more likely to endorse this item than Males, even controlling for scores on the Anger matching variable.
  
 ### Results
  
-The results of this analysis show that …
+The interpretations of these results are similar in either the item/measure development or validation contexts, although the degrees of concern for DIF effects and their implications and costs to repair will differ circumstantially. Regardless of the context, if the estimated true effect of gender DIF on an item is substantial enough there will be consequences of some sort. Either the validity of test score interpretations will be impaired, if the gender DIF effect is not addressed, or time- and financial-resource costs will be incurred in addressing the gender DIF effect, either through removing or modifying the item. Here is where the Type-M error analysis can help us, as it captures a more accurate picture of the unknown true effect of interest, as quantified by our sample estimate, in order to both strengthen any validity argument and ensure unnecessary costs are not incurred.
+
+The results of this analysis show that of the 24 items on this scale, 6 exhibit evidence of gender DIF. Of those 6, only 1 item (‘S2DoScold’, Δ R² = 0.26) is above A-level. That is, only 1 item has a gender DIF effect that is beyond ‘negligible’, according to the Zumbo-Thomas scale. In the design analysis table the Type-M error is estimated relative to three hypothesized true effects sizes, corresponding to the three DIF-level thresholds. This type of a priori hypothesis for the true effect is somewhat contrary to the recommendations of Gelman & Carlin (2014) who recommend basing the hypothesized true effect on a thorough review of extant literature on the effect in question. However, given the wide use of the Zumbo-Thomas scale, the possibility of negligible, moderate, or large DIF effects are at the very least hypotheses of great practical interest.
+Of the six items exhibiting signs of gender DIF, the five which are A-level have relatively simple interpretations with respect to their Type-M error. The unknown true effect is smaller than the estimated effect size, meaning that if the B-level threshold is the minimum effect size that matters, these items are not of concern; the unknown true effect is very likely also ‘negligible’.
+
+The interpretation of the remaining item, ‘S2DoScold’, is somewhat more involved. The observed effect size is 0.29, which is in the C-level, or ‘large’, effect size range. 
+
+<img src="examples/DIF_2/TypeMCalculations.png  " class="img-responsive" alt=""> 
+
+There are several results to note in the above table. First, unsurprisingly, the estimated true effect is always smaller than the observed effect. This should be the case because we are multiplying the observed effect by the Type-M error (Recall, it is also called the exaggeration ratio).
+
+Second, the estimated true effect under the null/negligible level is lower that the 2SE threshold. That is, if we assume that the most likely scenario is that the true unknown gender DIF effect size on this item is no larger than twice the standard error of the estimate, i.e. a proxy for sampling error, the Type-M error indicates that the observed result is exaggerated by a factor of 16.69. However, given the large sample size used in this study, the likelihood of observing an effect which is 30x the standard error of the estimate is quite low. This a priori hypothesis seems quite weak.
+
+Third, the computations for the estimated true effects of both the B- and C-level hypotheses for the unknown true effect yield B-level results. That is, under both the a priori hypotheses that the unknown true effect is at the threshold for B-level or at the threshold for C-level DIF, the observed effect multiplied by the respective Type-M error is in the B-level effect size range. Again, given the large sample size used in this study, the observed effect arising by chance seems quite unlikely. This means that, so long as our primary concern is the DIF-level categorization, the choice of hypothesis here does not change the result. The best estimate of the unknown true effect of gender DIF on this item is in the B-level range.
+
+This conclusion, that the item ’S2DoScold’ is exhibiting evidence of a true gender DIF effect, is reinforced by the item response curves. There is a clearly visible difference in the probability of endorsement between Males and Females, with Males being less likely to endorse the item across the range of the Anger matching variable.
+In practice, this evidence should be taken together and assessed as a whole. The main points as they might be presented in practice are: 1. The statistical test of significance for DIF effects indicates that six of 24 items on this measure are exhibiting DIF effects. 2. Of these six, five are in the A-level (negligible) range, and the Type-M error calculations reinforce the conclusion that the unknown true effect of DIF is indeed negligible. 3. The one item which exhibits a gender DIF effect larger than A-level shows evidence that the unknown true effect is in the B-level range, based on the Type-M error calculations. 4. Given the large sample size used in this study, it is highly unlikely that the results are due purely to sampling error.
+
+The final conclusion based on this evidence would (hopefully) be that this item should likely be reviewed by the relevant experts involved in its development or validation and either revised or rejected.
 
 `r issues()`

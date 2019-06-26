@@ -1,0 +1,140 @@
+---
+title: "Test ROC - Comprehensive"
+nickname: testROCcomprehensive
+topic: testROC
+category: measureDiagnostics
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+The following is a comprehensive overview of the available options in the Test ROC module. For information on getting started, see here:
+
+`r list_pages(nickname = "testROCFintroduction")`
+
+## Calculations
+
+The TestROC module is built on top of "cutpointR", which is a well-documented R package by Christian Thiele [LINK]. As such, the best documentation on the calculations performed by any of the options below is found in the cutpointR package documentation. In addition, any requests for changes in the way calculations are performed are best directed to cutpointR. If/when they are implemented there, the TestROC package will be automatically updated.
+
+## Options
+
+1. title: Dependent Variable      type: Variables
+
+
+2. title: Class Variable      type: Variable
+
+
+3. title: Group Variable      type: Variable
+
+4. title: Method
+      options: 
+        - name: oc_manual
+          title: "Custom cut score"
+        - name: maximize_metric
+          title: Maximize metric
+        - name: minimize_metric
+          title: Minimize metric
+        - name: maximize_loess_metric
+          title: Maximize metric (LOESS)
+        - name: minimize_loess_metric
+          title: Minimize metric (LOESS)
+        - name: maximize_spline_metric
+          title: Maximize metric (spline)
+        - name: minimize_spline_metric
+          title: Minimize metric (spline)
+        - name: maximize_boot_metric
+          title: Maximize metric (boot)
+        - name: minimize_boot_metric
+          title: Minimize metric (boot)
+        - name: oc_youden_kernel
+          title: "Maximize Youden-Index (Kernel smoothed)"
+        - name: oc_youden_normal
+          title: "Maximize Youden-Index (Parametric normal)"
+      default: maximize_metric
+
+5. title: All observed scores
+      
+6. title: Specify cut score      type: String
+
+7. title: Metric      type: List
+      options:
+        - name: sum_sens_spec
+          title: "Sum Sens-Spec"
+        - name: accuracy
+          title: Accuracy
+        - name: youden
+          title: Youden-Index
+        - name: sum_sens_spec        
+          title: 'Sum: Sens/Spec'
+        - name: sum_ppv_npv
+          title: 'Sum: PPV/NPV'
+        - name: prod_sens_spec
+          title: 'Prod: Sens/Spec'
+        - name: prod_ppv_npv  
+          title: 'Prod: PPV/NPV'
+        - name: cohens_kappa
+          title: "Cohen's Kappa"
+        - name: abs_d_sens_spec
+          title: 'Abs. d: Sens/Spec'
+        - name: roc01
+          title: 'ROC'
+        - name: abs_d_ppv_npv
+          title: 'Abs. d: PPV/NPV'
+        - name: p_chisquared
+          title: 'Chi-squared'
+        - name: odds_ratio
+          title: Odds Ratio
+        - name: risk_ratio
+          title: Risk Ratio
+        - name: misclassification_cost
+          title: Misclassification Cost
+        - name: total_utility
+          title: Total Utility
+        - name: F1_score
+          title: F1 score
+
+8. title: Bootstrap runs      type: Number
+
+9. title: Ties
+      options:
+        - name: c
+          title: All optimal cutpoints
+        - name: mean
+          title: Mean optimal cutpoint
+        - name: median
+          title: Median optimal cutpoint
+
+10. title: Direction (relative to optimal cutpoint)
+      options:
+        - name: ">="
+          title: ">="
+        - name: "<="
+          title: "<="
+
+11. title: ROC
+      default: True
+
+12. title: Standard error bars
+      default: True
+
+13. title: LOESS Smoothing
+      default: True
+
+14. title: Sensitivity-Specificity Tables
+      default: False
+
+# Examples
+
+Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come):
+
+`r include_examples("testROC")`
+
+`r issues()`
