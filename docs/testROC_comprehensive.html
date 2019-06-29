@@ -334,24 +334,95 @@ div.tocify {
 </div>
 <div id="options" class="section level2">
 <h2>Options</h2>
-<ol style="list-style-type: decimal">
-<li><p>title: Dependent Variable type: Variables</p></li>
-<li><p>title: Class Variable type: Variable</p></li>
-<li><p>title: Group Variable type: Variable</p></li>
-<li><p>title: Method options: - name: oc_manual title: “Custom cut score” - name: maximize_metric title: Maximize metric - name: minimize_metric title: Minimize metric - name: maximize_loess_metric title: Maximize metric (LOESS) - name: minimize_loess_metric title: Minimize metric (LOESS) - name: maximize_spline_metric title: Maximize metric (spline) - name: minimize_spline_metric title: Minimize metric (spline) - name: maximize_boot_metric title: Maximize metric (boot) - name: minimize_boot_metric title: Minimize metric (boot) - name: oc_youden_kernel title: “Maximize Youden-Index (Kernel smoothed)” - name: oc_youden_normal title: “Maximize Youden-Index (Parametric normal)” default: maximize_metric</p></li>
-<li><p>title: All observed scores</p></li>
-<li><p>title: Specify cut score type: String</p></li>
-<li><p>title: Metric type: List options: - name: sum_sens_spec title: “Sum Sens-Spec” - name: accuracy title: Accuracy - name: youden title: Youden-Index - name: sum_sens_spec<br />
-title: ‘Sum: Sens/Spec’ - name: sum_ppv_npv title: ‘Sum: PPV/NPV’ - name: prod_sens_spec title: ‘Prod: Sens/Spec’ - name: prod_ppv_npv<br />
-title: ‘Prod: PPV/NPV’ - name: cohens_kappa title: “Cohen’s Kappa” - name: abs_d_sens_spec title: ‘Abs. d: Sens/Spec’ - name: roc01 title: ‘ROC’ - name: abs_d_ppv_npv title: ‘Abs. d: PPV/NPV’ - name: p_chisquared title: ‘Chi-squared’ - name: odds_ratio title: Odds Ratio - name: risk_ratio title: Risk Ratio - name: misclassification_cost title: Misclassification Cost - name: total_utility title: Total Utility - name: F1_score title: F1 score</p></li>
-<li><p>title: Bootstrap runs type: Number</p></li>
-<li><p>title: Ties options: - name: c title: All optimal cutpoints - name: mean title: Mean optimal cutpoint - name: median title: Median optimal cutpoint</p></li>
-<li><p>title: Direction (relative to optimal cutpoint) options: - name: “&gt;=” title: “&gt;=” - name: “&lt;=” title: “&lt;=”</p></li>
-<li><p>title: ROC default: True</p></li>
-<li><p>title: Standard error bars default: True</p></li>
-<li><p>title: LOESS Smoothing default: True</p></li>
-<li><p>title: Sensitivity-Specificity Tables default: False</p></li>
-</ol>
+<div id="title-dependent-variable-type-variables" class="section level3">
+<h3>1. title: Dependent Variable type: Variables</h3>
+</div>
+<div id="class-variable-type-variable" class="section level3">
+<h3>2. Class Variable type: Variable</h3>
+</div>
+<div id="group-variable-type-variable" class="section level3">
+<h3>3. Group Variable type: Variable</h3>
+</div>
+<div id="method" class="section level3">
+<h3>4. Method</h3>
+<pre><code>  options: 
+    Custom cut score
+    Maximize metric
+    Minimize metric
+    Maximize metric (LOESS)
+    Minimize metric (LOESS)
+    Maximize metric (spline)
+    Minimize metric (spline)
+    Maximize metric (boot)
+    Minimize metric (boot)
+    Maximize Youden-Index (Kernel smoothed)
+    Maximize Youden-Index (Parametric normal)
+    default: maximize_metric</code></pre>
+<p><code>Method</code> determines how the optimal cutpoint will be determined after calculating the <code>Metric</code> (below). The default is simply <code>Maximize Metric</code>, which means that the cutpoint with the maximum value for <code>Metric</code> will be chosen as the optimal cutpoint. The options in brackets, <code>LOESS</code>, <code>spline</code>, <code>boot</code>, <code>Kernel smoothed</code>, and <code>Parametric normal</code> refer to different smoothing operations which may be carried out on the metric prior to selecting the respective max/min value.</p>
+</div>
+<div id="all-observed-scores" class="section level3">
+<h3>5. All observed scores</h3>
+<p>If <code>All observed scores</code> is selected, results table will return statistics for all observed measure scores in the data.</p>
+</div>
+<div id="specify-cut-score-type-string" class="section level3">
+<h3>6. Specify cut score type: String</h3>
+<p><code>Specify cut score</code> will be ignored unless the <code>Custom Cut Score</code> option for <code>Method</code> (above) is chosen. This option is used to return only the results for a single specified observed score.</p>
+</div>
+<div id="metric-type-list" class="section level3">
+<h3>7. Metric type: List</h3>
+<pre><code>  options:
+    Sum Sens-Spec
+    Accuracy
+    Youden-Index
+    Sum: Sens/Spec
+    Sum: PPV/NPV
+    Prod: Sens/Spec
+    Prod: PPV/NPV
+    Cohen&#39;s Kappa
+    Abs. d: Sens/Spec
+    ROC
+    Abs. d: PPV/NPV
+    Chi-squared
+    Odds Ratio
+    Risk Ratio
+    Misclassification Cost
+    Total Utility
+    F1 score
+    </code></pre>
+<p><code>Metric</code> refers to the statistic/value that is to be calculated and used by <code>Method</code> for selecting the optimal cutpoint(s).</p>
+</div>
+<div id="bootstrap-runs-type-number" class="section level3">
+<h3>8. Bootstrap runs type: Number</h3>
+</div>
+<div id="ties" class="section level3">
+<h3>9. Ties</h3>
+<pre><code>  options:
+    All optimal cutpoints
+    Mean optimal cutpoint
+    Median optimal cutpoint</code></pre>
+</div>
+<div id="direction-relative-to-optimal-cutpoint" class="section level3">
+<h3>10. Direction (relative to optimal cutpoint)</h3>
+<pre><code>  options:
+    &quot;&gt;=&quot;
+    &quot;&lt;=&quot;</code></pre>
+</div>
+<div id="roc" class="section level3">
+<h3>11. ROC</h3>
+<pre><code>  default: True</code></pre>
+</div>
+<div id="standard-error-bars" class="section level3">
+<h3>12. Standard error bars</h3>
+<pre><code>  default: True</code></pre>
+</div>
+<div id="loess-smoothing" class="section level3">
+<h3>13. LOESS Smoothing</h3>
+<pre><code>  default: True</code></pre>
+</div>
+<div id="sensitivity-specificity-tables" class="section level3">
+<h3>14. Sensitivity-Specificity Tables</h3>
+<pre><code>  default: False</code></pre>
+</div>
 </div>
 <div id="examples" class="section level1">
 <h1>Examples</h1>
