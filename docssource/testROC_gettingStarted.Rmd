@@ -1,5 +1,5 @@
 ---
-title: "Test ROC (Receiver Operating Characteristic)"
+title: "Test ROC - Getting Started"
 nickname: testROCintroduction
 topic: testROC
 category: measureDiagnostics
