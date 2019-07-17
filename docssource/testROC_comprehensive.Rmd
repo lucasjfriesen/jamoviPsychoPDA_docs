@@ -83,6 +83,12 @@ If `All observed scores` is selected, results table will return statistics for a
 
 ### 8. Bootstrap runs      type: Number
 
+*Not yet implemented. Please notify the author if this feature would be useful to you*
+
+`Bootstrap runs` is the number of bootstrap samples will be used to assess the variability and the out-of-sample performance. If used, bootstrap samples will be drawn and the optimal cutpoint
+using method will be determined this way. Additionally, as a way of internal validation, the function in metric will be used to score the out-of-bag predictions using the cutpoints determined by method.
+Various default metrics are always included in the bootstrap results.
+
 ### 9. Ties
       options:
         All optimal cutpoints
@@ -94,17 +100,27 @@ If `All observed scores` is selected, results table will return statistics for a
         ">="
         "<="
 
+`Direction` refers to the direction of the observed score relative to the optimal cutpoint. That is, whether the cutpoint should be a 'floor' or a 'ceiling'.
+
 ### 11. ROC
       default: True
+      
+Selecting the `ROC` option will return an ROC curve for each dependent variable and group.
 
 ### 12. Standard error bars
       default: True
+      
+If `ROC` has been selected, `Standard error bars` is used to show approximated standard error ranges using LOESS smoothing.
 
 ### 13. LOESS Smoothing
       default: True
 
+Selecting the `LOESS Smoothing` option will overlay a LOESS smoothed regression line on the ROC curve.
+
 ### 14. Sensitivity-Specificity Tables
       default: False
+      
+`Sensitivity-Specificity Tables` is used to display the raw data at used to calculate sensitivity and specificity. This option may be useful for checking data if the results of the optimal cutpoints or ROC curve are not as expected.
 
 # Examples
 

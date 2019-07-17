@@ -393,6 +393,8 @@ div.tocify {
 </div>
 <div id="bootstrap-runs-type-number" class="section level3">
 <h3>8. Bootstrap runs type: Number</h3>
+<p><em>Not yet implemented. Please notify the author if this feature would be useful to you</em></p>
+<p><code>Bootstrap runs</code> is the number of bootstrap samples will be used to assess the variability and the out-of-sample performance. If used, bootstrap samples will be drawn and the optimal cutpoint using method will be determined this way. Additionally, as a way of internal validation, the function in metric will be used to score the out-of-bag predictions using the cutpoints determined by method. Various default metrics are always included in the bootstrap results.</p>
 </div>
 <div id="ties" class="section level3">
 <h3>9. Ties</h3>
@@ -406,22 +408,30 @@ div.tocify {
 <pre><code>  options:
     &quot;&gt;=&quot;
     &quot;&lt;=&quot;</code></pre>
+<p><code>Direction</code> refers to the direction of the observed score relative to the optimal cutpoint. That is, whether the cutpoint should be a ‘floor’ or a ‘ceiling’.</p>
 </div>
 <div id="roc" class="section level3">
 <h3>11. ROC</h3>
-<pre><code>  default: True</code></pre>
+<pre><code>  default: True
+  </code></pre>
+<p>Selecting the <code>ROC</code> option will return an ROC curve for each dependent variable and group.</p>
 </div>
 <div id="standard-error-bars" class="section level3">
 <h3>12. Standard error bars</h3>
-<pre><code>  default: True</code></pre>
+<pre><code>  default: True
+  </code></pre>
+<p>If <code>ROC</code> has been selected, <code>Standard error bars</code> is used to show approximated standard error ranges using LOESS smoothing.</p>
 </div>
 <div id="loess-smoothing" class="section level3">
 <h3>13. LOESS Smoothing</h3>
 <pre><code>  default: True</code></pre>
+<p>Selecting the <code>LOESS Smoothing</code> option will overlay a LOESS smoothed regression line on the ROC curve.</p>
 </div>
 <div id="sensitivity-specificity-tables" class="section level3">
 <h3>14. Sensitivity-Specificity Tables</h3>
-<pre><code>  default: False</code></pre>
+<pre><code>  default: False
+  </code></pre>
+<p><code>Sensitivity-Specificity Tables</code> is used to display the raw data at used to calculate sensitivity and specificity. This option may be useful for checking data if the results of the optimal cutpoints or ROC curve are not as expected.</p>
 </div>
 </div>
 <div id="examples" class="section level1">

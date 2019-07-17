@@ -26,7 +26,7 @@ Use variable names without space, parentheses or brackets, etc.
 
 # Binary DIF
 
-**Error: Can only apply contrasts to data with 2 or more levels**
+### **Error: Can only apply contrasts to data with 2 or more levels**
 
 This is an error that _usually_ comes from attempting to fit a logistic model in R to data which does not have at least two different responses for each grouping variable.
 
@@ -36,12 +36,22 @@ Ensure that there are no rows/columns in your data with no responses, and that t
 
 If this doesn't seem to be the case for you, you may have encountered a bug: please feel free to contact me using a method at the bottom of this page.
 
-# Mean Differences Design Analysis
+# Measure Diagnostics
 
-nothing yet
+## Test ROC
 
-# Correlation Design Analysis
+The error messages in the Test ROC module are somewhat underdeveloped. If your answer is not here, please contact the author using the contact information at the end of this page.
 
-nothing yet
+### **Error: non-numeric argument to mathmatical function**
+
+This error occurs when attempting to plot an ROC curve on an analysis that failed to run. Deselect the `ROC` option and a new, more informative error should surface.
+
+### **AUC is wrong / ROC Curve appears wrong**
+
+Check the factor-coding of the class variable. If the coding is backwards, the proper AUC will be 1 - AUC and the ROC will appear upside-down.
+
+The factor levels can be changed here in the Data -> Setup tab:
+
+<img src="testROC/factorRecoding.png" class="img-responsive" alt="">
 
 `r issues()`

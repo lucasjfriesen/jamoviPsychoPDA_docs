@@ -329,25 +329,36 @@ div.tocify {
 </div>
 <div id="binary-dif" class="section level1">
 <h1>Binary DIF</h1>
-<p><strong>Error: Can only apply contrasts to data with 2 or more levels</strong></p>
+<div id="error-can-only-apply-contrasts-to-data-with-2-or-more-levels" class="section level3">
+<h3><strong>Error: Can only apply contrasts to data with 2 or more levels</strong></h3>
 <p>This is an error that <em>usually</em> comes from attempting to fit a logistic model in R to data which does not have at least two different responses for each grouping variable.</p>
 <p>For example, in data coded [0, 1] for incorrect and correct responses and two groups [m, f], it might be the case that no <code>f</code> in your data set responded inorrectly, meaning there are no <code>f</code> in the data with response <code>0</code>. This will break the <code>glm()</code> function.</p>
 <p>Ensure that there are no rows/columns in your data with no responses, and that there are no groups who only respond in a single way.</p>
 <p>If this doesn’t seem to be the case for you, you may have encountered a bug: please feel free to contact me using a method at the bottom of this page.</p>
 </div>
-<div id="mean-differences-design-analysis" class="section level1">
-<h1>Mean Differences Design Analysis</h1>
-<p>nothing yet</p>
 </div>
-<div id="correlation-design-analysis" class="section level1">
-<h1>Correlation Design Analysis</h1>
-<p>nothing yet</p>
+<div id="measure-diagnostics" class="section level1">
+<h1>Measure Diagnostics</h1>
+<div id="test-roc" class="section level2">
+<h2>Test ROC</h2>
+<p>The error messages in the Test ROC module are somewhat underdeveloped. If your answer is not here, please contact the author using the contact information at the end of this page.</p>
+<div id="error-non-numeric-argument-to-mathmatical-function" class="section level3">
+<h3><strong>Error: non-numeric argument to mathmatical function</strong></h3>
+<p>This error occurs when attempting to plot an ROC curve on an analysis that failed to run. Deselect the <code>ROC</code> option and a new, more informative error should surface.</p>
+</div>
+<div id="auc-is-wrong-roc-curve-appears-wrong" class="section level3">
+<h3><strong>AUC is wrong / ROC Curve appears wrong</strong></h3>
+<p>Check the factor-coding of the class variable. If the coding is backwards, the proper AUC will be 1 - AUC and the ROC will appear upside-down.</p>
+<p>The factor levels can be changed here in the Data -&gt; Setup tab:</p>
+<p><img src="testROC/factorRecoding.png" class="img-responsive" alt=""></p>
 <h1>
 Comments?
 </h1>
 <p>
 Got comments, issues or spotted a bug? Please open an issue at <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA</a> on github or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
 </p>
+</div>
+</div>
 </div>
 
 
