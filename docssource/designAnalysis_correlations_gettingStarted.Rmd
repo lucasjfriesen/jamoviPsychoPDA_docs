@@ -1,5 +1,5 @@
 ---
-title: "Correlations"
+title: "Design Analysis for Correlations - Getting Started"
 nickname: corrDA
 topic: designAnalysis
 category: subTopic
@@ -16,4 +16,4 @@ output:
 source("../R/functions.R")
 ```
 
-**In Development**
+*In progress*

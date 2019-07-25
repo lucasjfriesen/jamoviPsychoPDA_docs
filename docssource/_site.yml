@@ -4,13 +4,13 @@ navbar:
   title: "PsychoPDA"
   left:
   - text: "Differential Item Functioning"
-    href:  differentialItemFunctioning.html
+    href:  differentialItemFunctioning_index.html
   - text: "Measure Diagnostics"
-    href: measureDiagnostics.html
+    href: measureDiagnostics_index.html
   - text: "Design Analysis"
-    href: designAnalysis.html
+    href: designAnalysis_index.html
   - text: "Examples"
-    href:  examples.html
+    href:  examples_index.html
   - text: "Release notes"
     href:  releaseNotes.html
 

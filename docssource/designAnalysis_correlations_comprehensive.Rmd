@@ -1,7 +1,7 @@
 ---
-title: "Test ROC (Receiver Operating Characteristic) - Toy Example"
-nickname: testROCtoy
-topic: measureDiagnostics
+title: "Design Analysis for Correlations - Comprehensive"
+nickname: corrDA
+topic: designAnalysis
 category: example
 output: 
   html_document:
@@ -16,4 +16,6 @@ output:
 source("../R/functions.R")
 ```
 
-**Test Response Operating Characteristic** module of the Psychometrics & Post-Data Analysis suite for jamovi
+Design Analysis for Correlations - Comprehensive
+
+*In progress*

@@ -24,6 +24,10 @@ Measure Diagnostics modules of the Psychometrics & Post Data Analysis suite
 ## Examples
 Test ROC examples
 
-**In Development**
+`r include_examples("testROC")`
+
+Ordinal Reliability examples
+
+`r include_examples("ordinalReliability")`
 
 `r issues()`

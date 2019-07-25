@@ -1,7 +1,7 @@
 ---
-title: "Correlations DA"
-nickname: correlationsDA
-topic: corrDA
+title: "Ordinal Reliability - Toy Example"
+nickname: ordinalReliabilitytoy
+topic: ordinalReliability
 category: example
 output: 
   html_document:
@@ -16,8 +16,6 @@ output:
 source("../R/functions.R")
 ```
 
-**Correlations Design Analysis Example**
+**Ordinal Reliability** module of the Psychometrics & Post-Data Analysis suite for jamovi
 
-Working on it.
-
-`r issues()`
+*In progress*

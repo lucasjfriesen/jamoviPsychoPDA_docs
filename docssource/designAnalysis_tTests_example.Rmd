@@ -1,0 +1,23 @@
+---
+title: "Design Analysis for Mean Differences - Toy example"
+nickname: meanDiffDA
+topic: designAnalysis
+category: example
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**Design Analysis for Mean Differences Example**
+
+*In progress*
+
+`r issues()`

@@ -1,5 +1,5 @@
 ---
-title: "Test ROC - Getting Started"
+title: "TestROC - Getting Started"
 nickname: testROCintroduction
 topic: testROC
 category: measureDiagnostics
@@ -44,21 +44,17 @@ Once the necessary variables have been set, the analysis will output a primary r
 
 <img src="testROC/resultsTable.png" class="img-responsive" alt="">
 
+# DeLong's Test (Difference in AUC)
+
+DeLong's test is used to provide a statistical test of whether or not there is a difference between two ROC curves. Soon Gelman & Carlin's Type-S and Type-M error rates will be calculated for performing design analysis on this test.
+
+<img src="testROC/delongTest.png" class="img-responsive" alt="">
+
 # Sensitivity & Specificity Tables
 
 If desired, the values needed to calculate sensitivty and specificity at each observed score/cutpoint can be provided in a series of tables.
 
 <img src="testROC/sensSpec.png" class="img-responsive" alt="">
-
-<!-- # Area Under the Curve (AUC) Tests & Design Analysis -->
-
-<!-- In order to aid in the interpretation of comparisons between the ROC/AUC of two different scales or subgroups within a single scale, statistical tests of the difference between AUC's are available. -->
-
-<!-- <img src="testROC/testAUC.png" class="img-responsive" alt=""> -->
-
-<!-- In addition, Gelman & Carlin's Type-S and Type-M error rates may be calculated for performing design analysis, if appropriate. -->
-
-<!-- <img src="testROC/designAnalysis.png" class="img-responsive" alt=""> -->
 
 # Reciever Operating Characteristic (ROC) Curves
 

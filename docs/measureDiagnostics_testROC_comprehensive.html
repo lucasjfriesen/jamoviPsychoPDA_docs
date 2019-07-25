@@ -11,7 +11,7 @@
 
 
 
-<title>Binary Differential Item Functioning - Detailed Example</title>
+<title>Test ROC - Comprehensive</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -295,6 +295,9 @@ div.tocify {
   <a href="differentialItemFunctioning.html">Differential Item Functioning</a>
 </li>
 <li>
+  <a href="measureDiagnostics.html">Measure Diagnostics</a>
+</li>
+<li>
   <a href="designAnalysis.html">Design Analysis</a>
 </li>
 <li>
@@ -317,49 +320,138 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Binary Differential Item Functioning - Detailed Example</h1>
+<h1 class="title toc-ignore">Test ROC - Comprehensive</h1>
 
 </div>
 
 
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>The following is a demonstration of a basic DIF analysis conducted using the PsychoPDA Binary LogR module. The data used is that provided by [The IRT textbook]. This data consists of [N responses] to [N items] dichotomously scored items, where rows are test takers and columns are items. The data also contains a column for a binary gender classification and a column containing an external matching variable consisting of scores on a measure of anger ranging continuously from 0 - 40.</p>
+<p>The following is a comprehensive overview of the available options in the Test ROC module. For information on getting started, see here:</p>
+<ul>
+</ul>
+<div id="calculations" class="section level2">
+<h2>Calculations</h2>
+<p>The TestROC module is built on top of “cutpointR”, which is a well-documented R package by Christian Thiele [LINK]. As such, the best documentation on the calculations performed by any of the options below is found in the cutpointR package documentation. In addition, any requests for changes in the way calculations are performed are best directed to cutpointR. If/when they are implemented there, the TestROC package will be automatically updated.</p>
 </div>
-<div id="setting-the-stage" class="section level1">
-<h1>Setting the Stage</h1>
-<p>Consider a scenario where a governing body wishes to employ this measure of aggressive tendencies in a scenario for which is was designed, but has concerns regarding the possibility of the test favouring females over males. This body could request that a gender DIF analysis be conducted by administering this new measure to some of the target population, in addition to the more costly measure that is currently in use. The more costly measure is used as a baseline because it has been subjected to rigorous scrutiny in the past. Scores on this measure provide the external matching variable. After administering both of the measure to the pilot test group and collecting the needed demographic information, the research loads the data into jamovi and selects “Binary LogR” from the dropdown menu of the PsychoPDA module. This is handled via a drag-and-drop process in the window shown below.</p>
-<p>Image 1: No data loaded</p>
-<p><img src="examples/DIF_2/image2.jpg  " class="img-responsive" alt=""></p>
-<p>Image 2: Data loaded and variables selected</p>
-<p><img src="examples/DIF_2/image1.jpg  " class="img-responsive" alt=""></p>
-<div id="procedure-notes" class="section level2">
-<h2>Procedure Notes</h2>
-<p>Once the necessary variables are selected, the analysis will automatically run, and interpretation must now begin. The first step in interpretation is to review the Procedure Notes section of the results window. This allows the researcher to confirm that all of the correct analysis options were selected and to evaluate any warnings which were surfaced during the model fitting process. An important step at this point is to confirm the coding of the grouping variable in order to evaluate the results of the logistic regression.</p>
-<p><img src="examples/DIF_2/procedureNotes.png  " class="img-responsive" alt=""></p>
+<div id="options" class="section level2">
+<h2>Options</h2>
+<div id="title-dependent-variable-type-variables" class="section level3">
+<h3>1. title: Dependent Variable type: Variables</h3>
 </div>
-<div id="dif-analysis-table" class="section level2">
-<h2>DIF Analysis Table</h2>
-<p>After confirming that the analysis was conducted appropriately, the DIF Analysis Table may be assessed. Below we see that 5 of the 38 items have been flagged as exhibiting gender DIF. These 5 items all have p-values associated with the 2-degrees of freedom likelihood ratio test below the chosen threshold of 0.05. Of these 5 items, only one item (S2DoScold) has an effect size (delta Nagelkirke r^2) passing the upper bound of A-level DIF. The other four items have extremely small effect size estimates, a fact which must be evaluated alongside their statistical significance.</p>
-<p><img src="examples/DIF_2/difTable.png  " class="img-responsive" alt=""></p>
+<div id="class-variable-type-variable" class="section level3">
+<h3>2. Class Variable type: Variable</h3>
 </div>
-<div id="design-analysis-table" class="section level2">
-<h2>Design Analysis Table</h2>
-<p>The Design Analysis Table will be consulted next, in order to aid the interpretation of the effect size estimates. Here we see …</p>
-<p><img src="examples/DIF_2/designAnalysis.png  " class="img-responsive" alt=""></p>
+<div id="group-variable-type-variable" class="section level3">
+<h3>3. Group Variable type: Variable</h3>
 </div>
-<div id="item-response-curves" class="section level2">
-<h2>Item Response Curves</h2>
-<p>Finally, in order to communicate the results of the DIF analysis more effectively, the Item Response Curves for [items x,y,z] have been produced.</p>
-<p><img src="examples/DIF_2/irc1.png  " class="img-responsive" alt=""> <img src="examples/DIF_2/irc2.png  " class="img-responsive" alt=""> <img src="examples/DIF_2/irc3.png  " class="img-responsive" alt=""></p>
-<p>These show [lots of great things].</p>
+<div id="method" class="section level3">
+<h3>4. Method</h3>
+<pre><code>  options: 
+    Custom cut score
+    Maximize metric
+    Minimize metric
+    Maximize metric (LOESS)
+    Minimize metric (LOESS)
+    Maximize metric (spline)
+    Minimize metric (spline)
+    Maximize metric (boot)
+    Minimize metric (boot)
+    Maximize Youden-Index (Kernel smoothed)
+    Maximize Youden-Index (Parametric normal)
+    default: maximize_metric</code></pre>
+<p><code>Method</code> determines how the optimal cutpoint will be determined after calculating the <code>Metric</code> (below). The default is simply <code>Maximize Metric</code>, which means that the cutpoint with the maximum value for <code>Metric</code> will be chosen as the optimal cutpoint. The options in brackets, <code>LOESS</code>, <code>spline</code>, <code>boot</code>, <code>Kernel smoothed</code>, and <code>Parametric normal</code> refer to different smoothing operations which may be carried out on the metric prior to selecting the respective max/min value.</p>
+</div>
+<div id="all-observed-scores" class="section level3">
+<h3>5. All observed scores</h3>
+<p>If <code>All observed scores</code> is selected, results table will return statistics for all observed measure scores in the data.</p>
+</div>
+<div id="delongs-test" class="section level3">
+<h3>6. DeLong’s Test</h3>
+<p>If <code>DeLong's Test</code> is selected and two or more groups are provided (either scores on two or more measures or subgroups of a single measure), DeLong’s test for the difference between AUC/ROC will be performed.</p>
+</div>
+<div id="specify-cut-score-type-string" class="section level3">
+<h3>7. Specify cut score type: String</h3>
+<p><code>Specify cut score</code> will be ignored unless the <code>Custom Cut Score</code> option for <code>Method</code> (above) is chosen. This option is used to return only the results for a single specified observed score.</p>
+</div>
+<div id="metric-type-list" class="section level3">
+<h3>8. Metric type: List</h3>
+<pre><code>  options:
+    Sum Sens-Spec
+    Accuracy
+    Youden-Index
+    Sum: Sens/Spec
+    Sum: PPV/NPV
+    Prod: Sens/Spec
+    Prod: PPV/NPV
+    Cohen&#39;s Kappa
+    Abs. d: Sens/Spec
+    ROC
+    Abs. d: PPV/NPV
+    Chi-squared
+    Odds Ratio
+    Risk Ratio
+    Misclassification Cost
+    Total Utility
+    F1 score
+    </code></pre>
+<p><code>Metric</code> refers to the statistic/value that is to be calculated and used by <code>Method</code> for selecting the optimal cutpoint(s).</p>
+</div>
+<div id="bootstrap-runs-type-number" class="section level3">
+<h3>9. Bootstrap runs type: Number</h3>
+<p><em>Not yet implemented. Please notify the author if this feature would be useful to you</em></p>
+<p><code>Bootstrap runs</code> is the number of bootstrap samples will be used to assess the variability and the out-of-sample performance. If used, bootstrap samples will be drawn and the optimal cutpoint using method will be determined this way. Additionally, as a way of internal validation, the function in metric will be used to score the out-of-bag predictions using the cutpoints determined by method. Various default metrics are always included in the bootstrap results.</p>
+</div>
+<div id="ties" class="section level3">
+<h3>10. Ties</h3>
+<pre><code>  options:
+    All optimal cutpoints
+    Mean optimal cutpoint
+    Median optimal cutpoint</code></pre>
+</div>
+<div id="direction-relative-to-optimal-cutpoint" class="section level3">
+<h3>11. Direction (relative to optimal cutpoint)</h3>
+<pre><code>  options:
+    &quot;&gt;=&quot;
+    &quot;&lt;=&quot;</code></pre>
+<p><code>Direction</code> refers to the direction of the observed score relative to the optimal cutpoint. That is, whether the cutpoint should be a ‘floor’ or a ‘ceiling’.</p>
+</div>
+<div id="roc" class="section level3">
+<h3>12. ROC</h3>
+<pre><code>  default: True
+  </code></pre>
+<p>Selecting the <code>ROC</code> option will return an ROC curve for each dependent variable and group.</p>
+</div>
+<div id="standard-error-bars" class="section level3">
+<h3>13. Standard error bars</h3>
+<pre><code>  default: True
+  </code></pre>
+<p>If <code>ROC</code> has been selected, <code>Standard error bars</code> is used to show approximated standard error ranges using LOESS smoothing.</p>
+</div>
+<div id="loess-smoothing" class="section level3">
+<h3>14. LOESS Smoothing</h3>
+<pre><code>  default: True</code></pre>
+<p>Selecting the <code>LOESS Smoothing</code> option will overlay a LOESS smoothed regression line on the ROC curve.</p>
+</div>
+<div id="sensitivity-specificity-tables" class="section level3">
+<h3>15. Sensitivity-Specificity Tables</h3>
+<pre><code>  default: False
+  </code></pre>
+<p><code>Sensitivity-Specificity Tables</code> is used to display the raw data at used to calculate sensitivity and specificity. This option may be useful for checking data if the results of the optimal cutpoints or ROC curve are not as expected.</p>
+</div>
+</div>
+<div id="examples" class="section level1">
+<h1>Examples</h1>
+<p>Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come):</p>
+<ul>
+<li>
+<a href="measureDiagnostics_testROC_example.html">TestROC - Toy Example</a>
+</li>
+</ul>
 <h1>
 Comments?
 </h1>
 <p>
 Got comments, issues or spotted a bug? Please open an issue at <a href=" https://github.com/lucasjfriesen/jamoviPsychoPDA/issues "> PsychoPDA</a> on github or <a href="mailto:lucasjfriesen@gmail.com">send me an email</a>
 </p>
-</div>
 </div>
 
 

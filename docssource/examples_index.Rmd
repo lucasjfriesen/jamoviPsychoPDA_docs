@@ -26,10 +26,16 @@ Here you can find some example analyses run using Psychometrics & Post-Data Anal
 # Design Analysis 
 ## Mean Differences Design Analysis
 
-`r include_examples("meanDiffDA")`
+`r include_examples("designAnalysis")`
 
-## Correlations Design Analysis
+# Measure Diagnostics
 
-`r include_examples("corrDA")`
+## TestROC
+
+`r include_examples("testROC")`
+
+## Ordinal Reliability
+
+`r include_examples("ordinalReliability")`
 
 `r issues()`

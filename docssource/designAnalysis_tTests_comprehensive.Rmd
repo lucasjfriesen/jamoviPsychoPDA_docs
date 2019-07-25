@@ -1,8 +1,8 @@
 ---
-title: "Mean Differences Design Analysis"
+title: "Design Analysis for Mean Differences - Comprehensive"
 nickname: meanDiffDA
-topic: meanDiffDA
-category: example
+topic: designAnalysis
+category: subTopic
 output: 
   html_document:
      includes:
@@ -16,8 +16,5 @@ output:
 source("../R/functions.R")
 ```
 
-**Mean Differences Design Analyis Example**
+*In progress*
 
-Working on it.
-
-`r issues()`

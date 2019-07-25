@@ -18,8 +18,6 @@ source("../R/functions.R")
 
 Design Analysis modules of the Psychometrics & Post Data Analysis suite
 
-`r list_pages(nickname = "meanDiffDA")`
-
-`r list_pages(nickname = "corrDA")`
+`r list_pages(topic = "designAnalysis", category = "subTopic")`
 
 `r issues()`

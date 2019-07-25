@@ -1,0 +1,35 @@
+---
+title: "Ordinal Reliability - Getting Started"
+nickname: ordinalReliabilityintroduction
+topic: ordinalReliability
+category: measureDiagnostics
+output: 
+  html_document:
+     includes:
+         in_header: ganalytics.txt
+     toc: true
+     toc_float:
+        collapsed: false
+---
+
+```{r echo=FALSE,results='hide'}
+source("../R/functions.R")
+```
+
+**Ordinal Reliability** module of the Psychometrics & Post-Data Analysis suite for jamovi
+
+*In progress*
+
+# More Information
+
+A comprehensive overview of the module, including details on the many available options
+
+`r list_pages(nickname = "ordinalReliabilitycomprehensive")`
+
+# Examples
+
+Some worked out examples of analyses carried out with jamovi PsychoPDA are posted here (more to come)
+
+`r include_examples("ordinalReliability")`
+
+`r issues()`

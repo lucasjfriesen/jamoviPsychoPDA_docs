@@ -20,8 +20,8 @@ source("../R/functions.R")
 ```
 
 
-#   version 1.0.1
-* Beta version
+#   version 1.0.0
+* This is the first release
 
 
 `r issues()`
