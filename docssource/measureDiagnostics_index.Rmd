@@ -15,19 +15,14 @@ output:
 source("../R/functions.R")
 ```
 
-## Documentation
-
 Measure Diagnostics modules of the Psychometrics & Post Data Analysis suite
 
-`r list_pages(category = "measureDiagnostics")`
+## Documentation
+
+`r list_pages(category = "subTopic", topic = "measureDiagnostics")`
 
 ## Examples
-Test ROC examples
 
-`r include_examples("testROC")`
-
-Ordinal Reliability examples
-
-`r include_examples("ordinalReliability")`
+`r include_examples("measureDiagnostics")`
 
 `r issues()`

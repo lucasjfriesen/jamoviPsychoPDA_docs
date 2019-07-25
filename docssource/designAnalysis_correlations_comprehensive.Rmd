@@ -2,7 +2,7 @@
 title: "Design Analysis for Correlations - Comprehensive"
 nickname: corrDA
 topic: designAnalysis
-category: example
+category: subTopic
 output: 
   html_document:
      includes:

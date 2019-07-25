@@ -1,7 +1,7 @@
 ---
 title: "TestROC - Toy Example"
 nickname: testROCToy
-topic: testROC
+topic: measureDiagnostics
 category: example
 output: 
   html_document:

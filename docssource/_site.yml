@@ -4,7 +4,7 @@ navbar:
   title: "PsychoPDA"
   left:
   - text: "Differential Item Functioning"
-    href:  differentialItemFunctioning_index.html
+    href:  DIF_index.html
   - text: "Measure Diagnostics"
     href: measureDiagnostics_index.html
   - text: "Design Analysis"

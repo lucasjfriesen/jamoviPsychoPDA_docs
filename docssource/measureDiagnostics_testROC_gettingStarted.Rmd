@@ -1,8 +1,8 @@
 ---
 title: "TestROC - Getting Started"
 nickname: testROCintroduction
-topic: testROC
-category: measureDiagnostics
+topic: measureDiagnostics
+category: subTopic
 output: 
   html_document:
      includes:

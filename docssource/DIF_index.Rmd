@@ -16,12 +16,11 @@ output:
 source("../R/functions.R")
 ```
 
+Differential Item Functioning modules of the PsychoPDA suite
 
 ## Documentation
 
-DIF modules of the PsychoPDA suite
-
-`r list_pages(category = "DIF")`
+`r list_pages(category = "subTopic", topic = "binaryDIF")`
 
 ## Examples
 Binary DIF examples

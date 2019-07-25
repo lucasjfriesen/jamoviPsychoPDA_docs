@@ -2,7 +2,7 @@
 title: "Binary Differential Item Functioning - Getting Started"
 nickname: binaryDIFintroduction
 topic: binaryDIF
-category: DIF
+category: subTopic
 output: 
   html_document:
      includes:

@@ -15,9 +15,14 @@ output:
 source("../R/functions.R")
 ```
 
+Design Analysis modules of the PsychoPDA suite
 
-Design Analysis modules of the Psychometrics & Post Data Analysis suite
+## Documentation
 
-`r list_pages(topic = "designAnalysis", category = "subTopic")`
+`r list_pages(category = "subTopic", topic = "designAnalysis")`
+
+# Examples
+
+`r include_examples("designAnalysis")`
 
 `r issues()`

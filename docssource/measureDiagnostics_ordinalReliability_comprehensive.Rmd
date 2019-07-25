@@ -1,8 +1,8 @@
 ---
 title: "Ordinal Reliability - Comprehensive"
 nickname: ordinalReliabilitycomprehensive
-topic: ordinalReliability
-category: measureDiagnostics
+topic: measureDiagnostics
+category: subTopic
 output: 
   html_document:
      includes:
