@@ -24,7 +24,6 @@ Here you can find some example analyses run using Psychometrics & Post-Data Anal
 `r include_examples("binaryDIF")`
 
 # Design Analysis 
-## Mean Differences Design Analysis
 
 `r include_examples("designAnalysis")`
 

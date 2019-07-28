@@ -16,9 +16,6 @@ source("../R/functions.R")
 
 # Psychometric Post-Data Analysis for Jamovi
 
-<img src="docs/i1.png" class="img-responsive" alt="">
-
-
 Psychometrics & Post-Data Analysis (PsychoPDA) provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric research. Currently, these modules include:   
 
 * Differential Item functioning
