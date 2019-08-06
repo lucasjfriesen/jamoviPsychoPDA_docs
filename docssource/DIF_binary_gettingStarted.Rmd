@@ -22,6 +22,12 @@ source("../R/functions.R")
 
 The module provides an interface for performing differential item functioning (DIF) analysis on dichotomously scored items with a binary grouping variable, with options to perform design analysis and view item characteristic curves.
 
+Some good test data can be found in the resources from De Boeck and Wilson's Explanatory Item Response Models textbook: http://bearcenter.berkeley.edu/page/materials-explanatory-item-response-models
+
+Download the "Data - Files" folder and then load the "data verbal aggression matrix dichot.csv" file into jamovi.
+
+
+
 # Procedure Notes
 
 Upon loading the module, the instsructions below will be displayed, indicating the minimum requirements for beginning an analysis.
