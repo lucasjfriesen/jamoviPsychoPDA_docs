@@ -334,9 +334,6 @@ div.tocify {
 <a href="DIF_binary_gettingStarted.html">Binary Differential Item Functioning - Getting Started</a>
 </li>
 </ul>
-<div id="dif-analysis-background-and-software-implementation" class="section level1">
-<h1>DIF Analysis Background and Software Implementation</h1>
-</div>
 <div id="dif---background" class="section level1">
 <h1>DIF - Background</h1>
 <p>In any discussion of differential item functioning, it is important to note that DIF is not synonymous with bias or fairness. Questions of fairness in tests and measures are directly related to the use of an individual’s score on that test or measure. For example, if men and women from a given nation receive different levels of training in speaking English, whether and how scores on a speaking proficiency test should be used in making immigration decisions is a question of fairness. On the other hand, DIF analysis seeks to find out if men and women from that nation <em>who are equally proficient in spite of differing circumstances</em> have an equal probability of answering a given test item correctly. Thus, DIF analysis is a step removed from external questions of bias and fairness in test decisions, but is instead concerned with the internal functioning of the test and test items. However, should a test or test item be found to exhibit DIF in favour of one group over another, this result may be relevant to any decision making process based on test scores, as well as a discussion of fairness regarding the use of that test.</p>
@@ -356,21 +353,21 @@ div.tocify {
 <div id="dif-analysis---options" class="section level1">
 <h1>DIF Analysis - Options</h1>
 <p><img src="DIF/analysisVariables.png" class="img-responsive" alt=""></p>
-<div id="items-type-variables" class="section level3">
-<h3>1. Items type: Variables</h3>
+<div id="items" class="section level3">
+<h3>1. Items</h3>
 <p><code>Items</code> must be a series (vector) of names referencing columns in the data containing exactly two unique values, such as [0, 1]. The data will be converted to integer type prior to analysis using <code>jmvcore::toNumeric()</code>.</p>
 </div>
-<div id="grouping-variable-type-variable" class="section level3">
-<h3>2. Grouping Variable type: Variable</h3>
+<div id="grouping-variable" class="section level3">
+<h3>2. Grouping Variable</h3>
 <p><code>Grouping Variable</code> must be a single name referencing a column in the data containing at least two unique values, such as [0, 1]. The data will be converted to factor type prior to analysis using <code>base:as.factor()</code>.</p>
 <p>The value of the first row in the column will be coded as <code>Group A</code>, and all rows containing non-<code>Group A</code> values will be coded as <code>Group B</code>. If more than two unique values are present in the column, all values different from the value of the first row will be collapsed into the same <code>Group B</code>. This restriction will be removed in a future version of the module, but is necessary for several aspects of the current version to perform.</p>
 </div>
-<div id="matching-variable-type-variable" class="section level3">
-<h3>3. Matching Variable type: Variable</h3>
+<div id="matching-variable" class="section level3">
+<h3>3. Matching Variable</h3>
 <p><code>Matching Variable</code> is an optional argument. This is the value which is used in the regression equations to account for differences in, for example, proficiency, levels of a latent contstruct, or some other psychosocial factor. If it is left empty, subjects will be matched on the Total Score, calculated internally by the module. This variable must be <code>numeric</code>.</p>
 </div>
-<div id="anchor-items-type-variables" class="section level3">
-<h3>4. Anchor Items type: Variables</h3>
+<div id="anchor-items" class="section level3">
+<h3>4. Anchor Items</h3>
 <p><code>Anchor Items</code> is an optional argument. If provided, <code>Matching Variable</code> must be left empty. <code>Anchor Items</code> must be a series (vector) of names referencing columns in the data which are considered to be ‘gold standard’. That is, containing no DIF. These items will be used in calculating the subject Total Score, but are not assessed for DIF. See <code>Purification</code> below for more details.</p>
 <p><img src="DIF/analysis.png" class="img-responsive" alt=""></p>
 </div>
@@ -392,45 +389,19 @@ div.tocify {
       </code></pre>
 <p><code>Flagging Criterion</code> refers to what test should be used in testing for statistical significance of regression coefficients.</p>
 </div>
-<div id="group-type" class="section level3">
-<h3>7. Group type</h3>
-<pre><code>    options:
-        Discrete Groups (n = 2)
-        Discrete Groups (n &gt; 2)
-        Continuous Groups
-        </code></pre>
-<p><code>Group type</code> specifies how the software should treat the data in the grouping variable. “Discrete Groups (n = 2)”" is the default and will consider the first value in the <code>Grouping Variable</code> column to be the reference group in the logistic regression model. “Discrete Groups (n &gt; 2)”" is to be used when contrasts are to be made between more than two discrete levels. The contrasts must be specified using the <code>Contrast groups</code> argument (see below). “Continuous Groups” is for use when the `Grouping Variable" has not been descritized.</p>
-</div>
-<div id="contrast-groups-type-character" class="section level3">
-<h3>8. Contrast groups type: Character</h3>
-<p><code>Contrast groups</code> is somewhat awkward, but necessary for specifying which groups are to be used for levels in the logistic regression modeling process in the case of more than two groups, or if you wish to specify which group is to be the reference group. This string must be entered with each group that is to be used as a contrast seperated by one comma. Any groups not specified will be considered the reference group.</p>
-<p>For example, if the <code>Grouping Variable</code> column of the data contains two groups {0, 1}, and you want to specify that ‘1’ be the reference group, enter <code>0</code> in the text box.</p>
-<p>If the <code>Grouping Variable</code> column of the data contains four groups {0, 1, 2, 3}, and you want to specify that ‘1’ be the reference group, enter <code>0,2,3</code> in the text box. This tells the software that groups {0,2,3} are each to be treated as seperate contrasts.</p>
-<p>If the <code>Grouping Variable</code> column of the data contains four groups {0, 1, 2, 3}, and you want to specify that groups {0, 1} should be collapsed into a single reference group contrasted with {2, 3}, enter <code>2,3</code> in the text box. This tells the software that groups {2,3} are to be treated as seperate contrasts and that {0,1} comprise the reference group.</p>
-<p><code>Group Type</code> must take either “Discrete Groups” or “Continuous Groups” as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.</p>
-</div>
 <div id="evaluation-scale" class="section level3">
-<h3>9. Evaluation Scale</h3>
+<h3>7. Evaluation Scale</h3>
 <pre><code>    options:
           Zumbo-Thomas
           Jodoin-Gierl</code></pre>
 <p><code>Evaluation Scale</code> refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale.</p>
 </div>
-<div id="alpha-type-number" class="section level3">
-<h3>10. Alpha type: Number</h3>
-<p><code>Alpha</code> is the desired Type-I error rate for statistical significance tests.r</p>
-</div>
-<div id="item-purification" class="section level3">
-<h3>11. Item Purification</h3>
-<p><code>Item purification</code> can be performed by selecting this option. Note that purification is possible only if the test score is considered as the matching criterion.</p>
-<p>Purification works as follows: if at least one item is detected as functioning differently at the first step of the process, then the data set of the next step consists in all items that are currently anchor (DIF free) items, plus the tested item (if necessary). The process stops when either two successive applications of the method yield the same classifications of the items (Clauser and Mazor, 1998), or when nrIter iterations are run without obtaining two successive identical classifications. In the latter case a warning message is printed.</p>
-</div>
-<div id="number-of-iterations-type-number" class="section level3">
-<h3>12. Number of Iterations type: Number</h3>
-<p><code>Number of Iterations</code> is the maximum number of purification iterations to be used if <code>Item Purification</code> is selected.</p>
+<div id="alpha" class="section level3">
+<h3>8. Alpha</h3>
+<p><code>Alpha</code> is the desired Type-I error rate for statistical significance tests.</p>
 </div>
 <div id="p-value-adjustment-method" class="section level3">
-<h3>13. P-value Adjustment method</h3>
+<h3>9. P-value Adjustment method</h3>
 <pre><code>    options: 
         - bonferroni
         - holm
@@ -446,6 +417,37 @@ div.tocify {
 <p>Hochberg’s and Hommel’s methods are valid when the hypothesis tests are independent or when they are non-negatively associated (Sarkar, 1998; Sarkar and Chang, 1997). Hommel’s method is more powerful than Hochberg’s, but the difference is usually small and the Hochberg p-values are faster to compute.</p>
 <p>The “BH” (aka “fdr”) and “BY” method of Benjamini, Hochberg, and Yekutieli control the false discovery rate, the expected proportion of false discoveries amongst the rejected hypotheses. The false discovery rate is a less stringent condition than the family-wise error rate, so these methods are more powerful than the others.</p>
 <p>Note that you can set n larger than length(p) which means the unobserved p-values are assumed to be greater than all the observed p for “bonferroni” and “holm” methods and equal to 1 for the other methods.</p>
+<!-- ### 10.     Contrast groups      type: Character -->
+<!-- `Contrast groups` is somewhat awkward, but necessary for specifying which groups are to be used for levels in the logistic regression modeling process in the case of more than two groups, or if you wish to specify which group is to be the reference group. This string must be entered with each group that is to be used as a contrast seperated by one comma. Any groups not specified will be considered the reference group. -->
+<!-- For example, if the `Grouping Variable` column of the data contains two groups {0, 1}, and you want to specify that '1' be the reference group, enter `0` in the text box.  -->
+<!-- If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that '1' be the reference group, enter `0,2,3` in the text box. This tells the software that groups {0,2,3} are each to be treated as seperate contrasts.  -->
+<!-- If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that groups {0, 1} should be collapsed into a single reference group contrasted with {2, 3}, enter `2,3` in the text box. This tells the software that groups {2,3} are to be treated as seperate contrasts and that {0,1} comprise the reference group. -->
+<!-- `Group Type` must take either "Discrete Groups" or "Continuous Groups" as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age. -->
+</div>
+<div id="grouping-variable-1" class="section level3">
+<h3>10. Grouping variable</h3>
+<pre><code>    options:
+        Continuous variable
+        Discrete groups (n = 2)
+        Discrete groups (n &gt; 2)
+        </code></pre>
+<p><code>Grouping variable</code> specifies how the software should treat the data in the grouping variable. “Discrete Groups (n = 2)”" is the default and will consider the first value in the <code>Grouping Variable</code> column to be the reference group in the logistic regression model. “Discrete Groups (n &gt; 2)”" is to be used when contrasts are to be made between more than two discrete levels. The contrasts must be specified using the <code>Contrast groups</code> argument (see below). “Continuous Groups” is for use when the `Grouping Variable" has not been descritized.</p>
+</div>
+<div id="effect-type" class="section level3">
+<h3>10. Effect type</h3>
+<pre><code>  options: 
+      Naeglekirke R²
+      Regression Coefficients</code></pre>
+<p>Both <code>Effect type</code> options are True/False and control the display of a DIF results table constructed using their respective effect type.</p>
+</div>
+<div id="item-purification" class="section level3">
+<h3>11. Item Purification</h3>
+<p><code>Item purification</code> can be performed by selecting this option. Note that purification is possible only if the test score is considered as the matching criterion.</p>
+<p>Purification works as follows: if at least one item is detected as functioning differently at the first step of the process, then the data set of the next step consists in all items that are currently anchor (DIF free) items, plus the tested item (if necessary). The process stops when either two successive applications of the method yield the same classifications of the items (Clauser and Mazor, 1998), or when nrIter iterations are run without obtaining two successive identical classifications. In the latter case a warning message is printed.</p>
+</div>
+<div id="number-of-iterations-type-number" class="section level3">
+<h3>12. Number of Iterations type: Number</h3>
+<p><code>Number of Iterations</code> is the maximum number of purification iterations to be used if <code>Item Purification</code> is selected.</p>
 </div>
 </div>
 <div id="design-analysis---background" class="section level1">
@@ -504,11 +506,12 @@ div.tocify {
 </div>
 <div id="design-analysis---options" class="section level1">
 <h1>Design Analysis - Options</h1>
+<p><img src="DIF/designAnalysisOptions.png" class="img-responsive" alt=""></p>
 <div id="design-analysis" class="section level3">
 <h3>1. Design Analysis</h3>
 <p><code>Design Analysis</code> is a <code>True</code>/<code>False</code> option, defaulted to <code>False</code>. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.</p>
 </div>
-<div id="effect-type" class="section level3">
+<div id="effect-type-1" class="section level3">
 <h3>2. Effect type</h3>
 <p><code>Effect type</code> may be either Δ Naeglekirke R^2 or Regression Coefficients. This option selects which effect size estimate to perform the design analysis on.</p>
 </div>
@@ -544,7 +547,7 @@ div.tocify {
 </div>
 <div id="dif-analysis---results-table" class="section level2">
 <h2>DIF Analysis - Results Table</h2>
-<p><img src="DIF/designAnalysisResults.png  " class="img-responsive" alt=""></p>
+<p><img src="DIF/difAnalysisResults.png" class="img-responsive" alt=""></p>
 <ol style="list-style-type: decimal">
 <li><p><code>Item</code> contains the name of the item under analysis.</p></li>
 <li><p>The second column contains the DIF classification. The legend for classification is at the end of the <code>Procedure Notes</code>.</p></li>

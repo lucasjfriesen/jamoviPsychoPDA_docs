@@ -48,21 +48,21 @@ Logically, if the model which includes the grouping variable fits the observed d
 
 <img src="DIF/analysisVariables.png  " class="img-responsive" alt="">
 
-### 1.      Items                   type: Variables
+### 1.      Items
 
 `Items` must be a series (vector) of names referencing columns in the data containing exactly two unique values, such as [0, 1]. The data will be converted to integer type prior to analysis using `jmvcore::toNumeric()`.
 
-### 2.      Grouping Variable       type: Variable
+### 2.      Grouping Variable
 
 `Grouping Variable` must be a single name referencing a column in the data containing at least two unique values, such as [0, 1].  The data will be converted to factor type prior to analysis using `base:as.factor()`.
 
 The value of the first row in the column will be coded as `Group A`, and all rows containing non-`Group A` values will be coded as `Group B`. If more than two unique values are present in the column, all values different from the value of the first row will be collapsed into the same `Group B`. This restriction will be removed in a future version of the module, but is necessary for several aspects of the current version to perform.
 
-### 3.      Matching Variable       type: Variable
+### 3.      Matching Variable
 
 `Matching Variable` is an optional argument. This is the value which is used in the regression equations to account for differences in, for example, proficiency, levels of a latent contstruct, or some other psychosocial factor. If it is left empty, subjects will be matched on the Total Score, calculated internally by the module. This variable must be `numeric`.
 
-### 4.      Anchor Items            type: Variables
+### 4.      Anchor Items
 
 `Anchor Items` is an optional argument. If provided, `Matching Variable` must be left empty. `Anchor Items` must be a series (vector) of names referencing columns in the data which are considered to be 'gold standard'. That is, containing no DIF. These items will be used in calculating the subject Total Score, but are not assessed for DIF. See `Purification` below for more details.
 
@@ -85,49 +85,19 @@ The value of the first row in the column will be coded as `Group A`, and all row
     	  
 `Flagging Criterion` refers to what test should be used in testing for statistical significance of regression coefficients.
 
-### 7.      Group type
-    	  options:
-        	Discrete Groups (n = 2)
-        	Discrete Groups (n > 2)
-        	Continuous Groups
-        	
-`Group type` specifies how the software should treat the data in the grouping variable. "Discrete Groups (n = 2)"" is the default and will consider the  first value in the `Grouping Variable` column to be the reference group in the logistic regression model. "Discrete Groups (n > 2)"" is to be used when contrasts are to be made between more than two discrete levels. The contrasts must be specified using the `Contrast groups` argument (see below). "Continuous Groups" is for use when the `Grouping Variable" has not been descritized.
-
-### 8.      Contrast groups      type: Character
-
-`Contrast groups` is somewhat awkward, but necessary for specifying which groups are to be used for levels in the logistic regression modeling process in the case of more than two groups, or if you wish to specify which group is to be the reference group. This string must be entered with each group that is to be used as a contrast seperated by one comma. Any groups not specified will be considered the reference group.
-
-For example, if the `Grouping Variable` column of the data contains two groups {0, 1}, and you want to specify that '1' be the reference group, enter `0` in the text box. 
-
-If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that '1' be the reference group, enter `0,2,3` in the text box. This tells the software that groups {0,2,3} are each to be treated as seperate contrasts. 
-
-If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that groups {0, 1} should be collapsed into a single reference group contrasted with {2, 3}, enter `2,3` in the text box. This tells the software that groups {2,3} are to be treated as seperate contrasts and that {0,1} comprise the reference group.
-        	
-`Group Type` must take either "Discrete Groups" or "Continuous Groups" as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age.
-
-
-### 9.     Evaluation Scale
+### 7.      Evaluation Scale
     	  options:
         	  Zumbo-Thomas
         	  Jodoin-Gierl
 
 `Evaluation Scale` refers to the classification scheme for DIF effect sizes on the Naeglekirke’s R^2 (Δ R^2) scale. 
-    	  
-### 10.     Alpha      type: Number
 
-`Alpha` is the desired Type-I error rate for statistical significance tests.r
+### 8.      Alpha
 
-### 11.     Item Purification
+`Alpha` is the desired Type-I error rate for statistical significance tests.
 
-`Item purification` can be performed by selecting this option. Note that purification is possible only if the test score is considered as the matching criterion. 
 
-Purification works as follows: if at least one item is detected as functioning differently at the first step of the process, then the data set of the next step consists in all items that are currently anchor (DIF free) items, plus the tested item (if necessary). The process stops when either two successive applications of the method yield the same classifications of the items (Clauser and Mazor, 1998), or when nrIter iterations are run without obtaining two successive identical classifications. In the latter case a warning message is printed. 
-
-### 12.     Number of Iterations      type: Number
-
-`Number of Iterations` is the maximum number of purification iterations to be used if `Item Purification` is selected.
-
-### 13.     P-value Adjustment method
+### 9.     P-value Adjustment method
     	  options: 
         	- bonferroni
         	- holm
@@ -148,6 +118,43 @@ Hochberg's and Hommel's methods are valid when the hypothesis tests are independ
 The "BH" (aka "fdr") and "BY" method of Benjamini, Hochberg, and Yekutieli control the false discovery rate, the expected proportion of false discoveries amongst the rejected hypotheses. The false discovery rate is a less stringent condition than the family-wise error rate, so these methods are more powerful than the others.
 
 Note that you can set n larger than length(p) which means the unobserved p-values are assumed to be greater than all the observed p for "bonferroni" and "holm" methods and equal to 1 for the other methods.
+    	  
+<!-- ### 10.     Contrast groups      type: Character -->
+
+<!-- `Contrast groups` is somewhat awkward, but necessary for specifying which groups are to be used for levels in the logistic regression modeling process in the case of more than two groups, or if you wish to specify which group is to be the reference group. This string must be entered with each group that is to be used as a contrast seperated by one comma. Any groups not specified will be considered the reference group. -->
+
+<!-- For example, if the `Grouping Variable` column of the data contains two groups {0, 1}, and you want to specify that '1' be the reference group, enter `0` in the text box.  -->
+
+<!-- If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that '1' be the reference group, enter `0,2,3` in the text box. This tells the software that groups {0,2,3} are each to be treated as seperate contrasts.  -->
+
+<!-- If the `Grouping Variable` column of the data contains four groups {0, 1, 2, 3}, and you want to specify that groups {0, 1} should be collapsed into a single reference group contrasted with {2, 3}, enter `2,3` in the text box. This tells the software that groups {2,3} are to be treated as seperate contrasts and that {0,1} comprise the reference group. -->
+
+<!-- `Group Type` must take either "Discrete Groups" or "Continuous Groups" as its value. Discrete groups are a grouping variable such as binary gender classifications, or national identity. Continuous Groups are a grouping variable such as age. -->
+
+### 10.     Grouping variable
+    	  options:
+    	    Continuous variable
+        	Discrete groups (n = 2)
+        	Discrete groups (n > 2)
+        	
+`Grouping variable` specifies how the software should treat the data in the grouping variable. "Discrete Groups (n = 2)"" is the default and will consider the  first value in the `Grouping Variable` column to be the reference group in the logistic regression model. "Discrete Groups (n > 2)"" is to be used when contrasts are to be made between more than two discrete levels. The contrasts must be specified using the `Contrast groups` argument (see below). "Continuous Groups" is for use when the `Grouping Variable" has not been descritized.
+
+### 10.     Effect type
+        options: 
+          Naeglekirke R²
+          Regression Coefficients
+
+Both `Effect type` options are True/False and control the display of a DIF results table constructed using their respective effect type.
+
+### 11.     Item Purification
+
+`Item purification` can be performed by selecting this option. Note that purification is possible only if the test score is considered as the matching criterion. 
+
+Purification works as follows: if at least one item is detected as functioning differently at the first step of the process, then the data set of the next step consists in all items that are currently anchor (DIF free) items, plus the tested item (if necessary). The process stops when either two successive applications of the method yield the same classifications of the items (Clauser and Mazor, 1998), or when nrIter iterations are run without obtaining two successive identical classifications. In the latter case a warning message is printed. 
+
+### 12.     Number of Iterations      type: Number
+
+`Number of Iterations` is the maximum number of purification iterations to be used if `Item Purification` is selected.
 
 # Design Analysis - Background
 
@@ -213,6 +220,8 @@ Type-S error is not calculated because it does not align conceptually with the t
 
 # Design Analysis - Options
 
+<img src="DIF/designAnalysisOptions.png" class="img-responsive" alt="">
+
 ### 1.      Design Analysis
 
 `Design Analysis` is a `True`/`False` option, defaulted to `False`. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.
@@ -251,7 +260,7 @@ The descriptive overview provides a textual summary of the whole analysis, inclu
 
 ## DIF Analysis - Results Table
 
-<img src="DIF/designAnalysisResults.png  " class="img-responsive" alt="">
+<img src="DIF/difAnalysisResults.png  " class="img-responsive" alt="">
 
 1. `Item` contains the name of the item under analysis.
 
