@@ -41,7 +41,7 @@ Set the variables from your data according to the instructions provided on the r
 
 # Design Analysis
 
-In order to aid in the interpretation of the DIF-level classification, Gelman & Carlin’s Type-M error is calculated on the thresholds for A-, B-level, and C-level DIF. These errors are post-data statistics which enable the researcher to assess the degree to which their results may reflect the nature of the True effect. See the comprehensive overview section for more details.
+In order to aid in the interpretation of the DIF-level classification, Gelman & Carlin’s Type-M error is calculated on the thresholds for A, B, and C level DIF. These errors are post-data statistics which enable the researcher to assess the degree to which their results may reflect the nature of the True effect. See the comprehensive overview section for more details.
 
 <img src="DIF/designAnalysis.png  " class="img-responsive" alt="">
 

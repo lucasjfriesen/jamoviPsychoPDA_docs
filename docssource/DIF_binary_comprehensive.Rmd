@@ -20,17 +20,15 @@ The following is a comprehensive overview of the available options in the Binary
 
 `r list_pages(nickname = "binaryDIFintroduction")`
 
-# DIF Analysis Background and Software Implementation
-
-## Background
+# DIF - Background
 
 In any discussion of differential item functioning, it is important to note that DIF is not synonymous with bias or fairness. Questions of fairness in tests and measures are directly related to the use of an individual’s score on that test or measure. For example, if men and women from a given nation receive different levels of training in speaking English, whether and how scores on a speaking proficiency test should be used in making immigration decisions is a question of fairness. On the other hand, DIF analysis seeks to find out if men and women from that nation _who are equally proficient in spite of differing circumstances_ have an equal probability of answering a given test item correctly. Thus, DIF analysis is a step removed from external questions of bias and fairness in test decisions, but is instead concerned with the internal functioning of the test and test items. However, should a test or test item be found to exhibit DIF in favour of one group over another, this result may be relevant to any decision making process based on test scores, as well as a discussion of fairness regarding the use of that test.
 
 Logistic regression, the method used in this module, is among the most popular methods for detecting DIF for several reasons. Primarily, because most standardized tests and measures use questions which are dichotomized as being “correct” or “incorrect”, logistic regression is the natural tool in this vast majority of testing contexts: it allows one to easily model binary response data (e.g. Kutner et al. 2004 or McCulloch et al. 2008). Logistic regression can be used to detect both uniform and non-uniform DIF with two or more categorical groups or a continuous random variable. That is, it can be applied to questions of DIF between external variables such as binary-classified gender, an n-ary classification of ethnicity or pizza topping preference, or continuous variables such as height or age. This wide applicability makes logistic regression the most flexible method of detecting DIF to date (see Moses, Miao, & Dorans (2010) and Magis et al (2010) for additional discussion). However, no software has yet been developed which facilitates DIF analyses in a way which is widely accessible to researchers not already familiar with sophisticated programming languages, such as R (CITE ME BABY). In addition to facilitating the process of conducting DIF analysis, the software presented below incorporates features of the post-data design analysis proposed by Gelman & Carlin (2014) which aids in the interpretation of DIF analysis results.
 
-## Calculations
+# DIF - Calculations
 
-The module performs DIF analysis on dichotomously scored items using binary grouping variables and either total-score matching or matching based on a supplied variable. The following explanation of the analysis will use an example where the grouping variable G is a binary classification 0/1, such as Male/Female, and the matching variable is a continuous random variable θ, such as scores on a measure of tendency towards verbal aggression. The matching variable is used to control for expected variation. For example, in a measure of language proficiency it is expected that a given item will be easier for individuals who are more highly trained in the language. Thus, if Males generally receive more training than Females, the effect of this training would confound the examination of whether or not an item exhibits gender-DIF unless we account for this differential effect in our model via G * θ.
+The module performs DIF analysis on dichotomously scored items using grouping variables and either total-score matching or matching based on a supplied variable. The following explanation of the analysis will use an example where the grouping variable G is a binary classification 0/1, such as Male/Female, and the matching variable is a continuous random variable θ, such as scores on a measure of tendency towards verbal aggression. The matching variable is used to control for expected variation. For example, in a measure of language proficiency it is expected that a given item will be easier for individuals who are more highly trained in the language. Thus, if Males generally receive more training than Females, the effect of this training would confound the examination of whether or not an item exhibits gender-DIF unless we account for this differential effect in our model via G * θ.
 
 Assessing DIF using logistic regression involves fitting two models and comparing the model fit of these models. The first is the baseline model which is fit using only the main effect of the matching variable:
 
@@ -46,7 +44,7 @@ Logit of endorsement = β₀ + β₁* θ + β2 * G + β3  * (θ  * G) + ε
 
 Logically, if the model which includes the grouping variable fits the observed data more closely than the model which does not account for group differences, then the item would appear to be exhibiting DIF. The statistic most commonly used to quantify the difference in model fit between the baseline and full models is the change in model deviance, which is a measure of the poorness of model fit, ranging between 0 and 1, where a change in deviance of 0 indicates perfect fit. (Hancock, Mueller, & Stapleton, 2010, p 236). In standard industry practice, if the change in model deviance is not statistically significant (at a level specified by the researcher and using either the standard (asymptotic) chi-squared Wald test of joint significance or a likelihood ratio test), then the item is not flagged as exhibiting DIF. If the change in model deviance is significant, the item is flagged as exhibiting DIF.
 
-## Options
+# DIF Analysis - Options
 
 <img src="DIF/analysisVariables.png  " class="img-responsive" alt="">
 
@@ -151,9 +149,7 @@ The "BH" (aka "fdr") and "BY" method of Benjamini, Hochberg, and Yekutieli contr
 
 Note that you can set n larger than length(p) which means the unobserved p-values are assumed to be greater than all the observed p for "bonferroni" and "holm" methods and equal to 1 for the other methods.
 
-# Design Analysis
-
-## Background
+# Design Analysis - Background
 
 Type-S and Type-M errors are post-data calculations that rely on the observed data and an a priori estimated or hypothesized effect size which is determined via information external to the study at hand, such as literature review and subject-matter expertise (Gelman & Carlin, 2014, p. 643). The Type-S error rate is the probability that the observed estimate of the effect size will have the wrong sign (i.e. - vs. +), if statistically significantly different from zero (Gelman & Carlin, 2014, p. 643). Type-M error, or the exaggeration ratio, is the expectation of the absolute value of the effect size divided by the hypothesized true effect size, if statistically significantly different from zero (Gelman & Carlin, 2014, p. 643). In other words, it is the factor by which the observed effect size might be expected to be exaggerated given the assumption of the hypothesized true effect size and statistical significance.
 To give the reader an intuition for assessing Type-S and Type-M errors, understanding their intimate relationship with power is helpful. In the simpler case of a classic t-test, when true power is 0 the Type-S error will be 0.5 and Type-M error will be infinite. This means that the testing procedure had an equal probability of observing an effect that was larger than the true effect as it did of observing an effect which was smaller than the true effect. That is, it can tell us nothing about the direction of the true effect relative to our observed effect. Even worse, when the true power to detect an effect is 0, the Type-M error being infinite means that a statistically significant observed effect will be, on average, infinitely larger than the true effect. As the true power to detect an effect increases the Type-S and Type-M errors will decrease.
@@ -164,11 +160,13 @@ In the context of DIF analysis, the effect size most commonly encountered (and t
 
 The design analysis is  carried out according to the same principles as those laid out in Gelman & Carlin (2014) using three hypothesized true correlations. The hypothesized true correlations correspond to the level thresholds of the zumbo-Thomas DIF evaluation scale: 0 (Null/Negligble DIF), 0.13 (Moderate DIF), 0.26 (Large DIF).
 
-## Calculation
+# Design Analysis - Calculations
 
 ### Type-M Error
 
-Calculating the Type-M error rate for Δ R² is completed via a bootstrapping process which generates an empirical distribution for the Δ R² for each item. The R code for this computation is available in Appendix B. The design analysis is then carried out according to the same principles as those laid out in Gelman & Carlin (2014) using three hypothesized true correlations. The hypothesized true correlations correspond to the level thresholds of the Zumbo-Thomas DIF evaluation scale: 0 (Null/Negligible DIF), 0.13 (Moderate DIF), 0.26 (Large DIF). Those familiar with Type-M error calculations may immediately spot a potential problem with the Null DIF hypothesized true effect. Type-M error is the ratio of the expectation of the observed effect and the hypothesized true effect; in the Null DIF hypothesis, this is 0. In order to bypass this problem, the Null effect is actually hypothesized as being 0 plus 2 times the standard error of the estimated effect size, which is derived during the process of bootstrapping the Δ R² empirical distribution. In effect, this hypothesis is that the unknown true effect is 0 +/- a certain degree of measurement error.
+Calculating the Type-M error rate for Δ R² is completed via a bootstrapping process which generates an empirical distribution for the Δ R² for each item. The R code for this computation is available below. The variable `myBoot` contains the empirical distribution, along with the estimate of the standard error.
+
+The design analysis is then carried out according to an extension of the same principles as those laid out in Gelman & Carlin (2014). This analysis by default uses three hypothesized true correlations. The hypothesized true correlations correspond to the level thresholds of the Zumbo-Thomas DIF evaluation scale: 0 (Null/Negligible DIF), 0.13 (Moderate DIF), 0.26 (Large DIF). Those familiar with Type-M error calculations may immediately spot a potential problem with the Null DIF hypothesized true effect. Type-M error is the ratio of the expectation of the observed effect and the hypothesized true effect; in the Null DIF hypothesis, this is 0. In order to bypass this problem, the Null effect is actually hypothesized as being 0 plus 2 times the standard error of the estimated effect size, which is derived during the process of bootstrapping the Δ R² empirical distribution. In effect, this hypothesis is that the unknown true effect is 0 +/- a certain degree of measurement error.
 
 ```
         retroDesign.nagR2 <- function(hypTrueEff, myBoot, alpha, sigOnly) {
@@ -213,39 +211,37 @@ The above function is derived from that provided by Gelman & Carlin (2014) in th
 
 Type-S error is not calculated because it does not align conceptually with the tests being performed in this type of DIF analysis. The Δ R^2 effect size is a meta-statistic, as opposed to a normal measure of effect size like Cohen's d, and one of the results of this is that Δ R^2 will only be negative in anomalous situations, meaning that there is no meaningful probability of achieving a statistically significant effect in the 'wrong' direction.
 
-<img src="DIF/designAnalysis.png  " class="img-responsive" alt="">
-
-## Options
+# Design Analysis - Options
 
 ### 1.      Design Analysis
 
 `Design Analysis` is a `True`/`False` option, defaulted to `False`. This can be quite computationally intensive. If this option is selected, and then another option is changed, the module will incorporate the change as soon as possible, but several embedded loops mean that there may be a delay before you see the change take effect.
 
-### 2.      Constant Alpha
+### 2.      Effect type
 
-`Constant Alpha` is a `True`/`False` option, defaulted to `True`. This option refers to whether or not you want to perform a post-data design analysis using the same alpha as in the DIF analysis, or using the minimum alpha required for significance for _all_ items.
+`Effect type` may be either Δ Naeglekirke R^2 or Regression Coefficients. This option selects which effect size estimate to perform the design analysis on.
 
-### 3.      Bootstrap N      type: Number
+### 2.      Flagged items only
+
+`Flagged items only` is a `True`/`False` option, defaulted to `True`. This option refers to whether or not you want to perform a post-data design analysis using the same alpha as in the DIF analysis, or using the minimum alpha required for significance for _all_ items.
+
+### 3.      Bootstrap N
 
 `Bootstrap N` refers to the number of bootstrap replications to be used in creating the empirical distribution for Δ R^2. This is defaulted to `1000` as a balance between computation time and precision. Lower numbers will allow faster exploration, but will provide less stable estimates.
 
 ### 4.     Observed Power
 
-`Observed Power` is a `True`/`False` option, defaulted to `False`. Toggling this option reveals the column showing the Empirical Observed Power. This is defaulted to `False` because its interpretation can be confusing, and will not always provide useful information. N.B. The Empirical Observed Power _can_ equal 1 or 0.
+`Empirical Observed Power` is a `True`/`False` option, defaulted to `False`. Toggling this option reveals the column showing the Empirical Observed Power. This is defaulted to `False` because its interpretation can be confusing, and will not always provide useful information. N.B. The Empirical Observed Power _can_ equal 1 or 0.
 
-### 5.     Hypothesized True Effect Size      type: String
+### 5.     Hypothesized True Effect Size
 
 `Hypothesized True Effect Size` is used to perform design analysis using a non-default hypothesized true effect. If left blank, the analysis will be performed at each of the thresholds of the `DIF Flag Scale` selected above.
 
-# Item Response Curves
-
-## Details
-
-<img src="DIF/ICC.png  " class="img-responsive" alt="">
+# Item Response Curves - Options
 
 ### 1.     Item Response Curves based on Logistic Regression    type: Variables
 
-`Item Respnse Curves` is a list (vector) of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.
+`Item Respnse Curves` is a list of names referring to columns in the data selected for DIF analysis for which logistic regression Item Response Curves should be produced.
 
 # Results
 
@@ -253,15 +249,41 @@ Type-S error is not calculated because it does not align conceptually with the t
 
 The descriptive overview provides a textual summary of the whole analysis, including what options were chosen, and documenting any warnings or errors that were encountered during the model fitting process.
 
-## DIF Ananlysis Table
+## DIF Analysis - Results Table
 
-The DIF analysis table provides an overview of the analysis results. For each item the following information is displayed: DIF classification (Zumbo-Thomas criterion), p-value and chi-squared statistic of either the Wald or Likelihood ratio test, Δ R². The purpose of this table is to provide an easily viewable and shareable summary of results.
+<img src="DIF/designAnalysisResults.png  " class="img-responsive" alt="">
 
-## Design Analysis Table
+1. `Item` contains the name of the item under analysis.
 
-The design analysis table displays a list of all the items analyzed, the observed DIF effect, the bootstrapped standard error of the estimate, and Type-M errors rates calculated for each of the three thresholds in the Zumbo-Thomas scale.
+2. The second column contains the DIF classification. The legend for classification is at the end of the `Procedure Notes`.
+
+3. `P-value` is the p-value of the chi^2 statistic.
+
+4. `χ2 Stat.` is the chi^2 statistic for the likelihood ratio/Wald test.
+
+5. `Δ R^2` is the change in Naeglekirke R^2 between the baseline and full models.
+
+## Design Analysis - Results Table
+
+<img src="DIF/designAnalysis.png  " class="img-responsive" alt="">
+
+1. `Item` contains the name of the item under analysis.
+
+2. `Obs. Effect` is the observed effect size, matching the DIF Results table above.
+
+3. `Bootstrap SE` is the estimate of the standard error of the effect size estimate, derived during the bootstrap estimation process.
+
+4. `Classification` is the DIF flag attached to the observed effect size. The legend for classification is at the end of the `Procedure Notes`.
+
+5. `Hyp. True Effect` is the hypothesized true effect being used in the Type-M error calculation. The default hypotheses are the thresholds of the three DIF classification levels.
+
+6. `Type-M Error` is the Type-M error.
+
+7. `Est. True Effect` is the observed effect divided by the Type-M error. This, in theory, provides a more reasonable/conservative estimate of the true effect, balanced between the theoretical expectation encoded in the hypothesized true effect and the observed effect.
 
 ## Item Response Curves
+
+<img src="DIF/ICC.png  " class="img-responsive" alt="">
 
 The item response curve can be plotted for any item being assessed for DIF. It provides a visual representation of the full model used in the DIF analysis. The different groups are colour coded, with 95% confidence intervals represented by gray shading overlaying each line. In these images the Y-axis is the probability of endorsement (0 to 1), and the X-axis is the range of the matching variable used in the logistic models.
 
