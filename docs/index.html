@@ -11,7 +11,7 @@
 
 
 
-<title>PsychoPDA</title>
+<title>index.utf8.md</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -99,6 +99,9 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -220,8 +223,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="psychometric-post-data-analysis-for-jamovi" class="section level1">
-<h1>Psychometric Post-Data Analysis for Jamovi</h1>
+<div id="psychometrics-post-data-analysis-for-jamovi-ppda" class="section level1">
+<h1>Psychometrics &amp; Post-Data Analysis for Jamovi (PPDA)</h1>
 <p>Psychometrics &amp; Post-Data Analysis (PsychoPDA) provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric research. Currently, these modules include:</p>
 <ul>
 <li>Differential Item functioning</li>
@@ -237,10 +240,10 @@ Differential Item Functioning
 </div>
 <ul>
 <li>
-<a href="DIF_binary_example_detailed.html">Binary Differential Item Functioning - Detailed Example</a>
+<a href="DIF_binary_example.html">Binary Differential Item Functioning - Toy Example</a>
 </li>
 <li>
-<a href="DIF_binary_example.html">Binary Differential Item Functioning - Toy Example</a>
+<a href="DIF_binary_example_detailed.html">Binary Differential Item Functioning - Detailed Example</a>
 </li>
 </ul>
 <div class="littletitle">
@@ -266,19 +269,19 @@ Design Analysis
 </li>
 </ul>
 </div>
-<div id="jamovi-library-installation-not-yet-in-the-library---use-the-next-option" class="section level1">
-<h1>Jamovi Library Installation (Not yet in the library - Use the next option)</h1>
+<div id="jamovi-library-installation" class="section level1">
+<h1>Jamovi Library Installation</h1>
 <p>If you didn’t already, install <a href="https://www.jamovi.org/download.html">Jamovi</a> and run it. Select the jamovi modules library and install PsychoPDA from there.</p>
-</div>
-<div id="jamovi-sideload-installation" class="section level1">
-<h1>Jamovi Sideload Installation</h1>
-<p>For manual installation, you can download the <a href="https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/master/psychoPDA.jmo">PsychoPDA.jmo</a> file from GitHub and use jamovi’s sideload function (It’s the button on the right side ‘Available’ in the jamovi library window).</p>
-<p><img src="pics/sideloadModule.png" class="img-responsive" alt=""></p>
+<!-- # Jamovi Sideload Installation -->
+<!-- For manual installation, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/master/psychoPDA.jmo) file from GitHub and use jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window). -->
+<!-- <img src="pics/sideloadModule.png" class="img-responsive" alt=""> -->
 <div id="others" class="section level2">
 <h2>Others</h2>
 <p>You will first need to download <a href="https://www.jamovi.org/download.html">Jamovi</a>.</p>
 <p>You can clone this repository and compile the module within R with</p>
-<pre><code>library(jmvtools)
+<pre><code>install.packages(&#39;jmvtools&#39;, repos=c(&#39;https://repo.jamovi.org&#39;, &#39;https://cran.r-project.org&#39;))
+
+setwd(directory/of/cloned/repo)
 
 jmvtools::install()
 </code></pre>

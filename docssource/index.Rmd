@@ -14,7 +14,7 @@ source("../R/functions.R")
 ```
   
 
-# Psychometric Post-Data Analysis for Jamovi
+# Psychometrics & Post-Data Analysis for Jamovi (PPDA)
 
 Psychometrics & Post-Data Analysis (PsychoPDA) provides a suite of modules designed to enable researchers to perform post-data analyses in psychometric research. Currently, these modules include:   
 
@@ -36,15 +36,15 @@ Some worked out examples of the analyses carried out with jamovi PsychoPDA are p
 
 
 
-# Jamovi Library Installation (Not yet in the library - Use the next option)
+# Jamovi Library Installation
 
 If you didn't already, install [Jamovi](https://www.jamovi.org/download.html) and run it. Select the jamovi modules library and install PsychoPDA from there.
 
-# Jamovi Sideload Installation
+<!-- # Jamovi Sideload Installation -->
 
-For manual installation, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/master/psychoPDA.jmo) file from GitHub and use jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window).
+<!-- For manual installation, you can download the [PsychoPDA.jmo](https://github.com/lucasjfriesen/jamoviPsychoPDA/blob/master/psychoPDA.jmo) file from GitHub and use jamovi's sideload function (It's the button on the right side 'Available' in the jamovi library window). -->
 
-<img src="pics/sideloadModule.png" class="img-responsive" alt="">
+<!-- <img src="pics/sideloadModule.png" class="img-responsive" alt=""> -->
 
 ## Others
 
@@ -54,7 +54,9 @@ You will first need to download [Jamovi](https://www.jamovi.org/download.html).
 You can clone this repository and compile the module within R with 
 
 ```
-library(jmvtools)
+install.packages('jmvtools', repos=c('https://repo.jamovi.org', 'https://cran.r-project.org'))
+
+setwd(directory/of/cloned/repo)
 
 jmvtools::install()
 
