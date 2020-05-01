@@ -61,7 +61,7 @@ If `DeLong's Test` is selected and two or more groups are provided (either score
       
 ### 7. Specify cut score      type: String
 
-`Specify cut score` will be ignored unless the `Custom Cut Score` option for `Method` (above) is chosen. This option is used to return only the results for a single specified observed score.
+`Specify cut score` will be ignored unless the `Custom Cut Score` option for `Method` (above) is chosen. This option is used to return only the results for a single specified observed score. That is, it is only used for filtering results to create tidyier output. As a result of this, the value must be a value in the observed data.
 
 ### 8. Metric      type: List
       options:
